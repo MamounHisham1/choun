@@ -1,0 +1,1 @@
+<span class="nxl-micon"><i {{ $attributes }}></i></span>

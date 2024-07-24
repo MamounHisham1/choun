@@ -1,0 +1,1 @@
+<button {{ $attributes->merge(['class' => "btn btn-md btn-outline-primary", 'type' => "submit"]) }}>{{ $slot }}</button>
