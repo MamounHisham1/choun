@@ -10,6 +10,6 @@
     ];
 @endphp
 
-<x-admin.forms.field :$name>
+<x-admin.forms.field :$label :$name>
     <input {{ $attributes($defaults) }}>
 </x-admin.forms.field>

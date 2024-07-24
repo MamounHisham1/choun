@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('description');
             $table->float('price');
             $table->float('quantity');
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
 
             $table->foreignId('category_id')->constrained();

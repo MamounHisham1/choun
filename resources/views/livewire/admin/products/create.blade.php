@@ -3,7 +3,7 @@
         <x-admin.forms.form action="/admin/products" method="POST">
 
             <x-admin.forms.input label="Product Name" name="name" placeholder="Laptop" required />
-            <x-admin.forms.input label="Product Decription" name="description"
+            <x-admin.forms.textarea label="Product Decription" name="description"
                 placeholder="Lenovo is one of the best laptops compnaies..." required />
             <x-admin.forms.input type="number" label="Product Price" name="price" value="10" required />
             <x-admin.forms.input type="number" label="Product Quantity" name="quantity" value="1" required />
@@ -20,7 +20,9 @@
             </x-admin.forms.select>
 
             <x-admin.forms.input type="file" label="Product Images" name="images[]" id="images" class="form-file"
-                multiple required />
+            multiple required />
+        
+                <x-admin.forms.checkbox name="is_featured" label="Featured" />
 
             <div class="d-flex justify-content-end gap-2 mt-3">
                 <x-admin.forms.button>Save</x-admin.forms.button>
