@@ -1,1 +1,0 @@
-<label class="form-label">{{ $slot }} <span class="text-danger">*</span></label>

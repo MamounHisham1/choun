@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/admin', function () {
+    return view('admin.index');
 });
 
-Route::get('/products/create', [ProductController::class, 'create']);
+Route::resource('/admin/products', ProductController::class);
+Route::resource('/admin/categories', CategoryController ::class);
