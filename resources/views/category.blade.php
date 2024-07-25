@@ -328,7 +328,7 @@
                 </div>
                 @endforeach
             </div>
-            {{ $products->render('vendor.pagination.mypagination') }}
+            {{ $products->render('vendor.pagination.bootstrap-5') }}
         </x-categories-container>
     </x-categories-layout>
 </x-layout>
