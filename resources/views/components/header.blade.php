@@ -48,7 +48,7 @@
                                                 href="index-23.html">Travel gear</a><a href="index-24.html">Coffee
                                                 Shop</a>
                                         </div>
-                                        <div class="col-menu"><img src="assets/imgs/template/banner-menu.webp"
+                                        <div class="col-menu"><img src="/assets/imgs/template/banner-menu.webp"
                                                 alt="Guza"></div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                                 href="product-single-22.html">Product Single 22</a><a
                                                 href="product-single-23.html">Product Single 23</a><a
                                                 href="product-single-24.html">Product Single 24</a></div>
-                                        <div class="col-menu"><img src="assets/imgs/template/banner-menu-2.png"
+                                        <div class="col-menu"><img src="/assets/imgs/template/banner-menu-2.png"
                                                 alt="Guza"></div>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
                 </div>
             </div>
             <div class="header-logo"> <a class="d-flex" href="index.html"><img alt="luxride"
-                        src="assets/imgs/template/logo.svg"></a></div>
+                        src="/assets/imgs/template/logo.svg"></a></div>
             <div class="header-account"><a class="account-icon search" href="#">
                     <svg class="d-inline-flex align-items-center justify-content-center" width="28"
                         height="28" viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
@@ -200,9 +200,9 @@
                 <div class="box-head-1"><a class="link-underline mr-20 account-icon account"
                         href="#">Login</a><a class="link-underline account-icon account"
                         href="#">Sign Up</a><a class="close-mobile" href="#"><img
-                            src="assets/imgs/template/icons/close.svg" alt="Guza"></a></div>
+                            src="/assets/imgs/template/icons/close.svg" alt="Guza"></a></div>
                 <div class="box-head-2"><a class="back-mobile" href="#"><img
-                            src="assets/imgs/template/icons/back.svg" alt="Guza"></a></div>
+                            src="/assets/imgs/template/icons/back.svg" alt="Guza"></a></div>
             </div>
             <div class="perfect-scroll">
                 <div class="mobile-menu-wrap mobile-header-border">

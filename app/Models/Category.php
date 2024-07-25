@@ -18,6 +18,6 @@ class Category extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->image ? asset($this->image->name) : 'https://picsum.photos/100/100';
+        return $this->image ? asset($this->image) : 'https://picsum.photos/100/100';
     }
 }
