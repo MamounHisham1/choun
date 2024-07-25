@@ -10,6 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $with = ['image', 'category'];
 
     public function image()
     {
@@ -26,8 +27,8 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function getImageUrlAttributes()
+    public function getImageUrlAttribute()
     {
-        return $this->image ? asset($this->image->name) : 'https://via.placeholder.com/300x400';
+        return $this->image ? asset($this->image->name) : 'https://picsum.photos/200/300';
     }
 }
