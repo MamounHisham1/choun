@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getImageUrlAttributes()
+    {
+        return $this->image ? asset($this->image->name) : 'https://via.placeholder.com/300x400';
+    }
 }

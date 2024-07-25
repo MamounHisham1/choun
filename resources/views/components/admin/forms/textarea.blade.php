@@ -2,7 +2,6 @@
 
 @php
     $defaults = [
-        'type' => 'text',
         'id' => $name,
         'name' => $name,
         'class' => 'form-control',

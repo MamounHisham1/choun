@@ -1,23 +1,23 @@
-<x-layout>
+<x-admin.layout>
 
     <x-slot:header>Products</x-slot:header>
     <x-slot:breadcrumb>
-        <x-active-link>Create</x-active-link>
+        <x-admin.active-link>Create</x-admin.active-link>
     </x-slot:breadcrumb>
 
-    <x-forms.layout>
-        <x-forms.form action="/admin/products/{{ $product->id }}" method="POST">
+    <x-admin.forms.layout>
+        <x-admin.forms.form action="/admin/products/{{ $product->id }}" method="POST">
             @method('PUT')
 
-            <x-forms.input label="Product Name" name="name" value="{{ $product->name }}" required />
-            <x-forms.input label="Product Decription" name="description" value="{{ $product->description }}" required />
-            <x-forms.input type="number" label="Product Price" name="price" value="{{ $product->price }}" required />
-            <x-forms.input type="number" label="Product Quantity" name="quantity" value="{{ $product->quantity }}"
+            <x-admin.forms.input label="Product Name" name="name" value="{{ $product->name }}" required />
+            <x-admin.forms.textarea label="Product Decription" name="description" value="{{ $product->description }}" required />
+            <x-admin.forms.input type="number" label="Product Price" name="price" value="{{ $product->price }}" required />
+            <x-admin.forms.input type="number" label="Product Quantity" name="quantity" value="{{ $product->quantity }}"
                 required />
 
-            <x-forms.select label="Product Tags" name="tags">
-                <x-forms.option value="electorincs">Fun</x-forms.option>
-                <x-forms.option value="electorincs">Fun</x-forms.option>
+            <x-admin.forms.select label="Product Tags" name="tags">
+                <x-admin.forms.option value="electorincs">Fun</x-admin.forms.option>
+                <x-admin.forms.option value="electorincs">Fun</x-admin.forms.option>
             </x-forms.select>
             <div class="row">
                 @foreach ($images as $image)
@@ -27,13 +27,13 @@
                     </div>
                 @endforeach
             </div>
-            <x-forms.input type="file" label="Product Images" name="images[]" id="images" class="form-file"
+            <x-admin.forms.input type="file" label="Product Images" name="images[]" id="images" class="form-file"
                 multiple />
 
 
             <div class="d-flex justify-content-end gap-2 mt-3">
                 <a href="/admin/products" class="btn btn-md btn-outline-danger">Cancel</a>
-                <x-forms.button>Save</x-forms.button>
+                <x-admin.forms.button>Save</x-admin.forms.button>
             </div>
         </x-forms.form>
     </x-forms.layout>
@@ -90,4 +90,4 @@
             $("#total_amount").val((tax_sum + total).toFixed(2));
         }
     </script>
-</x-layout>
+</x-admin.layout>
