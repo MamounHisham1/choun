@@ -12,10 +12,10 @@ class CategoryController extends Controller
     public function __invoke(Category $category)
     {   
         $categories = Category::with('products')->latest()->get();
-
+        $products = $category->products()->paginate(12);
         return view('category', [
-            'category' => $category,
             'categories' => $categories,
+            'products' => $products,
         ]);
     }
 }
