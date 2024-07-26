@@ -8,13 +8,20 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
         $products = Product::latest()->paginate(9);
         $categories = Category::has('products', '>', 0)->get();
         return view('shop', [
             'products' => $products,
             'categories' => $categories,
+        ]);
+    }
+
+    public function show(Product $product)
+    {
+        return view('show-product', [
+            'product' => $product,
         ]);
     }
 }
