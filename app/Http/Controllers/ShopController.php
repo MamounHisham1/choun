@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -20,8 +21,10 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
+        $cart = Cart::getCart();
         return view('show-product', [
             'product' => $product,
+            'cart' => $cart,
         ]);
     }
 }

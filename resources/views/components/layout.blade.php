@@ -58,6 +58,34 @@
     <script src="/assets/js/vendors/jquery.timepicker.min.js"></script>
     <script src="/assets/js/vendors/glightbox.min.js"></script>
     <script src="/assets/js/main.js?v=1.0.0"></script>
+
+    <script>
+        $("#addToCart").click(function(e) {
+            $(this).attr('disabled', true);
+            $(this).addClass('disabled');
+            const that = this;
+            $.ajax({
+                type: "POST",
+                url: "/add-to-cart",
+                data: {
+                    product_id: $(this).data('product'),
+                    quantity: $('#qty').val(),
+                    "_token": "{{ csrf_token() }}",
+                },
+                success: function(data) {
+                   console.log('success')
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("Error:", textStatus, errorThrown);
+                    console.log("Resopnse:", jqXHR.responseText);
+                },
+                complete: () => {
+                    $(that).removeAttr("disabled");
+                    $(that).removeClass('disabled');
+                },
+            });
+        });
+    </script>
 </body>
 
 </html>

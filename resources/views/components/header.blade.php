@@ -60,7 +60,7 @@
                                 </rect>
                             </clippath>
                         </defs>
-                    </svg></a><a class="account-icon cart" href="#"><span class="number-tag">1</span>
+                    </svg></a><a class="account-icon cart" id="cart" href="#"><span class="number-tag" id="cart-tag"></span>
                     <svg width="28" height="28" viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_116_450)">
                             <path

@@ -1,4 +1,5 @@
 <x-layout>
+    @dump($cart)
     <div class="section block-breadcrumb">
         <div class="container">
             <div class="breadcrumbs">
@@ -90,10 +91,11 @@
                             <div class="box-form-cart">
                                 <div class="form-cart detail-qty">
                                     <span class="minus"></span>
-                                    <input class="qty-val form-control" type="text" name="quantity"
+                                    <input class="qty-val form-control" id="qty" type="text" name="quantity"
                                         value="1" min="1" /><span class="plus"></span>
                                 </div>
-                                <a class="btn btn-black" href="#">Add to Cart</a><a class="btn btn-navy"
+                                <button id="addToCart" class="btn btn-black" data-product="{{ $product->id }}">Add to Cart</button>
+                                <a class="btn btn-navy"
                                     href="#">Buy Now</a><a class="btn btn-wishlist" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"
                                         width="28" height="28" viewbox="0 0 28 28"
