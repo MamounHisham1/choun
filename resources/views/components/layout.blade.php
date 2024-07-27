@@ -66,18 +66,26 @@
             const that = this;
             $.ajax({
                 type: "POST",
-                url: "/add-to-cart",
+                url: "/add-to-cart/" + $(this).data('product'),
                 data: {
-                    product_id: $(this).data('product'),
                     quantity: $('#qty').val(),
                     "_token": "{{ csrf_token() }}",
                 },
                 success: function(data) {
-                   console.log('success')
+                    $("#success-alert").html(data['message']);
+                    $("#success-alert").toggleClass("d-none");
+                    setTimeout(() => {
+                        $("#success-alert").toggleClass("d-none");
+                    }, 2000);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error("Error:", textStatus, errorThrown);
                     console.log("Resopnse:", jqXHR.responseText);
+                    $("#error-alert").html("Product not found");
+                    $("#error-alert").toggleClass("d-none");
+                    setTimeout(() => {
+                        $("#error-alert").toggleClass("d-none");
+                    }, 2000);
                 },
                 complete: () => {
                     $(that).removeAttr("disabled");

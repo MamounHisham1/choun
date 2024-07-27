@@ -16,7 +16,7 @@ Route::get('/shop', [ShopController::class, 'index']);
 Route::get('/shop/{product}/show', [ShopController::class, 'show']);
 
 Route::get('/shop/categories/{category}', CategoryProductsController::class);
-Route::post('/add-to-cart', [CartController::class, 'store']);
+Route::post('/add-to-cart/{product}', [CartController::class, 'store']);
 
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');

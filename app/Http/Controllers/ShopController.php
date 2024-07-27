@@ -21,10 +21,8 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
-        $cart = Cart::getCart();
         return view('show-product', [
             'product' => $product,
-            'cart' => $cart,
         ]);
     }
 }
