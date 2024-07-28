@@ -32,10 +32,15 @@ class Cart extends Model
         // TODO: Add to database
     }
 
-    public static function getCart()
+    public static function getItems()
     {
         // TODO: Load session from database
-        return session()->get('cart') ?? [];
+        $cartProducts = [];
+        foreach(session()->get('cart', []) as $item) {
+            $product = Product::find($item['product_id']);
+            $cartProducts[] = [$product, $item['quantity']];
+        }
+        return $cartProducts;
     }
     
     public static function clearCart()

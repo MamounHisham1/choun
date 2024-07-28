@@ -1,12 +1,4 @@
 <x-layout>
-    
-    @foreach ($cartProducts as $cartProduct)
-        @foreach ($cartProduct as $cp)
-            @foreach ($cp as $ss)
-                @dump($ss->name)
-            @endforeach
-        @endforeach
-    @endforeach
     <div class="section block-breadcrumb">
         <div class="container">
             <div class="breadcrumbs">

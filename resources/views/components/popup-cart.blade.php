@@ -26,34 +26,35 @@
                 </div>
             </div>
             <div class="list-items-cart">
+                @foreach ($cartItems as $item)
                 <div class="item-cart">
-                    <div class="item-cart-image"><img src="assets/imgs/page/cart/sp.png" alt="Guza"></div>
+                    <div class="item-cart-image"><img src="{{ $item[0]->image_url }}" alt="Guza"></div>
                     <div class="item-cart-info">
-                        <div class="item-cart-info-1"><a class="text-16-medium" href="#">Ball Crew
-                                Shirt</a>
+                        <div class="item-cart-info-1"><a class="text-16-medium" href="#">{{ $item[0]->name }}</a>
                             <div class="box-info-size-color-product">
                                 <p class="box-color"><span class="body-p2 neutral-medium-dark">Color:</span><span
                                         class="body-p2 neutral-dark">Navy</span></p>
                                 <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
                                         class="body-p2 neutral-dark">S</span></p>
                             </div>
-                            <p class="body-p2 d-block d-sm-none mb-8">$24.00</p>
+                            <p class="body-p2 d-block d-sm-none mb-8">{{ $item[0]->price }}</p>
                             <div class="box-form-cart">
                                 <div class="form-cart detail-qty"><span class="minus"></span>
                                     <input class="qty-val form-control" type="text" name="quantity"
-                                        value="1" min="1"><span class="plus"></span>
+                                        value="{{ $item[1] }}" min="1"><span class="plus"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="item-cart-info-2">
-                            <p class="body-p2 d-none d-sm-block">$24.00</p><a class="btn-remove-cart"
+                            <p class="body-p2 d-none d-sm-block">{{ $item[0]->price*$item[1] }}</p><a class="btn-remove-cart"
                                 href="#"></a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
-        <div class="box-products-search">
+        {{-- <div class="box-products-search">
             <h6 class="text-18-medium mb-20">You May Also Like</h6>
             <div class="box-list-product-search">
                 <div class="item-product-search">
@@ -176,7 +177,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="box-fire">
             <div class="icon-fire body-p2">Checkout now 09:14 before they’re<span
                     class="text-17-medium">GONE!</span></div>

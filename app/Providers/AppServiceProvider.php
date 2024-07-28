@@ -23,15 +23,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('*', function (View $view) {
-            $carts = Cart::getCart();
-            $cartProducts = [];
+            $cartItems = Cart::getItems();
 
-            foreach($carts as $cart) {
-                $product = Product::get()->where('id', '=', $cart['product_id']);
-                $cartProducts[] = [$product, $cart['quantity']];
-            }
-
-            $view->with('cartProducts', $cartProducts);
+            $view->with('cartItems', $cartItems);
         });
     }
 }
