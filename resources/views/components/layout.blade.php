@@ -74,9 +74,13 @@
                 success: function(data) {
                     $("#success-alert").html(data['message']);
                     $("#success-alert").toggleClass("d-none");
+                    const cart = parseInt($("#cart-tag").html()) || 0;
+                    $("#cart-tag").html(cart + 1);
                     setTimeout(() => {
                         $("#success-alert").toggleClass("d-none");
                     }, 2000);
+                    $('#cart-tag').addClass("number-tag");
+                    parseInt($("#cart-tag").html());
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.error("Error:", textStatus, errorThrown);

@@ -60,7 +60,11 @@
                                 </rect>
                             </clippath>
                         </defs>
-                    </svg></a><a class="account-icon cart" id="cart" href="#"><span class="number-tag" id="cart-tag"></span>
+                    </svg></a><a class="account-icon cart" href="#">
+                    @if (count($cartItems) > 0)
+                    <span id="cart-tag" class="number-tag">{{ count($cartItems) }}</span>
+                    @else <span id="cart-tag"></span>    
+                    @endif
                     <svg width="28" height="28" viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_116_450)">
                             <path

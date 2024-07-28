@@ -1,4 +1,9 @@
-
+@php
+    $subtotal = 0;
+    foreach ($cartItems as $item) {
+        $subtotal += $item[0]->price*$item[1];
+    }
+@endphp
 <div class="box-popup-cart">
     <div class="box-cart-overlay"></div>
     <div class="box-cart-wrapper"><a class="btn-close-popup" href="#">
@@ -184,7 +189,7 @@
         </div>
         <div class="d-flex align-items-center justify-content-between mt-25 mb-15">
             <h6 class="neutral-medium-dark">Subtotal</h6>
-            <h6 class="neutral-dark">$59.00</h6>
+            <h6 class="neutral-dark">{{ $subtotal }}</h6>
         </div>
         <div class="box-button-popup-cart d-flex align-items-center justify-content-between"><a
                 class="btn btn-border w-100 mr-5" href="cart.html">View Cart</a><a
