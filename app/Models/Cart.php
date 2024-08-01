@@ -40,7 +40,7 @@ class Cart extends Model
             $product = Product::find($item['product_id']);
             $cartProducts[] = [$product, $item['quantity']];
         }
-        return $cartProducts;
+        return collect($cartProducts);
     }
     
     public static function clearCart()

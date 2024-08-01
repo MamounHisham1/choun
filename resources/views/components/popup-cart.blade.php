@@ -188,11 +188,13 @@
                     class="text-17-medium">GONE!</span></div>
         </div>
         <div class="d-flex align-items-center justify-content-between mt-25 mb-15">
+            @if ($subtotal > 0)
             <h6 class="neutral-medium-dark">Subtotal</h6>
             <h6 class="neutral-dark">{{ $subtotal }}</h6>
+            @endif
         </div>
         <div class="box-button-popup-cart d-flex align-items-center justify-content-between"><a
-                class="btn btn-border w-100 mr-5" href="cart.html">View Cart</a><a
-                class="btn btn-black w-100 ml-5" href="checkout.html">Check Out</a></div>
+                class="btn btn-border w-100 mr-5" href="/cart">View Cart</a><a
+                class="btn btn-black w-100 ml-5" href="/checkout">Check Out</a></div>
     </div>
 </div>

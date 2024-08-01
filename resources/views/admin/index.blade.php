@@ -5,21 +5,22 @@
     </x-slot:breadcrumb>
 
     <div class="row">
-        <!-- [Invoices Awaiting Payment] start -->
+        <!-- [Pending Orders] start -->
         <div class="col-xxl-3 col-md-6">
             <div class="card stretch stretch-full">
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between mb-4">
-                        <div class="d-flex gap-4 align-items-center">
-                            <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-dollar-sign"></i>
+                        <a href="/admin/orders/pending">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-gray-200">
+                                    <i class="feather-dollar-sign"></i>
+                                </div>
+                                <div>
+                                    <div class="fs-4 fw-bold text-dark"><span class="counter">45</span></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">Pending Orders</h3>
+                                </div>
                             </div>
-                            <div>
-                                <div class="fs-4 fw-bold text-dark"><span class="counter">45</span>/<span
-                                        class="counter">76</span></div>
-                                <h3 class="fs-13 fw-semibold text-truncate-1-line">Invoices Awaiting Payment</h3>
-                            </div>
-                        </div>
+                        </a>
                         <a href="javascript:void(0);" class="">
                             <i class="feather-more-vertical"></i>
                         </a>
@@ -40,22 +41,23 @@
                 </div>
             </div>
         </div>
-        <!-- [Invoices Awaiting Payment] end -->
-        <!-- [Converted Leads] start -->
+        <!-- [Pending Orders] end -->
+        <!-- [Approved Orders] start -->
         <div class="col-xxl-3 col-md-6">
             <div class="card stretch stretch-full">
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between mb-4">
-                        <div class="d-flex gap-4 align-items-center">
-                            <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-cast"></i>
+                        <a href="/admin/orders/approved">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-gray-200">
+                                    <i class="feather-cast"></i>
+                                </div>
+                                <div>
+                                    <div class="fs-4 fw-bold text-dark"><span class="counter">48</span></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">Approved Orders</h3>
+                                </div>
                             </div>
-                            <div>
-                                <div class="fs-4 fw-bold text-dark"><span class="counter">48</span>/<span
-                                        class="counter">86</span></div>
-                                <h3 class="fs-13 fw-semibold text-truncate-1-line">Converted Leads</h3>
-                            </div>
-                        </div>
+                        </a>
                         <a href="javascript:void(0);" class="">
                             <i class="feather-more-vertical"></i>
                         </a>
@@ -63,7 +65,7 @@
                     <div class="pt-4">
                         <div class="d-flex align-items-center justify-content-between">
                             <a href="javascript:void(0);"
-                                class="fs-12 fw-medium text-muted text-truncate-1-line">Converted Leads </a>
+                                class="fs-12 fw-medium text-muted text-truncate-1-line">Approved Orders </a>
                             <div class="w-100 text-end">
                                 <span class="fs-12 text-dark">52 Completed</span>
                                 <span class="fs-11 text-muted">(63%)</span>
@@ -76,22 +78,23 @@
                 </div>
             </div>
         </div>
-        <!-- [Converted Leads] end -->
-        <!-- [Projects In Progress] start -->
+        <!-- [Approved Orders] end -->
+        <!-- [Shipped Orders] start -->
         <div class="col-xxl-3 col-md-6">
             <div class="card stretch stretch-full">
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between mb-4">
-                        <div class="d-flex gap-4 align-items-center">
-                            <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-briefcase"></i>
+                        <a href="/admin/orders/shipping">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-gray-200">
+                                    <i class="feather-briefcase"></i>
+                                </div>
+                                <div>
+                                    <div class="fs-4 fw-bold text-dark"><span class="counter">16</span></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">Shipped Orders</h3>
+                                </div>
                             </div>
-                            <div>
-                                <div class="fs-4 fw-bold text-dark"><span class="counter">16</span>/<span
-                                        class="counter">20</span></div>
-                                <h3 class="fs-13 fw-semibold text-truncate-1-line">Projects In Progress</h3>
-                            </div>
-                        </div>
+                        </a>
                         <a href="javascript:void(0);" class="">
                             <i class="feather-more-vertical"></i>
                         </a>
@@ -99,7 +102,7 @@
                     <div class="pt-4">
                         <div class="d-flex align-items-center justify-content-between">
                             <a href="javascript:void(0);"
-                                class="fs-12 fw-medium text-muted text-truncate-1-line">Projects In Progress </a>
+                                class="fs-12 fw-medium text-muted text-truncate-1-line">Shipped Orders </a>
                             <div class="w-100 text-end">
                                 <span class="fs-12 text-dark">16 Completed</span>
                                 <span class="fs-11 text-muted">(78%)</span>
@@ -112,21 +115,23 @@
                 </div>
             </div>
         </div>
-        <!-- [Projects In Progress] end -->
-        <!-- [Conversion Rate] start -->
+        <!-- [Shipped Orders] end -->
+        <!-- [Canceled Orders] start -->
         <div class="col-xxl-3 col-md-6">
             <div class="card stretch stretch-full">
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between mb-4">
-                        <div class="d-flex gap-4 align-items-center">
-                            <div class="avatar-text avatar-lg bg-gray-200">
-                                <i class="feather-activity"></i>
+                        <a href="/admin/orders/canceled">
+                            <div class="d-flex gap-4 align-items-center">
+                                <div class="avatar-text avatar-lg bg-gray-200">
+                                    <i class="feather-activity"></i>
+                                </div>
+                                <div>
+                                    <div class="fs-4 fw-bold text-dark"><span class="counter">46</span></div>
+                                    <h3 class="fs-13 fw-semibold text-truncate-1-line">Canceled Orders</h3>
+                                </div>
                             </div>
-                            <div>
-                                <div class="fs-4 fw-bold text-dark"><span class="counter">46.59</span>%</div>
-                                <h3 class="fs-13 fw-semibold text-truncate-1-line">Conversion Rate</h3>
-                            </div>
-                        </div>
+                        </a>
                         <a href="javascript:void(0);" class="">
                             <i class="feather-more-vertical"></i>
                         </a>
@@ -134,7 +139,7 @@
                     <div class="pt-4">
                         <div class="d-flex align-items-center justify-content-between">
                             <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">
-                                Conversion Rate </a>
+                                Canceled Orders </a>
                             <div class="w-100 text-end">
                                 <span class="fs-12 text-dark">$2,254</span>
                                 <span class="fs-11 text-muted">(46%)</span>
@@ -147,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <!-- [Conversion Rate] end -->
+        <!-- [Canceled Orders] end -->
         <!-- [Payment Records] start -->
         <div class="col-xxl-8">
             <div class="card stretch stretch-full">
@@ -305,8 +310,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="javascript:void(0);"
-                    class="card-footer fs-11 fw-bold text-uppercase text-center py-4">Full Details</a>
+                <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">Full
+                    Details</a>
             </div>
         </div>
         <!-- [Total Sales] end !-->
@@ -776,24 +781,24 @@
                                 </div>
                             </div>
                             <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Janette Dalton">
                                     <img src="/assets/images/avatar/2.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Michael Ksen">
                                     <img src="/assets/images/avatar/3.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Socrates Itumay">
                                     <img src="/assets/images/avatar/4.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Marianne Audrey">
                                     <img src="/assets/images/avatar/6.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-text avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
+                                <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Explorer More">
                                     <i class="feather-more-horizontal"></i>
                                 </a>
                             </div>
@@ -816,24 +821,24 @@
                                 </div>
                             </div>
                             <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Janette Dalton">
                                     <img src="/assets/images/avatar/2.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Michael Ksen">
                                     <img src="/assets/images/avatar/3.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Marianne Audrey">
                                     <img src="/assets/images/avatar/5.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Marianne Audrey">
                                     <img src="/assets/images/avatar/6.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-text avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
+                                <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Explorer More">
                                     <i class="feather-more-horizontal"></i>
                                 </a>
                             </div>
@@ -849,31 +854,31 @@
                                     <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>
                                 </div>
                                 <div class="text-dark">
-                                    <a href="javascript:void(0);"
-                                        class="fw-bold mb-2 text-truncate-1-line">Standup Team Meeting</a>
+                                    <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Standup
+                                        Team Meeting</a>
                                     <span class="fs-11 fw-normal text-muted text-truncate-1-line">8:00am -
                                         9:00am</span>
                                 </div>
                             </div>
                             <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Janette Dalton">
                                     <img src="/assets/images/avatar/2.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Michael Ksen">
                                     <img src="/assets/images/avatar/3.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Socrates Itumay">
                                     <img src="/assets/images/avatar/4.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Marianne Audrey">
                                     <img src="/assets/images/avatar/5.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-text avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
+                                <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Explorer More">
                                     <i class="feather-more-horizontal"></i>
                                 </a>
                             </div>
@@ -896,24 +901,24 @@
                                 </div>
                             </div>
                             <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Janette Dalton">
                                     <img src="/assets/images/avatar/2.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Socrates Itumay">
                                     <img src="/assets/images/avatar/4.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Marianne Audrey">
                                     <img src="/assets/images/avatar/5.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-image avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">
+                                <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Marianne Audrey">
                                     <img src="/assets/images/avatar/6.png" class="img-fluid" alt="image" />
                                 </a>
-                                <a href="javascript:void(0)" class="avatar-text avatar-md"
-                                    data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">
+                                <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip"
+                                    data-bs-trigger="hover" title="Explorer More">
                                     <i class="feather-more-horizontal"></i>
                                 </a>
                             </div>
@@ -1068,8 +1073,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="javascript:void(0);"
-                    class="card-footer fs-11 fw-bold text-uppercase text-center">Upcomming Projects</a>
+                <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center">Upcomming
+                    Projects</a>
             </div>
         </div>
         <!--! END: [Project Status] !-->

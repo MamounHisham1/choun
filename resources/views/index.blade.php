@@ -1,4 +1,7 @@
 <x-layout>
+    @if (Session::has('message'))
+        <x-admin.alert>{{ Session::get('message') }}</x-admin.alert>
+    @endif
     <section class="section icon-box-type1 wow fadeInUp">
         <div class="container">
             <div class="row">

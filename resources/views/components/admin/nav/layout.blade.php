@@ -16,11 +16,12 @@
                      <x-admin.nav.droplist-item href="#">CRM</x-admin.nav.droplist-item>
                      <x-admin.nav.droplist-item href="#">Analytics</x-admin.nav.droplist-item>
                  </x-admin.nav.dropdown>
-                 <x-admin.nav.dropdown name="Reports" class="feather-cast">
-                    <x-admin.nav.droplist-item href="#">Sales Report</x-admin.nav.droplist-item>
-                    <x-admin.nav.droplist-item href="#">Leads Report</x-admin.nav.droplist-item>                     
-                    <x-admin.nav.droplist-item href="#">Project Report</x-admin.nav.droplist-item>
-                    <x-admin.nav.droplist-item href="#">Timesheets Report</x-admin.nav.droplist-item>                     
+                 <x-admin.nav.dropdown name="Orders" class="feather-cast">
+                    <x-admin.nav.droplist-item href="/admin/orders">All Orders</x-admin.nav.droplist-item>
+                    <x-admin.nav.droplist-item href="/admin/orders/approved">Approved Orders</x-admin.nav.droplist-item>
+                    <x-admin.nav.droplist-item href="/admin/orders/pending">Pending Orders</x-admin.nav.droplist-item>                     
+                    <x-admin.nav.droplist-item href="/admin/orders/shipping">Shipping Orders</x-admin.nav.droplist-item>                     
+                    <x-admin.nav.droplist-item href="/admin/orders/canceled">Canceled Orders</x-admin.nav.droplist-item>                     
                  </x-admin.nav.dropdown>
                  <x-admin.nav.dropdown name="Category" class="fas fa-layer-group">
                     <x-admin.nav.droplist-item href="/admin/categories">All Categories</x-admin.nav.droplist-item>
