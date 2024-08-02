@@ -7,9 +7,19 @@
     <div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="form-group mb-2">
-                    <input type="number" class="form-control" wire:model.lazy="perPage" />
-                </div>
+                <x-admin.forms.form>
+                    <div class="form-group mb-2">
+                        <x-admin.forms.select name="status" label="Status">
+                            <x-admin.forms.option value="">All</x-admin.forms.option>
+                            <x-admin.forms.option value="pending">Pending</x-admin.forms.option>
+                            <x-admin.forms.option value="approved">Approved</x-admin.forms.option>
+                            <x-admin.forms.option value="shipped">Shipped</x-admin.forms.option>
+                            <x-admin.forms.option value="arrived">Arrived</x-admin.forms.option>
+                            <x-admin.forms.option value="canceled">Canceled</x-admin.forms.option>
+                        </x-admin.forms.select>
+                    </div>
+                    <x-admin.forms.button>Filter</x-admin.forms.button>
+                </x-admin.forms.form>
                 <div class="card stretch stretch-full">
                     <div class="card-body p-0">
                         <div class="table-responsive">
