@@ -8461,7 +8461,7 @@ footer a {
 
 .banner-home-16 {
   height: 560px;
-  background: url(../imgs/page/homepage16/banner.png) no-repeat top right;
+  /* background: url(../imgs/page/homepage16/banner.png) no-repeat top right; */
   width: 100%;
   background-color: #FFD24C;
   background-size: auto 100%;
