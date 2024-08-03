@@ -1,4 +1,8 @@
- <!--! ================================================================ !-->
+@php
+    $pendingCounter = App\Models\Order::where('status', '=', 'pending')->get()->count(); 
+@endphp
+
+<!--! ================================================================ !-->
  <!--! [Start] Navigation Manu !-->
  <!--! ================================================================ !-->
  <nav class="nxl-navigation">
@@ -17,19 +21,16 @@
                      <x-admin.nav.droplist-item href="#">Analytics</x-admin.nav.droplist-item>
                  </x-admin.nav.dropdown>
                  <x-admin.nav.dropdown name="Orders" class="feather-cast">
-                    <x-admin.nav.droplist-item href="/admin/orders">All Orders</x-admin.nav.droplist-item>
-                    <x-admin.nav.droplist-item href="/admin/orders/approved">Approved Orders</x-admin.nav.droplist-item>
-                    <x-admin.nav.droplist-item href="/admin/orders/pending">Pending Orders</x-admin.nav.droplist-item>                     
-                    <x-admin.nav.droplist-item href="/admin/orders/shipping">Shipping Orders</x-admin.nav.droplist-item>                     
-                    <x-admin.nav.droplist-item href="/admin/orders/canceled">Canceled Orders</x-admin.nav.droplist-item>                     
+                    <x-admin.nav.droplist-item href="/admin/orders">All</x-admin.nav.droplist-item>
+                    <x-admin.nav.droplist-item href="/admin/orders?status=pending">Pending ({{ $pendingCounter }})</x-admin.nav.droplist-item>                  
                  </x-admin.nav.dropdown>
                  <x-admin.nav.dropdown name="Category" class="fas fa-layer-group">
-                    <x-admin.nav.droplist-item href="/admin/categories">All Categories</x-admin.nav.droplist-item>
-                    <x-admin.nav.droplist-item href="/admin/categories/create">Create Category</x-admin.nav.droplist-item>
+                    <x-admin.nav.droplist-item href="/admin/categories">All</x-admin.nav.droplist-item>
+                    <x-admin.nav.droplist-item href="/admin/categories/create">Create</x-admin.nav.droplist-item>
                  </x-admin.nav.dropdown>
                  <x-admin.nav.dropdown name="Products" class="fa-brands fa-product-hunt">
-                     <x-admin.nav.droplist-item href="/admin/products">All Products</x-admin.nav.droplist-item>
-                     <x-admin.nav.droplist-item href="/admin/products/create">Create Product</x-admin.nav.droplist-item>
+                     <x-admin.nav.droplist-item href="/admin/products">All</x-admin.nav.droplist-item>
+                     <x-admin.nav.droplist-item href="/admin/products/create">Create</x-admin.nav.droplist-item>
                  </x-admin.nav.dropdown>
              </ul>
              {{-- <div class="card text-center">

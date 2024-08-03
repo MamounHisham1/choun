@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group mb-2">
-                <input type="number" class="form-control" wire:model.lazy="perPage" />
+                <input type="number" class="form-control" wire:model.live.debounce.500ms="perPage" />
             </div>
             <div class="card stretch stretch-full">
                 <div class="card-body p-0">

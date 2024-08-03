@@ -11,11 +11,10 @@
                     <div class="form-group mb-2">
                         <x-admin.forms.select name="status" label="Status">
                             <x-admin.forms.option value="">All</x-admin.forms.option>
-                            <x-admin.forms.option value="pending">Pending</x-admin.forms.option>
-                            <x-admin.forms.option value="approved">Approved</x-admin.forms.option>
-                            <x-admin.forms.option value="shipped">Shipped</x-admin.forms.option>
-                            <x-admin.forms.option value="arrived">Arrived</x-admin.forms.option>
-                            <x-admin.forms.option value="canceled">Canceled</x-admin.forms.option>
+                            @foreach (App\OrderStatus::getStatuses() as $value => $name)
+                                <x-admin.forms.option value="{{ $value }}"
+                                    default="{{ request('status') }}">{{ $name }}</x-admin.forms.option>
+                            @endforeach
                         </x-admin.forms.select>
                     </div>
                     <x-admin.forms.button>Filter</x-admin.forms.button>
@@ -70,9 +69,9 @@
                                                             class="project-list-action fs-12 d-flex align-items-center gap-3 mt-2">
                                                             <a href="javascript:void(0);">Start</a>
                                                             <span class="vr text-muted"></span>
-                                                            <a href="/admin/products/k/edit">Edit</a>
+                                                            <a href="/admin/products/{{ $order->id }}/edit">Edit</a>
                                                             <span class="vr text-muted"></span>
-                                                            <form method="POST" action="/admin/products/k">
+                                                            <form method="POST" action="/admin/products/{{ $order->id }}">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="text-danger"
