@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\OrderStatus;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -22,5 +23,17 @@ class OrderController extends Controller
         return view('admin.orders.index', [
             'orders' => $orders,
         ]);
+    }
+
+    public function approve(Request $request, Order $order) 
+    {
+        $order->update(['status' => OrderStatus::Approved]);
+
+        $data = [
+            'status' => 200,
+            'message' => 'Order Approved Successfully',
+        ];
+
+        return response()->json($data, 200);
     }
 }

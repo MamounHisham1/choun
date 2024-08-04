@@ -11,8 +11,10 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="stylesheet" type="text/css" href="/assets/choun/assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/choun/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/choun/assets/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="/assets/choun/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="/assets/choun/assets/fonts/iconic/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/choun/assets/vendor/animate/animate.css">
     <link rel="stylesheet" type="text/css" href="/assets/choun/assets/vendor/css-hamburgers/hamburgers.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/choun/assets/vendor/animsition/css/animsition.min.css">

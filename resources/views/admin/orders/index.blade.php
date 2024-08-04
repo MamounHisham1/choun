@@ -67,16 +67,11 @@
                                                         </p>
                                                         <div
                                                             class="project-list-action fs-12 d-flex align-items-center gap-3 mt-2">
-                                                            <a href="javascript:void(0);">Start</a>
+                                                            <a class="order-approve text-success" href="javascript:void(0);" data-id="{{ $order->id }}">Approve</a>
+                                                            <span class="vr text-muted"></span>
+                                                            <a class="order-cancel text-danger" href="javascript:void(0);" data-id="{{ $order->id }}">Cancel</a>
                                                             <span class="vr text-muted"></span>
                                                             <a href="/admin/products/{{ $order->id }}/edit">Edit</a>
-                                                            <span class="vr text-muted"></span>
-                                                            <form method="POST" action="/admin/products/{{ $order->id }}">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit" class="text-danger"
-                                                                    style="border: none; background-color: transparent">Delete</button>
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -2679,6 +2679,28 @@
     <!--! END: Theme Customizer !-->
 
     @livewireScripts
+
+    <script>
+        $(document).ready(function() {
+            $('.order-approve').click(function(event) {
+                event.preventDefault();
+                const id = $(this).data('id');
+                $.ajax({
+                    type: "POST",
+                    url: "/admin/orders/" + id + "/approve",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function (response) {
+                        
+                    },
+                    error: function () {
+                        console.log("not hello");
+                    } 
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

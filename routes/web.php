@@ -34,3 +34,5 @@ Route::resource('/admin/products', AdminProductController::class);
 Route::resource('/admin/categories', AdminCategoryController::class);
 
 Route::get('/admin/orders', [AdminOrderController::class, 'index']);
+
+Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'approve']);
