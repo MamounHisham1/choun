@@ -17,7 +17,7 @@
                                 </div>
                                 <div>
                                     <div class="fs-4 fw-bold text-dark"><span class="counter">45</span></div>
-                                    {{-- <h3 class="fs-13 fw-semibold text-truncate-1-line">Pending Orders</h3> --}}
+                                      <h3 class="fs-13 fw-semibold text-truncate-1-line">Pending Orders</h3>
                                 </div>
                             </div>
                         </a>

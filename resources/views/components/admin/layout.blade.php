@@ -2677,30 +2677,10 @@
     <!--! BEGIN: Theme Customizer  !-->
     <script src="/assets/admin/assets/js/theme-customizer-init.min.js"></script>
     <!--! END: Theme Customizer !-->
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @livewireScripts
 
-    <script>
-        $(document).ready(function() {
-            $('.order-approve').click(function(event) {
-                event.preventDefault();
-                const id = $(this).data('id');
-                $.ajax({
-                    type: "POST",
-                    url: "/admin/orders/" + id + "/approve",
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                    },
-                    success: function (response) {
-                        
-                    },
-                    error: function () {
-                        console.log("not hello");
-                    } 
-                });
-            });
-        });
-    </script>
+    @stack('scripts')
 </body>
 
 </html>

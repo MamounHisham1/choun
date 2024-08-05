@@ -26,6 +26,8 @@ Route::post('/checkout', [CheckoutController::class, 'store']);
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
+Route::view('/account', 'account');
+
 Route::get('/admin', function () {
     return view('admin.index');
 });
@@ -34,5 +36,6 @@ Route::resource('/admin/products', AdminProductController::class);
 Route::resource('/admin/categories', AdminCategoryController::class);
 
 Route::get('/admin/orders', [AdminOrderController::class, 'index']);
-
+Route::get('/admin/orders/{order}/show', [AdminOrderController::class, 'show']);
 Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'approve']);
+Route::post('/admin/orders/{order}/cancel', [AdminOrderController::class, 'cancel']);

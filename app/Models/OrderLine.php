@@ -11,8 +11,8 @@ class OrderLine extends Model
 
     protected $fillable = ['order_id', 'product_id', 'quantity', 'subtotal'];
 
-    public function order()
+    public function product()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Product::class);
     }
 }

@@ -25,15 +25,24 @@ class OrderController extends Controller
         ]);
     }
 
+    public function show(Order $order)
+    {
+        return view('admin.orders.show', [
+            'order' => $order
+        ]);
+    }
+
     public function approve(Request $request, Order $order) 
     {
         $order->update(['status' => OrderStatus::Approved]);
 
-        $data = [
-            'status' => 200,
-            'message' => 'Order Approved Successfully',
-        ];
+        return response()->json(status: 200);
+    }
 
-        return response()->json($data, 200);
+    public function cancel(Request $request, Order $order) 
+    {
+        $order->update(['status' => OrderStatus::Canceled]);
+
+        return response()->json(status: 200);
     }
 }
