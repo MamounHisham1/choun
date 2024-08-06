@@ -32,14 +32,21 @@ class OrderController extends Controller
         ]);
     }
 
-    public function approve(Request $request, Order $order) 
+    public function update(Request $request, Order $order)
+    {
+        $order->update(['status' => $request->status]);
+
+        return back()->with('message', 'Status updated');
+    }
+
+    public function approve(Request $request, Order $order)
     {
         $order->update(['status' => OrderStatus::Approved]);
 
         return response()->json(status: 200);
     }
 
-    public function cancel(Request $request, Order $order) 
+    public function cancel(Request $request, Order $order)
     {
         $order->update(['status' => OrderStatus::Canceled]);
 

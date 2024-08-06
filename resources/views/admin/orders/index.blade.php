@@ -56,7 +56,7 @@
                                             <td class="project-name-td">
                                                 <div class="hstack gap-4">
                                                     <div>
-                                                        <a href="/admin/orders/{{ $order->id }}/show"
+                                                        <a href="/admin/orders/{{ $order->id }}"
                                                             class="text-truncate-1-line">{{ $order->user->full_name }}</a>
                                                         <p
                                                             class="fs-12 text-muted mt-2 text-truncate-1-line project-list-desc">

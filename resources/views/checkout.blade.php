@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between box-border-bottom">
                                     <h5 class="neutral-medium-dark">Subtotal</h5>
-                                    <h5 class="neutral-dark">$24.00</h5>
+                                    <h5 class="neutral-dark">${{ $subtotal }}</h5>
                                 </div>
                                 <div class="box-info-cart-inner">
                                     <p class="text-17-medium text-uppercase mb-15 neutral-medium-dark">
@@ -182,11 +182,11 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between box-border-bottom">
                                     <h5 class="neutral-medium-dark">Total</h5>
-                                    <h5 class="color-9">$74.00</h5>
+                                    <h5 class="color-9">${{ $subtotal + 50 }}</h5>
                                 </div>
                                 <div class="box-other-link text-start box-border-bottom">
                                     <span class="text-17 link-green">Free shipping on orders over $200.00</span><a
-                                        class="text-17" href="#">Continue Shopping</a>
+                                        class="text-17" href="/shop">Continue Shopping</a>
                                 </div>
                                 <div class="box-payment-method">
                                     <p class="text-17-medium text-uppercase mb-15 neutral-medium-dark">
@@ -195,20 +195,20 @@
                                     <div class="list-radio">
                                         <div class="item-radio">
                                             <label>
-                                                <input type="radio" name="payment" checked="checked" />Direct bank
+                                                <input type="radio" name="payment" />Direct bank
                                                 transfer
                                             </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info active">
+                                            <p class="body-p2 neutral-medium-dark extra-info">
                                                 Please send a check to Store Name, Store Street,
                                                 Store Town, Store State / County, Store Postcode.
                                             </p>
                                         </div>
                                         <div class="item-radio">
                                             <label>
-                                                <input type="radio" name="payment" />Cash on
+                                                <input type="radio" name="payment" checked="checked" />Cash on
                                                 delivery
                                             </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info">
+                                            <p class="body-p2 neutral-medium-dark extra-info active">
                                                 Please send a check to Store Name, Store Street,
                                                 Store Town, Store State / County, Store Postcode.
                                             </p>

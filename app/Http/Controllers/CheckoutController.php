@@ -19,7 +19,18 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout');
+        if(empty(session()->get('cart'))) {
+            return back();
+        }
+        $subtotal = 0;
+        foreach (session()->get('cart') ?? [] as $item) {
+            $product = Product::find($item['product_id']);
+
+            $subtotal += $product->price * $item['quantity'];
+        }
+        return view('checkout', [
+            'subtotal' => $subtotal,
+        ]);
     }
 
     public function store(Request $request)

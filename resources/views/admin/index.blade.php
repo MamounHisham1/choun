@@ -84,7 +84,7 @@
             <div class="card stretch stretch-full">
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between mb-4">
-                        <a href="/admin/orders/shipping">
+                        message          <a href="/admin/orders/shipping">
                             <div class="d-flex gap-4 align-items-center">
                                 <div class="avatar-text avatar-lg bg-gray-200">
                                     <i class="feather-briefcase"></i>

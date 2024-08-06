@@ -36,6 +36,7 @@ Route::resource('/admin/products', AdminProductController::class);
 Route::resource('/admin/categories', AdminCategoryController::class);
 
 Route::get('/admin/orders', [AdminOrderController::class, 'index']);
-Route::get('/admin/orders/{order}/show', [AdminOrderController::class, 'show']);
+Route::get('/admin/orders/{order}', [AdminOrderController::class, 'show']);
+Route::patch('/admin/orders/{order}', [AdminOrderController::class, 'update']);
 Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'approve']);
 Route::post('/admin/orders/{order}/cancel', [AdminOrderController::class, 'cancel']);
