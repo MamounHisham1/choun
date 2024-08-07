@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/choun/assets/css/main.css">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/choun/assets/imgs/.template/favicon.svg">
     <link href="/assets/choun/assets/css/style.css?v=1.0.0" rel="stylesheet">
+    @stack('css')
     <title>Home 16 - Electronic - Multipurpose Startup SaaS HTML Template</title>
 </head>
 
@@ -60,6 +61,7 @@
     <script src="/assets/choun/assets/js/vendors/jquery.timepicker.min.js"></script>
     <script src="/assets/choun/assets/js/vendors/glightbox.min.js"></script>
     <script src="/assets/choun/assets/js/main.js?v=1.0.0"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireScripts
 
 
