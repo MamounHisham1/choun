@@ -17,24 +17,21 @@
                 <div class="col-lg-6">
                     <div class="detail-gallery detail-gallery-2">
                         <div class="box-main-gallery">
-                            <a class="zoom-image glightbox" href="{{ $product->image_url }}"></a>
+                            <a class="zoom-image glightbox" href=""></a>
                             <div class="product-image-slider product-image-slider-5">
-                                @foreach ($product->images as $image)
                                     <figure class="border-radius-10">
-                                        <a class="glightbox" href="{{ asset($image->name) }}"><img
-                                                src="{{ asset($image->name) }}" alt="kidify" /></a>
+                                        <a class="glightbox" href=""><img
+                                                src="" alt="kidify" /></a>
                                     </figure>
                                 @endforeach
                             </div>
                         </div>
                         <div class="slider-nav-thumbnails slider-nav-thumbnails-5">
-                            @foreach ($product->images as $image)
                                 <div>
                                     <div class="item-thumb">
-                                        <img src="{{ asset($image->name) }}" alt="kidify" />
+                                        <img src="" alt="kidify" />
                                     </div>
                                 </div>
-                            @endforeach
                         </div>
                     </div>
                 </div>

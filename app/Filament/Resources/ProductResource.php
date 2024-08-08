@@ -42,6 +42,12 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('quantity')
                     ->required()
                     ->numeric(),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('images')
+                    ->collection('product-images')
+                    ->columnSpan(2)
+                    ->multiple()
+                    ->image()
+                    ->imageEditor(),
                 Forms\Components\Toggle::make('is_featured')
                     ->required(),
                 // Forms\Components\FileUpload::make('images')
@@ -53,7 +59,7 @@ class ProductResource extends Resource
                     Forms\Components\Actions\Action::make('random_fill')
                         ->label('Random Fill')
                         ->icon('heroicon-o-clipboard-document-list')
-                        ->visible(fn (string $operation) => app()->environment('local') && $operation == 'create')
+                        ->visible(fn(string $operation) => app()->environment('local') && $operation == 'create')
                         ->action(function ($livewire) {
                             $data = Product::factory()->make()->toArray();
                             $livewire->form->fill($data);

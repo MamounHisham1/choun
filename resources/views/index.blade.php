@@ -138,7 +138,7 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img
+                                                    src="" alt="guza"><img
                                                     class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
                                                     alt="guza"></a>
                                             <div class="button-select"><a href="#">Select Options</a></div>
@@ -211,7 +211,7 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img
+                                                    src="" alt="guza"><img
                                                     class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
                                                     alt="guza"></a>
                                             <div class="button-select"><a href="#">Select Options</a></div>
@@ -282,9 +282,9 @@
                         <x-tab-card>
                             <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                 <div class="cardImage">
-                                    <a href="#"><img class="imageMain" src="{{ asset($product->image_url) }}"
+                                    <a href="#"><img class="imageMain" src=""
                                             alt="guza"><img class="imageHover"
-                                            src="{{ asset($product->image_url) }}" alt="guza"></a>
+                                            src="" alt="guza"></a>
                                     <div class="button-select"><a href="#">Select Options</a></div>
                                     <div class="box-quick-button"><a class="btn" href="#">
                                             <svg class="d-inline-flex align-items-center justify-content-center"

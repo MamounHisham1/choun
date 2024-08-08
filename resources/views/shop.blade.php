@@ -201,9 +201,9 @@
                             <div class="product-item">
                                 <div class="cardProduct wow fadeInUp">
                                     <div class="cardImage">
-                                        <a href="#"><img class="imageMain" src="{{ $product->image_url }}"
+                                        <a href="#"><img class="imageMain" src=""
                                                 alt="guza" /><img class="imageHover"
-                                                src="{{ $product->image_url }}" alt="guza" /></a>
+                                                src="" alt="guza" /></a>
                                         <div class="button-select">
                                             <a href="/shop/{{ $product->id }}/show">More Details</a>
                                         </div>

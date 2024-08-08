@@ -31,22 +31,9 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $request->validate([
-            'images' => ['required'],
-            'images.*' => [File::types(['png', 'jpg', 'jpeg', 'webp'])]
-        ]);
+        Product::create($request->except('tags'));
 
-        $product = Product::create($request->except('images', 'tags'));
-
-        $images = $request->file('images');
-
-        foreach ($images as $image) {
-            $path = $image->store('images', 'public');
-            Image::create([
-                'product_id' => $product->id,
-                'name' => $path,
-            ]);
-        }
+        
         session()->flash('message', 'Product created successfully');
 
         return redirect('/admin/products');
@@ -67,7 +54,6 @@ class ProductController extends Controller
     {
         return view('admin.products.edit', [
             'product' => $product,
-            'images' => $product->images,
         ]);
     }
 
@@ -76,20 +62,7 @@ class ProductController extends Controller
      */
     public function update(StoreProductRequest $request, Product $product)
     {
-        $product->update($request->except('images', 'tags'));
-
-        if ($request->file('images')) {
-            $images = $request->file('images');
-            $product->images()->delete();
-
-            foreach ($images as $image) {
-                $path = $image->store('images', 'public');
-                Image::create([
-                    'product_id' => $product->id,
-                    'name' => $path,
-                ]);
-            }
-        }
+        $product->update($request->except('tags'));
 
         return redirect('/admin/products');
     }

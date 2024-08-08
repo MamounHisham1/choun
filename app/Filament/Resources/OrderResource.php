@@ -42,13 +42,21 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn($state) => $state->color())
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('user.first_name')
+                    ->label('Name')
+                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('shipping_address_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.email')
+                    ->label('Email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('shippingAddress.city')
+                    ->label('City'),
+                Tables\Columns\TextColumn::make('shippingAddress.phone')
+                    ->label('Phone')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -59,7 +67,7 @@ class OrderResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

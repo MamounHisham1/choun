@@ -40,7 +40,7 @@
                                         <td class="project-name-td">
                                             <div class="hstack gap-4">
                                                 <div class="avatar-image border-0">
-                                                    <img src="{{ $product->image_url }}" alt=""
+                                                    <img src="" alt=""
                                                         class="img-fluid">
                                                 </div>
                                                 <div>

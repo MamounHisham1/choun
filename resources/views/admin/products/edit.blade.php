@@ -20,12 +20,10 @@
                 <x-admin.forms.option value="electorincs">Fun</x-admin.forms.option>
             </x-forms.select>
             <div class="row">
-                @foreach ($images as $image)
                     <div class="image border-0 col-4 mb-4">
-                        <img src="{{ asset($image->name) }}" alt="" class="img-fluid"
+                        <img src="" alt="" class="img-fluid"
                             style="height: 150px; object-fit: cover;">
                     </div>
-                @endforeach
             </div>
             <x-admin.forms.input type="file" label="Product Images" name="images[]" id="images" class="form-file"
                 multiple />
