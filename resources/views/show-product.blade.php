@@ -19,19 +19,17 @@
                         <div class="box-main-gallery">
                             <a class="zoom-image glightbox" href=""></a>
                             <div class="product-image-slider product-image-slider-5">
-                                    <figure class="border-radius-10">
-                                        <a class="glightbox" href=""><img
-                                                src="" alt="kidify" /></a>
-                                    </figure>
-                                @endforeach
+                                <figure class="border-radius-10">
+                                    <a class="glightbox" href=""><img src="" alt="kidify" /></a>
+                                </figure>
                             </div>
                         </div>
                         <div class="slider-nav-thumbnails slider-nav-thumbnails-5">
-                                <div>
-                                    <div class="item-thumb">
-                                        <img src="" alt="kidify" />
-                                    </div>
+                            <div>
+                                <div class="item-thumb">
+                                    <img src="" alt="kidify" />
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>

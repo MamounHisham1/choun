@@ -23,6 +23,7 @@ class OrderFactory extends Factory
             'status' => OrderStatus::getStatuses()->keys()->random(),
             'user_id' => User::inRandomOrder()->first()->id,
             'shipping_address_id' => ShippingAddress::inRandomOrder()->first()->id,
+            'created_at' => fake()->dateTimeBetween('-10 months', 'now')
         ];
     }
 }

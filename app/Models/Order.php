@@ -30,4 +30,18 @@ class Order extends Model
     {
         return $this->belongsTo(ShippingAddress::class);
     }
+
+    public function approve()
+    {
+        $this->status = OrderStatus::Approved;
+
+        $this->save();
+    }
+
+    public function cancel()
+    {
+        $this->status = OrderStatus::Canceled;
+
+        $this->save();
+    }
 }

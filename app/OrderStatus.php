@@ -25,10 +25,10 @@ enum OrderStatus: string
     {
         return match($this) {
             self::Pending => 'warning',
-            self::Approved => 'primary',
+            self::Approved => 'success',
             self::Canceled => 'danger',
-            self::Shipped => 'gray',
-            self::Arrived => 'success',
+            self::Shipped => 'primary',
+            self::Arrived => 'gray',
         };
     }
 

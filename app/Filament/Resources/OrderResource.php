@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\OrderStatus;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -45,13 +46,10 @@ class OrderResource extends Resource
                     ->badge()
                     ->color(fn($state) => $state->color())
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user.first_name')
+                Tables\Columns\TextColumn::make('shippingAddress.first_name')
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user.email')
-                    ->label('Email')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('shippingAddress.city')
                     ->label('City'),
                 Tables\Columns\TextColumn::make('shippingAddress.phone')
@@ -67,11 +65,40 @@ class OrderResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('status')
+                Tables\Filters\SelectFilter::make('city')
+                    ->relationship('shippingAddress', 'city')
+                    ->searchable()
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->slideOver(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\Action::make('approve')
+                        ->visible(fn($record) => $record->status !== OrderStatus::Approved)
+                        ->icon('heroicon-o-check-circle')
+                        ->color('success')
+                        ->action(function (Order $record) {
+                            $record->approve();
+                        })
+                        ->after(function () {
+                            Notification::make()->success()->title('Order Approved')
+                                ->duration(1500)
+                                ->send();
+                        }),
+                    Tables\Actions\Action::make('cancel')
+                        ->visible(fn($record) => $record->status !== OrderStatus::Canceled)
+                        ->icon('heroicon-o-no-symbol')
+                        ->color('danger')
+                        ->requiresConfirmation()
+                        ->action(function (Order $record) {
+                            $record->cancel();
+                        })
+                        ->after(function () {
+                            Notification::make()->danger()->title('Order Canceled')
+                                ->duration(1500)
+                                ->send();
+                        }),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -93,7 +120,7 @@ class OrderResource extends Resource
             'index' => Pages\ListOrders::route('/'),
             'create' => Pages\CreateOrder::route('/create'),
             'view' => Pages\ViewOrder::route('/{record}'),
-            'edit' => Pages\EditOrder::route('/{record}/edit'),
+            // 'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
     }
 }
