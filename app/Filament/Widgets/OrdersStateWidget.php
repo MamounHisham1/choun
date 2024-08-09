@@ -13,11 +13,16 @@ class OrdersStateWidget extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Orders Count', Order::count())
-            ->description('Total of all orders')
+            Stat::make('Total Orders', Order::count())
+            ->description('Total orders of all orders')
             ->descriptionIcon('heroicon-o-star'),
-            Stat::make('Total Paid', Number::currency(OrderLine::sum('subtotal')), 'USD')
-            ->description('Total of all paid orders')
+            Stat::make('Total Sales', Number::currency(OrderLine::sum('subtotal')), 'USD')
+            ->description('Total of sales')
         ];
+    }
+
+    protected function getColumns(): int
+    {
+        return 2;
     }
 }
