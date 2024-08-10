@@ -30,8 +30,7 @@ class OrderResource extends Resource
                     ->searchable()
                     ->native(false)
                     ->required(),
-                Forms\Components\TextInput::make('user_id')
-                    ->numeric(),
+                Forms\Components\TextInput::make('user.email'),
                 Forms\Components\TextInput::make('shipping_address_id')
                     ->required()
                     ->numeric(),
@@ -118,7 +117,7 @@ class OrderResource extends Resource
     {
         return [
             'index' => Pages\ListOrders::route('/'),
-            'create' => Pages\CreateOrder::route('/create'),
+            // 'create' => Pages\CreateOrder::route('/create'),
             'view' => Pages\ViewOrder::route('/{record}'),
             // 'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
