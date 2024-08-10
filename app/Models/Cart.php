@@ -42,6 +42,16 @@ class Cart extends Model
         }
         return collect($cartProducts);
     }
+
+    public static function getSubtotal()
+    {
+        $cartSubtotal = 0;
+        foreach(session()->get('cart', []) as $item) {
+            $product = Product::find($item['product_id']);
+            $cartSubtotal += $product->price * $item['quantity'];
+        }
+        return $cartSubtotal;
+    }
     
     public static function clearCart()
     {
