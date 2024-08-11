@@ -27,6 +27,7 @@ Route::post('/register', [RegisteredUserController::class, 'store'])->middleware
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::view('/account', 'account');
+Route::get('/account/wishlist');
 
 Route::get('/admin', function () {
     return view('admin.index');

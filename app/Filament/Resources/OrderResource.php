@@ -7,6 +7,9 @@ use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
 use App\OrderStatus;
 use Filament\Forms;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
@@ -29,11 +32,27 @@ class OrderResource extends Resource
                     ->options(OrderStatus::getStatuses())
                     ->searchable()
                     ->native(false)
+                    ->columns('full')
                     ->required(),
-                Forms\Components\TextInput::make('user.email'),
-                Forms\Components\TextInput::make('shipping_address_id')
-                    ->required()
-                    ->numeric(),
+                Section::make('Shipping Address')
+                    ->relationship('shippingAddress')
+                    ->schema([
+                        TextInput::make('first_name')
+                            ->required(),
+                        TextInput::make('last_name')
+                            ->required(),
+                        TextInput::make('city')
+                            ->required(),
+                        TextInput::make('street')
+                            ->required(),
+                        TextInput::make('apartment')
+                            ->required(),
+                        TextInput::make('phone')
+                            ->required(),
+                        MarkdownEditor::make('note')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])->columns(2)
             ]);
     }
 
@@ -69,16 +88,13 @@ class OrderResource extends Resource
                     ->searchable()
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                    ->slideOver(),
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\Action::make('approve')
                         ->visible(fn($record) => $record->status !== OrderStatus::Approved)
                         ->icon('heroicon-o-check-circle')
                         ->color('success')
-                        ->action(function (Order $record) {
-                            $record->approve();
-                        })
+                        ->action(fn(Order $record) => $record->approve())
                         ->after(function () {
                             Notification::make()->success()->title('Order Approved')
                                 ->duration(1500)
