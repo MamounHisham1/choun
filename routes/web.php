@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryProductsController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
@@ -20,6 +21,8 @@ Route::get('/shop/{product}/show', [ShopController::class, 'show']);
 Route::get('/shop/categories/{category}', CategoryProductsController::class);
 Route::post('/add-to-cart/{product}', [CartController::class, 'store']);
 
+Route::post('/add-to-wishlist/{product}', WishlistController::class);
+
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::post('/checkout', [CheckoutController::class, 'store']);
 
@@ -27,7 +30,6 @@ Route::post('/register', [RegisteredUserController::class, 'store'])->middleware
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::view('/account', 'account');
-Route::get('/account/wishlist');
 
 Route::get('/admin', function () {
     return view('admin.index');

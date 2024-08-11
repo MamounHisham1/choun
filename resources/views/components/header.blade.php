@@ -70,7 +70,12 @@
                         </svg>
                     </a>
                 @endauth
-                <a class="account-icon wishlist" href="#"><span class="number-tag">3</span>
+                <a class="account-icon wishlist" href="#">
+                    @if (count($wishlistItems) > 0)
+                        <span id="wishlist-tag" class="number-tag">{{ count($wishlistItems) }}</span>
+                    @else
+                        <span id="wishlist-tag"></span>
+                    @endif
                     <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"
                         viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_116_452)">
@@ -84,7 +89,8 @@
                                 </rect>
                             </clippath>
                         </defs>
-                    </svg></a><a class="account-icon cart" href="#">
+                    </svg>
+                </a><a class="account-icon cart" href="#">
                     @if (count($cartItems) > 0)
                         <span id="cart-tag" class="number-tag">{{ count($cartItems) }}</span>
                     @else

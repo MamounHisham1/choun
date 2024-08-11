@@ -93,7 +93,7 @@
 
                                 </div>
 
-                                <button id="addToCart" class="btn btn-black" data-product="{{ $product->id }}">Add to
+                                <button class="btn btn-black add-to-cart" data-product="{{ $product->id }}">Add to
                                     Cart</button>
                                 <a class="btn btn-navy" href="#">Buy Now</a><a class="btn btn-wishlist"
                                     href="#">

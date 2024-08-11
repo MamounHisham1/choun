@@ -66,7 +66,7 @@
 
 
     <script>
-        $("#addToCart").click(function(e) {
+        $(".add-to-cart").click(function(e) {
             $(this).attr('disabled', true);
             $(this).addClass('disabled');
             const that = this;
@@ -92,8 +92,6 @@
                     updateCartPopup(data.cartItems, data.subtotal);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error("Error:", textStatus, errorThrown);
-                    console.log("Response:", jqXHR.responseText);
                     $("#error-alert").html("Product not found");
                     $("#error-alert").toggleClass("d-none");
                     setTimeout(() => {
@@ -155,6 +153,40 @@
 
             $('.list-items-cart').html(cartHtml);
         }
+
+        // Add to wishlist
+        $(".add-to-wishlist").click(function(e) {
+            $(this).attr('disabled', true);
+            $(this).addClass('disabled');
+            const that = this;
+
+            $.ajax({
+                type: "POST",
+                url: "/add-to-wishlist/" + $(this).data('product'),
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                },
+                success: function(data) {
+                    console.log("hello");
+                    const wishlist = parseInt($("#wishlist-tag").html()) || 0;
+                    $("#wishlist-tag").html(wishlist + 1);
+                    $('#wishlist-tag').addClass("number-tag");
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("Error:", textStatus, errorThrown);
+                    console.log("Response:", jqXHR.responseText);
+                    $("#error-alert").html("Product not found");
+                    $("#error-alert").toggleClass("d-none");
+                    setTimeout(() => {
+                        $("#error-alert").toggleClass("d-none");
+                    }, 2000);
+                },
+                complete: () => {
+                    $(that).removeAttr("disabled");
+                    $(that).removeClass('disabled');
+                },
+            });
+        });
     </script>
 </body>
 

@@ -1,111 +1,57 @@
-
 <div class="box-popup-wishlist">
     <div class="box-wishlist-overlay"></div>
     <div class="box-wishlist-wrapper"><a class="btn-close-popup" href="#">
-            <svg class="icon-16 d-inline-flex align-items-center justify-content-center" fill="#111111"
-                stroke="#111111" width="24" height="24" viewbox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"></path>
+            <svg class="icon-16 d-inline-flex align-items-center justify-content-center" fill="#111111" stroke="#111111"
+                width="24" height="24" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg></a>
         <h5 class="mb-15">Your Wishlist</h5>
         <div class="box-products-cart">
             <div class="box-empty-cart d-none">
-                <div class="icon-empty-cart"><img src="assets/imgs/template/icons/empty-cart.svg"
-                        alt="Guza"></div>
+                <div class="icon-empty-cart"><img src="assets/imgs/template/icons/empty-cart.svg" alt="Guza"></div>
                 <div class="info-empty-cart">
                     <p class="text-17 neutral-medium-dark">Your cart is empty</p><a class="link-underline"
                         href="#">Add from Wishlist</a>
                 </div>
             </div>
             <div class="list-items-cart">
-                <div class="item-cart">
-                    <div class="item-cart-image"><img src="assets/imgs/page/cart/sp.png" alt="Guza"></div>
-                    <div class="item-cart-info">
-                        <div class="item-cart-info-1"><a class="text-16-medium" href="#">Ball Crew
-                                Shirt</a>
-                            <div class="box-info-size-color-product">
-                                <p class="box-color"><span
-                                        class="body-p2 neutral-medium-dark">Color:</span><span
-                                        class="body-p2 neutral-dark">Navy</span></p>
-                                <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
-                                        class="body-p2 neutral-dark">S</span></p>
+                @foreach ($wishlistItems as $product)
+                    <div class="item-cart">
+                        <div class="item-cart-image"><img src="assets/imgs/page/cart/sp.png" alt="Guza"></div>
+                        <div class="item-cart-info">
+                            <div class="item-cart-info-1"><a class="text-16-medium" href="#">{{ $product->name }}</a>
+                                <div class="box-info-size-color-product">
+                                    <p class="box-color"><span class="body-p2 neutral-medium-dark">Color:</span><span
+                                            class="body-p2 neutral-dark">Navy</span></p>
+                                    <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
+                                            class="body-p2 neutral-dark">S</span></p>
+                                </div>
+                                <p class="body-p2 d-block d-sm-none mb-8">{{ $product->price }}</p>
+                                <div class="box-form-cart">
+                                    <div class="btn btn-black">Add to cart</div>
+                                </div>
                             </div>
-                            <p class="body-p2 d-block d-sm-none mb-8">$24.00</p>
-                            <div class="box-form-cart">
-                                <div class="btn btn-black">Add to cart</div>
+                            <div class="item-cart-info-2">
+                                <p class="body-p2 d-none d-sm-block">${{ $product->price }}</p><a class="btn-remove-cart"
+                                    href="#"></a>
                             </div>
-                        </div>
-                        <div class="item-cart-info-2">
-                            <p class="body-p2 d-none d-sm-block">$24.00</p><a class="btn-remove-cart"
-                                href="#"></a>
                         </div>
                     </div>
-                </div>
-                <div class="item-cart">
-                    <div class="item-cart-image"><img src="assets/imgs/page/cart/sp2.png" alt="Guza">
-                    </div>
-                    <div class="item-cart-info">
-                        <div class="item-cart-info-1"><a class="text-16-medium" href="#">Ball Crew
-                                Shirt</a>
-                            <div class="box-info-size-color-product">
-                                <p class="box-color"><span
-                                        class="body-p2 neutral-medium-dark">Color:</span><span
-                                        class="body-p2 neutral-dark">Navy</span></p>
-                                <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
-                                        class="body-p2 neutral-dark">S</span></p>
-                            </div>
-                            <p class="body-p2 d-block d-sm-none mb-8">$24.00</p>
-                            <div class="box-form-cart">
-                                <div class="btn btn-black">Add to cart</div>
-                            </div>
-                        </div>
-                        <div class="item-cart-info-2">
-                            <p class="body-p2 d-none d-sm-block">$24.00</p><a class="btn-remove-cart"
-                                href="#"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-cart">
-                    <div class="item-cart-image"><img src="assets/imgs/page/cart/sp3.png" alt="Guza">
-                    </div>
-                    <div class="item-cart-info">
-                        <div class="item-cart-info-1"><a class="text-16-medium" href="#">Ball Crew
-                                Shirt</a>
-                            <div class="box-info-size-color-product">
-                                <p class="box-color"><span
-                                        class="body-p2 neutral-medium-dark">Color:</span><span
-                                        class="body-p2 neutral-dark">Navy</span></p>
-                                <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
-                                        class="body-p2 neutral-dark">S</span></p>
-                            </div>
-                            <p class="body-p2 d-block d-sm-none mb-8">$24.00</p>
-                            <div class="box-form-cart">
-                                <div class="btn btn-black">Add to cart</div>
-                            </div>
-                        </div>
-                        <div class="item-cart-info-2">
-                            <p class="body-p2 d-none d-sm-block">$24.00</p><a class="btn-remove-cart"
-                                href="#"></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-        <div class="box-products-search">
+        {{-- <div class="box-products-search">
             <h6 class="text-18-medium mb-10">You May Also Like</h6>
             <div class="box-list-product-search">
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-1.png" alt="guza"><img
-                                    class="imageHover" src="assets/imgs/page/popup/product-5.png"
-                                    alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-1.png" alt="guza"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-5.png" alt="guza"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
-                                    <svg class="d-inline-flex align-items-center justify-content-center"
-                                        width="28" height="28" viewbox="0 0 28 28"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="d-inline-flex align-items-center justify-content-center" width="28"
+                                        height="28" viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_116_452)">
                                             <path
                                                 d="M14.001 6.52898C16.35 4.41998 19.98 4.48998 22.243 6.75698C24.505 9.02498 24.583 12.637 22.479 14.993L13.999 23.485L5.52101 14.993C3.41701 12.637 3.49601 9.01898 5.75701 6.75698C8.02201 4.49298 11.645 4.41698 14.001 6.52898ZM20.827 8.16998C19.327 6.66798 16.907 6.60698 15.337 8.01698L14.002 9.21498L12.666 8.01798C11.091 6.60598 8.67601 6.66798 7.17201 8.17198C5.68201 9.66198 5.60701 12.047 6.98001 13.623L14 20.654L21.02 13.624C22.394 12.047 22.319 9.66498 20.827 8.16998Z"
@@ -118,8 +64,8 @@
                                             </clippath>
                                         </defs>
                                     </svg></a><a class="btn" href="#">
-                                    <svg class="d-inline-flex align-items-center justify-content-center"
-                                        width="24" height="24" viewbox="0 0 24 24" fill="none"
+                                    <svg class="d-inline-flex align-items-center justify-content-center" width="24"
+                                        height="24" viewbox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_200_1102)">
                                             <path
@@ -133,8 +79,8 @@
                                             </clippath>
                                         </defs>
                                     </svg></a><a class="btn preview-product" href="#">
-                                    <svg class="d-inline-flex align-items-center justify-content-center"
-                                        width="28" height="28" viewbox="0 0 28 28" fill=""
+                                    <svg class="d-inline-flex align-items-center justify-content-center" width="28"
+                                        height="28" viewbox="0 0 28 28" fill=""
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_91_73)">
                                             <path
@@ -158,9 +104,8 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-2.png" alt="guza"><img
-                                    class="imageHover" src="assets/imgs/page/popup/product-6.png"
-                                    alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-2.png" alt="guza"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-6.png" alt="guza"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"
@@ -216,6 +161,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

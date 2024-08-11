@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Wishlist;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 
@@ -24,8 +25,12 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function (View $view) {
             $cartItems = Cart::getItems();
+            $wishlistItems = Wishlist::getItems(auth()->id()); 
 
-            $view->with('cartItems', $cartItems);
+            $view->with([
+                'cartItems' => $cartItems,
+                'wishlistItems' => $wishlistItems,
+            ]);
         });
     }
 }
