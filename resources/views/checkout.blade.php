@@ -15,9 +15,14 @@
                 @csrf
                 <div class="row mt-20">
                     <div class="col-lg-6">
-                        <div class="box-customer-login">
-                            Returning customer? <a href="#">Click here to login</a>
+                        @guest
+                            <div class="box-customer-login">
+                            Returning customer? 
+                            <a class="account-icon account" href="#">
+                                Click here to login
+                            </a>
                         </div>
+                        @endguest
                         <div class="box-gift-coupon">
                             Have a coupon? <a href="#">Click here to enter your code</a>
                         </div>

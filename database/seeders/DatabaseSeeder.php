@@ -18,11 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory()->create(['email' => 'admin@admin.com']);
         Category::factory(10)->create();
         Product::factory(200)->create();
-        User::factory(20)->create();
-        ShippingAddress::factory(20)->create();
-        Order::factory(20)->create();
-        OrderLine::factory(60)->create();
+        User::factory(50)->create();
+        ShippingAddress::factory(50)->create();
+        Order::factory(30)->create();
+        OrderLine::factory(300)->create();
     }
 }
