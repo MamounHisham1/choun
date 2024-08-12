@@ -24,8 +24,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('*', function (View $view) {
-            $cartItems = Cart::getItems();
-            $wishlistItems = Wishlist::getItems(auth()->id()); 
+            $cartItems = once(fn() => Cart::getItems());
+            $wishlistItems = once(fn() => Wishlist::getItems(auth()->id())); 
 
             $view->with([
                 'cartItems' => $cartItems,

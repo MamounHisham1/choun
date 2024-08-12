@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
- class Product extends Model implements HasMedia
- {
-     use HasFactory;
-     use InteractsWithMedia;
+class Product extends Model implements HasMedia
+{
+    use HasFactory;
+    use InteractsWithMedia;
 
     protected $guarded = [];
-    protected $with = ['category'];
+    // protected $with = ['category'];
 
     public function category()
     {

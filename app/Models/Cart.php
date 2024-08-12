@@ -36,8 +36,9 @@ class Cart extends Model
     {
         // TODO: Load session from database
         $cartProducts = [];
-        foreach(session()->get('cart', []) as $item) {
-            $product = Product::find($item['product_id']);
+        $products = Product::find(array_column(session()->get('cart', []), 'product_id'))->keyBy('id');
+        foreach (session()->get('cart', []) as $item) {
+            $product = $products[$item['product_id']];
             $cartProducts[] = [$product, $item['quantity']];
         }
         return collect($cartProducts);
@@ -46,13 +47,13 @@ class Cart extends Model
     public static function getSubtotal()
     {
         $cartSubtotal = 0;
-        foreach(session()->get('cart', []) as $item) {
+        foreach (session()->get('cart', []) as $item) {
             $product = Product::find($item['product_id']);
             $cartSubtotal += $product->price * $item['quantity'];
         }
         return $cartSubtotal;
     }
-    
+
     public static function clearCart()
     {
         session()->remove('cart');
