@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\OrderLine;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\ShippingAddress;
 use App\Models\User;
 use App\OrderStatus;
+use App\Rules\ValidCoupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,8 +21,8 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        if(empty(session()->get('cart'))) {
-            return back();
+        if (empty(session()->get('cart'))) {
+            return redirect('/shop');
         }
         $subtotal = 0;
         foreach (session()->get('cart') ?? [] as $item) {
@@ -86,8 +88,30 @@ class CheckoutController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function applyCoupon(Request $request)
     {
-        //
+        $request->validate([
+            'coupon' => ['required', new ValidCoupon]
+        ]);
+
+        $activeCoupon = Coupon::where('code', $request->coupon)->first();
+        $coupon = session()->get('coupon') ?? [];
+
+
+        if ($activeCoupon->type == 'money') {
+            $coupon[] = [
+                'money' => $activeCoupon->amount,
+            ];
+        }
+
+        if ($activeCoupon->type == 'percentage') {
+            $coupon[] = [
+                'percentage' => $activeCoupon->amount,
+            ];
+        }
+
+        session()->put('coupon', $coupon);
+
+        dump(Coupon::apply(1000));
     }
 }

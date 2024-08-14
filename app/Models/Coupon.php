@@ -18,4 +18,35 @@ class Coupon extends Model
         'end_date',
         'category_id',
     ];
+
+    public function casts()
+    {
+        return [
+            'start_date' => 'date',
+            'end_date' => 'date',
+        ];
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public static function apply($subtotal): int 
+    {
+        $coupon = session()->get('coupon');
+        $money = collect($coupon)->pluck('money')->last();
+        $percentage = collect($coupon)->pluck('percentage')->last();
+
+        if($money) {
+            if($subtotal - $money < 0) {
+                return 1;
+            }
+            return $subtotal - $money;
+        }
+
+        if($percentage) {
+            return ($subtotal) - ($percentage * $subtotal) / 100;
+        }
+    }
 }

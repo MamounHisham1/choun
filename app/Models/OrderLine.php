@@ -9,10 +9,15 @@ class OrderLine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'product_id', 'quantity', 'subtotal'];
+    protected $fillable = ['order_id', 'product_id', 'quantity', 'subtotal', 'coupon_id'];
 
-    public static function product()
+    public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
     }
 }

@@ -39,7 +39,7 @@ class Cart extends Model
         $products = Product::find(array_column(session()->get('cart', []), 'product_id'))->keyBy('id');
         foreach (session()->get('cart', []) as $item) {
             $product = $products[$item['product_id']];
-            $cartProducts[] = [$product, $item['quantity']];
+            $cartProducts[] = ['product' => $product, 'qty' => $item['quantity']];
         }
         return collect($cartProducts);
     }

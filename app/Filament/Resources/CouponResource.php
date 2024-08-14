@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CouponResource\Pages;
 use App\Filament\Resources\CouponResource\RelationManagers;
+use App\Models\Category;
 use App\Models\Coupon;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CouponResource extends Resource
 {
     protected static ?string $model = Coupon::class;
+
+    protected static ?int $navigationSort = 4;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -36,13 +39,14 @@ class CouponResource extends Resource
                 Forms\Components\TextInput::make('usage_limit')
                     ->numeric(),
                 Forms\Components\DatePicker::make('start_date')
-                    ->native(false)    
+                    ->native(false)
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
-                    ->native(false)    
+                    ->native(false)
                     ->required(),
-                Forms\Components\TextInput::make('category_id')
-                    ->numeric(),
+                Forms\Components\Select::make('category_id')
+                    ->options(Category::pluck('name', 'id'))
+                    ->searchable(),
             ]);
     }
 
@@ -66,8 +70,7 @@ class CouponResource extends Resource
                 Tables\Columns\TextColumn::make('end_date')
                     ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('category_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('category.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -103,9 +106,9 @@ class CouponResource extends Resource
     {
         return [
             'index' => Pages\ListCoupons::route('/'),
-            'create' => Pages\CreateCoupon::route('/create'),
+            // 'create' => Pages\CreateCoupon::route('/create'),
             'view' => Pages\ViewCoupon::route('/{record}'),
-            'edit' => Pages\EditCoupon::route('/{record}/edit'),
+            // 'edit' => Pages\EditCoupon::route('/{record}/edit'),
         ];
     }
 }

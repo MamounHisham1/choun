@@ -64,7 +64,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireScripts
 
-
     <script>
         $(".add-to-cart").click(function(e) {
             $(this).attr('disabled', true);
@@ -188,6 +187,7 @@
             });
         });
     </script>
+    @stack('scripts')
 </body>
 
 </html>

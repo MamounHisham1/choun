@@ -1,4 +1,69 @@
 <x-layout>
+    @push('css')
+        <style>
+            .cart-coupon {
+                overflow: hidden;
+            }
+
+            .cart-coupon h4 {
+                font-size: 18px;
+                line-height: 13px;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+
+            .cart-coupon p {
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            .cart-coupon .cuppon-form {
+                position: relative;
+                padding-right: 142px;
+                max-width: 300px;
+                width: 100%;
+                border: 1px solid #ddd;
+                float: left;
+                border-radius: 50px;
+            }
+
+            .cart-coupon .cuppon-form input[type=text] {
+                border: 1px solid transparent;
+                float: left;
+                font-size: 14px;
+                height: 40px;
+                max-width: 100%;
+                padding: 7px 15px;
+                width: 100%;
+                border-radius: 50px;
+            }
+
+            .cart-coupon .cuppon-form a {
+                /* background-color: #1a161e; */
+                /* border: medium none; */
+                /* color: #fff; */
+                display: block;
+                float: left;
+                font-size: 14px;
+                font-weight: 600;
+                height: 40px;
+                line-height: 24px;
+                padding: 8px 25px;
+                text-transform: uppercase;
+                border-radius: 50px;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            /* .cart-coupon .cuppon-form input[type=submit]:hover {
+                background-color: #fff;
+                border: medium none;
+                border-color: #000;
+                color: #000;
+            } */
+        </style>
+    @endpush
     <div class="section block-breadcrumb">
         <div class="container">
             <div class="breadcrumbs">
@@ -17,14 +82,22 @@
                     <div class="col-lg-6">
                         @guest
                             <div class="box-customer-login">
-                            Returning customer? 
-                            <a class="account-icon account" href="#">
-                                Click here to login
-                            </a>
-                        </div>
+                                Returning customer?
+                                <a class="account-icon account" href="#">
+                                    Click here to login
+                                </a>
+                            </div>
                         @endguest
-                        <div class="box-gift-coupon">
-                            Have a coupon? <a href="#">Click here to enter your code</a>
+                        <div class="cart-coupon" x-data="{ show: false }">
+                            <div class="cart-coupon">
+                            <div class="box-gift-coupon account">
+                                Have a coupon? <a href="javascript:void(0);"  @click="show = true" x-show="!show" >Click here to enter your code</a>
+                            </div> 
+                                <div class="cuppon-form" x-show="show" x-transition.duration.200ms>
+                                    <input type="text" name="coupon" id="couponInput"/>
+                                    <a id="applyCoupon" class="btn btn-outline-dark">Apply Coupon</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="box-title-checkout mt-30">
                             <h4 class="mb-25">Billing Details</h4>
@@ -107,7 +180,8 @@
                                     @guest
                                         <div class="form-group">
                                             <label>
-                                                <input class="cb-left" name="create-account" value="1" type="checkbox" />Create an
+                                                <input class="cb-left" name="create-account" value="1"
+                                                    type="checkbox" />Create an
                                                 account?
                                             </label>
                                         </div>
@@ -140,12 +214,12 @@
                                         @foreach ($cartItems->take(3) as $item)
                                             <div class="item-cart">
                                                 <div class="item-cart-image">
-                                                    <img src="{{ $item[0]->image_url }}" alt="Guza" />
+                                                    <img src="{{ $item['product']->image_url }}" alt="Guza" />
                                                 </div>
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
-                                                        <a class="text-17-medium" href="#">{{ $item[0]->name }}
-                                                            - x{{ $item[1] }}</a>
+                                                        <a class="text-17-medium" href="#">{{ $item['product']->name }}
+                                                            - x{{ $item['qty'] }}</a>
                                                         <p class="box-color">
                                                             <span class="body-p2 neutral-medium-dark">Color:
                                                             </span><span class="body-p2 neutral-dark">Navy </span>
@@ -156,7 +230,7 @@
                                                         </p>
                                                     </div>
                                                     <div class="item-cart-info-2">
-                                                        <p class="body-p2">{{ $item[0]->price * $item[1] }}</p>
+                                                        <p class="body-p2">{{ $item['product']->price * $item['qty'] }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -262,4 +336,23 @@
             </form>
         </div>
     </section>
+
+    @push('scripts')
+        <script>
+            $('#applyCoupon').click(function(e) {
+                const code = $('#couponInput').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/checkout/apply-coupon",
+                    data: {
+                        'coupon': code,
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function (response) {
+                        console.log();
+                    }
+                });
+            })
+        </script>
+    @endpush
 </x-layout>

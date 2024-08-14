@@ -25,6 +25,7 @@ Route::post('/add-to-wishlist/{product}', WishlistController::class);
 
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::post('/checkout', [CheckoutController::class, 'store']);
+Route::post('/checkout/apply-coupon', [CheckoutController::class, 'applyCoupon']);
 
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');

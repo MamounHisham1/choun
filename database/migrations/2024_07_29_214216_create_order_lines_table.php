@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id');
             $table->foreignId('product_id');
+            $table->foreignId('coupon_id')->nullable();
             $table->float('quantity');
             $table->float('subtotal');
             $table->timestamps();
