@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('product_id');
             $table->foreignId('coupon_id')->nullable();
             $table->float('quantity');
-            $table->float('subtotal');
+            $table->float('price');
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ class OrderLineFactory extends Factory
             'order_id' => Order::inRandomOrder()->first()->id,
             'product_id' => Product::inRandomOrder()->first()->id,
             'quantity' => fake()->numberBetween(1, 50),
-            'subtotal' => fake()->numberBetween(1000, 10000),
+            'price' => fake()->numberBetween(100, 1000),
         ];
     }
 }

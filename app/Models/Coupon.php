@@ -46,7 +46,7 @@ class Coupon extends Model
         }
 
         if($percentage) {
-            return ($subtotal) - ($percentage * $subtotal) / 100;
+            return $subtotal - ($percentage * $subtotal) / 100;
         }
     }
 }

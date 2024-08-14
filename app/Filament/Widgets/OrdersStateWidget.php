@@ -16,7 +16,7 @@ class OrdersStateWidget extends BaseWidget
             Stat::make('Total Orders', Order::count())
             ->description('Total orders of all orders')
             ->descriptionIcon('heroicon-o-star'),
-            Stat::make('Total Sales', Number::currency(OrderLine::sum('subtotal')), 'USD')
+            Stat::make('Total Sales', Number::currency(OrderLine::sum('price')), 'USD')
             ->description('Total of sales')
         ];
     }

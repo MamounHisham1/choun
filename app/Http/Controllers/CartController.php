@@ -17,7 +17,7 @@ class CartController extends Controller
             'status' => 200,
             'message' => 'Product added to cart',
             'cartItems' => Cart::getItems(),
-            'subtotal' => Cart::getSubtotal()
+            'price' => Cart::getPrice()
         ];
 
         return response()->json($data);

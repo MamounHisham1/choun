@@ -57,11 +57,11 @@
             }
 
             /* .cart-coupon .cuppon-form input[type=submit]:hover {
-                background-color: #fff;
-                border: medium none;
-                border-color: #000;
-                color: #000;
-            } */
+                    background-color: #fff;
+                    border: medium none;
+                    border-color: #000;
+                    color: #000;
+                } */
         </style>
     @endpush
     <div class="section block-breadcrumb">
@@ -90,11 +90,12 @@
                         @endguest
                         <div class="cart-coupon" x-data="{ show: false }">
                             <div class="cart-coupon">
-                            <div class="box-gift-coupon account">
-                                Have a coupon? <a href="javascript:void(0);"  @click="show = true" x-show="!show" >Click here to enter your code</a>
-                            </div> 
+                                <div class="box-gift-coupon account">
+                                    Have a coupon? <a href="javascript:void(0);" @click="show = true"
+                                        x-show="!show">Click here to enter your code</a>
+                                </div>
                                 <div class="cuppon-form" x-show="show" x-transition.duration.200ms>
-                                    <input type="text" name="coupon" id="couponInput"/>
+                                    <input type="text" name="coupon" id="couponInput" />
                                     <a id="applyCoupon" class="btn btn-outline-dark">Apply Coupon</a>
                                 </div>
                             </div>
@@ -218,7 +219,8 @@
                                                 </div>
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
-                                                        <a class="text-17-medium" href="#">{{ $item['product']->name }}
+                                                        <a class="text-17-medium"
+                                                            href="#">{{ $item['product']->name }}
                                                             - x{{ $item['qty'] }}</a>
                                                         <p class="box-color">
                                                             <span class="body-p2 neutral-medium-dark">Color:
@@ -230,7 +232,8 @@
                                                         </p>
                                                     </div>
                                                     <div class="item-cart-info-2">
-                                                        <p class="body-p2">{{ $item['product']->price * $item['qty'] }}</p>
+                                                        <p class="body-p2">
+                                                            {{ $item['product']->price * $item['qty'] }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,7 +242,10 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between box-border-bottom">
                                     <h5 class="neutral-medium-dark">Subtotal</h5>
-                                    <h5 class="neutral-dark">${{ $subtotal }}</h5>
+                                    <div class="d-flex gap-4">
+                                        <h5 id="subtotal" class="neutral-dark">${{ $subtotal }}</h5>
+                                        <h5 id="discounted" class="neutral-dark"></h5>
+                                    </div>
                                 </div>
                                 <div class="box-info-cart-inner">
                                     <p class="text-17-medium text-uppercase mb-15 neutral-medium-dark">
@@ -348,8 +354,13 @@
                         'coupon': code,
                         "_token": "{{ csrf_token() }}",
                     },
-                    success: function (response) {
-                        console.log();
+                    success: function(data) {
+                        $('#discounted').html(`$${data['price'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);
+                        $('#subtotal').css('text-decoration', 'line-through');
+                    },
+                    error: function() {
+                        $('#discounted').html('');
+                        $('#subtotal').css('text-decoration', 'none');
                     }
                 });
             })

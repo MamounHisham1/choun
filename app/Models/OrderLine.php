@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class OrderLine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'product_id', 'quantity', 'subtotal', 'coupon_id'];
+    protected $fillable = ['order_id', 'product_id', 'quantity', 'price', 'coupon_id'];
 
     public function product()
     {
@@ -19,5 +20,12 @@ class OrderLine extends Model
     public function coupon()
     {
         return $this->belongsTo(Coupon::class);
+    }
+
+    public function total(): Attribute
+    {
+        return new Attribute::make(
+            get: fn() => $this->price * $this->quantity
+        );
     }
 }

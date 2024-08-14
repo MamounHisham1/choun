@@ -63,8 +63,11 @@
     <script src="/assets/choun/assets/js/main.js?v=1.0.0"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireScripts
+    @stack('scripts')
 
     <script>
+
+        // Add to cart
         $(".add-to-cart").click(function(e) {
             $(this).attr('disabled', true);
             $(this).addClass('disabled');
@@ -104,6 +107,7 @@
             });
         });
 
+        // Render cart items
         function updateCartPopup(cartItems, subtotal) {
             let cartHtml = '';
             cartItems.forEach(item => {
@@ -180,14 +184,9 @@
                         $("#error-alert").toggleClass("d-none");
                     }, 2000);
                 },
-                complete: () => {
-                    $(that).removeAttr("disabled");
-                    $(that).removeClass('disabled');
-                },
             });
         });
     </script>
-    @stack('scripts')
 </body>
 
 </html>

@@ -75,7 +75,7 @@ class CheckoutController extends Controller
             $order->orderLines()->create([
                 'product_id' => $product->id,
                 'quantity' => $item['quantity'],
-                'subtotal' => $product->price * $item['quantity'],
+                'price' => $product->price,
             ]);
         }
 
@@ -112,6 +112,12 @@ class CheckoutController extends Controller
 
         session()->put('coupon', $coupon);
 
-        dump(Coupon::apply(1000));
+        $price = Coupon::apply(Cart::getSubtotal());
+        
+        $data = [
+            'price' => $price,
+        ];
+    
+        return response()->json($data);
     }
 }
