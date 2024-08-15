@@ -21,17 +21,17 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        if (empty(session()->get('cart'))) {
+        if (empty(Cart::getItems())) {
             return redirect('/shop');
         }
-        $subtotal = 0;
-        foreach (session()->get('cart') ?? [] as $item) {
-            $product = Product::find($item['product_id']);
 
-            $subtotal += $product->price * $item['quantity'];
+        if(collect(session()->get('coupon'))->last()) {
+            $price = Coupon::apply(Cart::getSubtotal());
         }
+
         return view('checkout', [
-            'subtotal' => $subtotal,
+            'subtotal' => Cart::getSubtotal(),
+            'disSubtotal' => $price??0,
         ]);
     }
 
@@ -69,13 +69,11 @@ class CheckoutController extends Controller
             'shipping_address_id' => $address->id,
         ]);
 
-        foreach (session()->get('cart') ?? [] as $item) {
-            $product = Product::find($item['product_id']);
-
+        foreach (Cart::getItems() as $item) {
             $order->orderLines()->create([
-                'product_id' => $product->id,
-                'quantity' => $item['quantity'],
-                'price' => $product->price,
+                'product_id' => $item->product->id,
+                'quantity' => $item->quantity,
+                'price' => $item->product->price,
             ]);
         }
 
@@ -95,29 +93,16 @@ class CheckoutController extends Controller
         ]);
 
         $activeCoupon = Coupon::where('code', $request->coupon)->first();
-        $coupon = session()->get('coupon') ?? [];
-
-
-        if ($activeCoupon->type == 'money') {
-            $coupon[] = [
-                'money' => $activeCoupon->amount,
-            ];
-        }
-
-        if ($activeCoupon->type == 'percentage') {
-            $coupon[] = [
-                'percentage' => $activeCoupon->amount,
-            ];
-        }
-
-        session()->put('coupon', $coupon);
+        
+        Coupon::calc($activeCoupon);
 
         $price = Coupon::apply(Cart::getSubtotal());
         
         $data = [
             'price' => $price,
+            'total' => $price + 50,
         ];
-    
+
         return response()->json($data);
     }
 }

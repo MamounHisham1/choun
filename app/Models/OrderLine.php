@@ -22,10 +22,10 @@ class OrderLine extends Model
         return $this->belongsTo(Coupon::class);
     }
 
-    public function total(): Attribute
-    {
-        return new Attribute::make(
-            get: fn() => $this->price * $this->quantity
-        );
-    }
+    // public function total(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn() => $this->price * $this->quantity
+    //     );
+    // }
 }

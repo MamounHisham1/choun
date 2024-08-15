@@ -11,13 +11,13 @@ class CartController extends Controller
 {
     public function store(Request $request, Product $product)
     {
-        Cart::addToCart($product->id, $request->quantity);
+        Cart::addToCart($product, $request->quantity);
 
         $data = [
             'status' => 200,
             'message' => 'Product added to cart',
             'cartItems' => Cart::getItems(),
-            'price' => Cart::getPrice()
+            'price' => Cart::getSubtotal(),
         ];
 
         return response()->json($data);

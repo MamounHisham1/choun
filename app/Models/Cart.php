@@ -2,60 +2,38 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
-class Cart extends Model
+class Cart
 {
-    use HasFactory;
-
-    public function user()
+    public static function addToCart(Product $product, $quantity)
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
-    public static function addToCart($productId, $quantity)
-    {
-        $cart = session()->get('cart') ?? [];
-        $cart[] = [
-            'product_id' => $productId,
-            'quantity' => $quantity,
-        ];
-
-        session()->put('cart', $cart);
-
-        // TODO: Add to database
-    }
-
-    public static function getItems()
-    {
-        // TODO: Load session from database
-        $cartProducts = [];
-        $products = Product::find(array_column(session()->get('cart', []), 'product_id'))->keyBy('id');
-        foreach (session()->get('cart', []) as $item) {
-            $product = $products[$item['product_id']];
-            $cartProducts[] = ['product' => $product, 'qty' => $item['quantity']];
+        if (!session()->has('cart')) {
+            session()->put('cart', (string) Str::uuid());
         }
-        return collect($cartProducts);
+        CartItem::create([
+            'uuid' => session()->get('cart'),
+            'product_id' => $product->id,
+            'price' => $product->price,
+            'quantity' => $quantity,
+        ]);
+    }
+
+    public static function getItems(): Collection
+    {
+        return once(fn() => CartItem::where('uuid', session('cart'))->get());
     }
 
     public static function getSubtotal()
     {
-        $cartSubtotal = 0;
-        foreach (session()->get('cart', []) as $item) {
-            $product = Product::find($item['product_id']);
-            $cartSubtotal += $product->price * $item['quantity'];
-        }
-        return $cartSubtotal;
+        $subtotal = Static::getItems()->sum('total');
+
+        return $subtotal;
     }
 
     public static function clearCart()
     {
-        session()->remove('cart');
+        CartItem::where('uuid', session('cart'))->delete();
     }
 }

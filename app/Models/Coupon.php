@@ -49,4 +49,24 @@ class Coupon extends Model
             return $subtotal - ($percentage * $subtotal) / 100;
         }
     }
+
+    public static function calc($activeCoupon) 
+    {
+        $coupon = session()->get('coupon') ?? [];
+
+
+        if ($activeCoupon->type == 'money') {
+            $coupon[] = [
+                'money' => $activeCoupon->amount,
+            ];
+        }
+
+        if ($activeCoupon->type == 'percentage') {
+            $coupon[] = [
+                'percentage' => $activeCoupon->amount,
+            ];
+        }
+
+        session()->put('coupon', $coupon);
+    }
 }

@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\Cart;
-use App\Models\Product;
 use App\Models\Wishlist;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -24,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('*', function (View $view) {
-            $cartItems = once(fn() => Cart::getItems());
-            $wishlistItems = once(fn() => Wishlist::getItems(auth()->id())); 
+            $cartItems = Cart::getItems();
+            $wishlistItems = once(fn() => Wishlist::getItems(auth()->id()));
 
             $view->with([
                 'cartItems' => $cartItems,
