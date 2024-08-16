@@ -25,13 +25,8 @@ class CheckoutController extends Controller
             return redirect('/shop');
         }
 
-        if(collect(session()->get('coupon'))->last()) {
-            $price = Coupon::apply(Cart::getSubtotal());
-        }
-
         return view('checkout', [
             'subtotal' => Cart::getSubtotal(),
-            'disSubtotal' => $price??0,
         ]);
     }
 
@@ -67,7 +62,12 @@ class CheckoutController extends Controller
             'status' => OrderStatus::Pending,
             'user_id' => $user?->id,
             'shipping_address_id' => $address->id,
+            'total' => Cart::getSubtotal(),
         ]);
+        
+        if (session()->has('coupon')) {
+            $order->update(['total' => Coupon::apply(Cart::getSubtotal())]);
+        }
 
         foreach (Cart::getItems() as $item) {
             $order->orderLines()->create([
@@ -93,11 +93,11 @@ class CheckoutController extends Controller
         ]);
 
         $activeCoupon = Coupon::where('code', $request->coupon)->first();
-        
+
         Coupon::calc($activeCoupon);
 
         $price = Coupon::apply(Cart::getSubtotal());
-        
+
         $data = [
             'price' => $price,
             'total' => $price + 50,

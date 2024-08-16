@@ -61,11 +61,11 @@
             }
 
             /* .cart-coupon .cuppon-form input[type=submit]:hover {
-                        background-color: #fff;
-                        border: medium none;
-                        border-color: #000;
-                        color: #000;
-                    } */
+                                    background-color: #fff;
+                                    border: medium none;
+                                    border-color: #000;
+                                    color: #000;
+                                } */
         </style>
     @endpush
     <div class="section block-breadcrumb">
@@ -225,7 +225,7 @@
                                         @foreach ($cartItems->take(3) as $item)
                                             <div class="item-cart">
                                                 <div class="item-cart-image">
-                                                    <img src="{{ '' }}" alt="Guza" />
+                                                    <img src="{{ $item->product->image_url }}" alt="Guza" />
                                                 </div>
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
@@ -243,7 +243,8 @@
                                                     </div>
                                                     <div class="item-cart-info-2">
                                                         <p class="body-p2">
-                                                            {{ $item->product->price * $item->quantity }}</p>
+                                                            {{ Number::currency($item->product->price * $item->quantity, 'USD') }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -253,16 +254,10 @@
                                 <div class="d-flex align-items-center justify-content-between box-border-bottom">
                                     <h5 class="neutral-medium-dark">Subtotal</h5>
                                     <div class="d-flex gap-4">
-                                        @if ($disSubtotal !== 0)
-                                            <h5 id="subtotal" class="neutral-dark"
-                                                style="text-decoration: line-through">{{ Number::currency($subtotal, 'USD') }}</h5>
-                                            <h5 id="discounted" class="neutral-dark">{{ Number::currency($disSubtotal, 'USD') }}</h5>
-                                        @else
-                                            <h5 id="subtotal" class="neutral-dark">
-                                                ${{ $disSubtotal !== 0 ? $disSubtotal : Number::currency($subtotal, 'USD') }}</h5>
-                                            <h5 id="discounted" class="neutral-dark"></h5>
-                                        @endif
-
+                                        <h5 id="subtotal" class="neutral-dark">
+                                            {{ Number::currency($subtotal, 'USD') }}
+                                        </h5>
+                                        <h5 id="discounted" class="neutral-dark"></h5>
                                     </div>
                                 </div>
                                 <div class="box-info-cart-inner">
@@ -286,7 +281,8 @@
                                 <div class="d-flex align-items-center justify-content-between box-border-bottom">
                                     <h5 class="neutral-medium-dark">Total</h5>
                                     <h5 id="total" class="color-9">
-                                        {{ $disSubtotal !== 0 ? Number::currency($disSubtotal + 50, 'USD') : Number::currency($subtotal, 'USD') }}</h5>
+                                        {{ Number::currency($subtotal + 50, 'USD') }}
+                                    </h5>
                                 </div>
                                 <div class="box-other-link text-start box-border-bottom">
                                     <span class="text-17 link-green">Free shipping on orders over $200.00</span><a
@@ -377,7 +373,7 @@
                         $('#discounted').html(
                             `$${data['price'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);
                         $('#subtotal').css('text-decoration', 'line-through');
-                        $('#total').html(`$${data['total']}`);
+                        $('#total').html(`$${data['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);
                     },
                     error: function() {
                         $('#discounted').html('');

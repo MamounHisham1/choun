@@ -21,6 +21,7 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
+        
         return view('show-product', [
             'product' => $product,
         ]);

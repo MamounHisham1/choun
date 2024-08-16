@@ -62,10 +62,6 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('status')
-                    ->badge()
-                    ->color(fn($state) => $state->color())
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('shippingAddress.first_name')
                     ->label('Name')
                     ->searchable()
@@ -74,6 +70,12 @@ class OrderResource extends Resource
                     ->label('City'),
                 Tables\Columns\TextColumn::make('shippingAddress.phone')
                     ->label('Phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('total')
+                    ->money(),
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn($state) => $state->color())
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

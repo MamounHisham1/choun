@@ -5,8 +5,8 @@
                 <ul>
                     <li><a href="/">Home </a></li>
                     <li><a href="/shop">Shop</a></li>
-                    <li><a href="#">Women </a></li>
-                    <li><a href="#">Summer Stripes Shorts</a></li>
+                    <li><a href="/shop/categories/{{ $product->category->id }}">{{ $product->category->name }}</a></li>
+                    <li><a href="#">{{ $product->name }}</a></li>
                 </ul>
             </div>
         </div>
@@ -17,19 +17,24 @@
                 <div class="col-lg-6">
                     <div class="detail-gallery detail-gallery-2">
                         <div class="box-main-gallery">
-                            <a class="zoom-image glightbox" href=""></a>
+                            <a class="zoom-image glightbox" href="{{ $product->image_url }}"></a>
                             <div class="product-image-slider product-image-slider-5">
-                                <figure class="border-radius-10">
-                                    <a class="glightbox" href=""><img src="" alt="kidify" /></a>
-                                </figure>
+                                @foreach ($product->images as $image)
+                                    <figure class="border-radius-10">
+                                        <a class="glightbox" href="{{ $image->getUrl() }}"><img src="{{ $image->getUrl() }}"
+                                                alt="kidify" /></a>
+                                    </figure>
+                                @endforeach
                             </div>
                         </div>
                         <div class="slider-nav-thumbnails slider-nav-thumbnails-5">
-                            <div>
-                                <div class="item-thumb">
-                                    <img src="" alt="kidify" />
+                            @foreach ($product->images as $image)
+                                <div>
+                                    <div class="item-thumb">
+                                        <img src="{{ $image->getUrl() }}" alt="kidify" />
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -48,7 +53,7 @@
                                 class="text-17 neutral-medium-dark">(5)</span>
                         </div>
                         <div class="block-price">
-                            <span class="price-main">{{ $product->price }}</span>
+                            <span class="price-main">{{ Number::currency($product->price, 'USD') }}</span>
                         </div>
                         <div class="block-description">
                             <p class="body-p2 neutral-medium-dark">

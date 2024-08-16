@@ -10,7 +10,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['status', 'user_id', 'shipping_address_id'];
+    protected $fillable = ['status', 'total', 'user_id', 'shipping_address_id'];
 
     protected $casts = [
         'status' => OrderStatus::class,

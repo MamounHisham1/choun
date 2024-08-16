@@ -54,7 +54,6 @@ class Coupon extends Model
     {
         $coupon = session()->get('coupon') ?? [];
 
-
         if ($activeCoupon->type == 'money') {
             $coupon[] = [
                 'money' => $activeCoupon->amount,

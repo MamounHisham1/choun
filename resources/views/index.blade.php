@@ -138,7 +138,7 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="" alt="guza"><img class="imageHover"
+                                                    src="{{ $product->image_url }}" alt="guza"><img class="imageHover"
                                                     src="assets/imgs/page/homepage16/sp1.png" alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
@@ -214,7 +214,7 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="" alt="guza"><img class="imageHover"
+                                                    src="{{ $product->image_url }}" alt="guza"><img class="imageHover"
                                                     src="assets/imgs/page/homepage16/sp1.png" alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
@@ -290,7 +290,7 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="" alt="guza"><img class="imageHover"
+                                                    src="{{ $product->image_url }}" alt="guza"><img class="imageHover"
                                                     src="assets/imgs/page/homepage16/sp1.png" alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>

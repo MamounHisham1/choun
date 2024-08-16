@@ -10,7 +10,7 @@ class OrderLine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'product_id', 'quantity', 'price', 'coupon_id'];
+    protected $fillable = ['order_id', 'product_id', 'coupon_id', 'quantity', 'price'];
 
     public function product()
     {

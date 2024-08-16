@@ -3,7 +3,6 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Order;
-use App\Models\OrderLine;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Number;
@@ -16,7 +15,7 @@ class OrdersStateWidget extends BaseWidget
             Stat::make('Total Orders', Order::count())
             ->description('Total orders of all orders')
             ->descriptionIcon('heroicon-o-star'),
-            Stat::make('Total Sales', Number::currency(OrderLine::sum('price'), 'USD'))
+            Stat::make('Total Sales', Number::currency(Order::sum('total'), 'USD'))
             ->description('Total of sales')
         ];
     }
