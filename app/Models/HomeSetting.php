@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HomeSetting extends Model
 {
+    protected $fillable = ['key', 'value', 'json_value'];
     public function casts(): array
     {
         return [

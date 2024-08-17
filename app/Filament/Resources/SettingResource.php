@@ -30,7 +30,13 @@ class SettingResource extends Resource
                     ->blocks([
                         Block::make('Offer')
                             ->schema([
-                                //
+                                Forms\Components\TextInput::make('message')
+                                    ->columns(1)
+                                    ->required(),
+                                Forms\Components\Select::make('product')
+                                    ->options(Product::get()->pluck('name', 'id'))
+                                    ->searchable()
+                                    ->native(false),
                             ]),
                         Block::make('Hot deals')
                             ->schema([
