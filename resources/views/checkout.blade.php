@@ -368,7 +368,18 @@
                     data: {
                         'coupon': code,
                         "_token": "{{ csrf_token() }}",
-                    },
+                    },<div class="bg-[#FEEBC8] p-6 rounded-lg max-w-sm mx-auto">
+    <p class="text-sm text-gray-700 font-semibold">NEW ARRIVALS</p>
+    <h2 class="text-2xl font-bold text-gray-900 mt-2">MacBook Air</h2>
+    <h3 class="text-xl font-medium text-gray-900">M2 Chip</h3>
+    <div class="mt-4 relative">
+        <img src="https://via.placeholder.com/300x150.png" alt="MacBook Air" class="rounded-lg">
+    </div>
+    <button class="mt-4 bg-white text-black font-semibold py-2 px-4 border border-black rounded-lg">
+        Learn more
+    </button>
+</div>
+
                     success: function(data) {
                         $('#discounted').html(
                             `$${data['price'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);

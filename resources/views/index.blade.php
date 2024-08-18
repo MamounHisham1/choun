@@ -87,13 +87,19 @@
                 <div class="col-lg-4">
                     <div class="row">
                         @foreach ($homeOffers as $offer)
-                            <div class="col-lg-12 col-md-6">
-                                <div class="bg-[#47B5FF] bg-no-repeat bg-bottom-right bg-[url('{{ $offer['product']->image_url }}')] p-6 pb-14 mb-8 h-64">
-                                    <p class="text-18">{{ $offer['message'] }}</p>
-                                    <h3 class="mb-55">{{ $offer['product']->name }}</h3><a class="btn btn-border"
-                                        href="/shop/{{ $offer['product']->id }}/show">Buy
-                                        now</a>
+                            <div class="d-flex align-items-start p-4"
+                                style="background-color: {{ $offer['color'] }};
+                                padding: 24px 24px 55px 24px;
+                                margin-bottom: 30px;
+                                height: 265px;">
+                                <div class="me-3" style="flex: 1;">
+                                    <p class="text-muted fw-semibold mb-1">{{ $offer['message'] }}</p>
+                                    <h2 class="fw-bold mb-1" style="font-size: 1.75rem;">{{ $offer['product']->name }}</h2>
+                                    <a href="/shop/{{ $offer['product']->id }}/show" class="btn btn-outline-dark text-end"
+                                        style="padding: 0.5rem 1rem; font-weight: 500;">Learn more</a>
                                 </div>
+                                <img src="{{ $offer['product']->image_url }}" alt="MacBook Air" class="img-fluid"
+                                    style="max-width: 55%; height: auto; border-radius: 0.25rem;">
                             </div>
                         @endforeach
                     </div>

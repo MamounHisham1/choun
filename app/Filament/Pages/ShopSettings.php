@@ -4,7 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\HomeSetting;
 use App\Models\Product;
-use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -39,14 +39,21 @@ class ShopSettings extends Page
                             ->options(Product::get()->pluck('name', 'id'))
                             ->searchable()
                             ->required(),
+                        ColorPicker::make('one.color')
+                            ->label('Background color')
+                            ->hintColor('Light color recommended')
+                            ->required(),
                         TextInput::make('two.message')
                             ->required(),
                         Select::make('two.product')
                             ->options(Product::get()->pluck('name', 'id'))
                             ->searchable()
                             ->required(),
+                        ColorPicker::make('two.color')
+                            ->label('Background color')
+                            ->required(),
                     ])
-                    ->columns(2),
+                    ->columns(3),
             ])
             ->statePath('data');
     }
