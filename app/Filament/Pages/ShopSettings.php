@@ -31,13 +31,20 @@ class ShopSettings extends Page
     {
         return $form
             ->schema([
-                Section::make('Offer')->schema([
-                    TextInput::make('message')
-                    ->required(),
-                    Select::make('product')
-                    ->options(Product::get()->pluck('name', 'id'))
-                    ->searchable()
-                    ->required(),
+                Section::make('Offers')
+                    ->schema([
+                        TextInput::make('one.message')
+                            ->required(),
+                        Select::make('one.product')
+                            ->options(Product::get()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required(),
+                        TextInput::make('two.message')
+                            ->required(),
+                        Select::make('two.product')
+                            ->options(Product::get()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required(),
                     ])
                     ->columns(2),
             ])
@@ -47,7 +54,7 @@ class ShopSettings extends Page
     public function create(): void
     {
         $content = $this->form->getState();
-        HomeSetting::updateOrCreate(['key' => 'offer'], [
+        HomeSetting::updateOrCreate(['key' => 'home_offers'], [
             'json_value' => $content,
         ]);
         Notification::make()->success()->title('Saved')->send();

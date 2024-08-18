@@ -86,20 +86,16 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="row">
-                        <div class="col-lg-12 col-md-6">
-                            <div class="banner-home-16-2">
-                                <p class="text-18">SAVE 20%</p>
-                                <h3 class="mb-55">Apple AirPods Max</h3><a class="btn btn-border" href="#">Buy
-                                    now</a>
+                        @foreach ($homeOffers as $offer)
+                            <div class="col-lg-12 col-md-6">
+                                <div class="bg-[#47B5FF] bg-no-repeat bg-bottom-right bg-[url('{{ $offer['product']->image_url }}')] p-6 pb-14 mb-8 h-64">
+                                    <p class="text-18">{{ $offer['message'] }}</p>
+                                    <h3 class="mb-55">{{ $offer['product']->name }}</h3><a class="btn btn-border"
+                                        href="/shop/{{ $offer['product']->id }}/show">Buy
+                                        now</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-12 col-md-6">
-                            <div class="banner-home-16-3">
-                                <p class="text-18">NEW ARRIVALS</p>
-                                <h3 class="mb-25">Macbook Air <br class="d-none d-lg-block">M2 Chip</h3><a
-                                    class="btn btn-border" href="#">Learn more</a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -138,12 +134,14 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img class="imageHover"
-                                                    src="assets/imgs/page/homepage16/sp1.png" alt="guza"></a>
+                                                    src="{{ $product->image_url }}" alt="guza"><img
+                                                    class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
+                                                    alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
                                             </div>
-                                            <div class="box-quick-button"><a class="btn add-to-wishlist" href="javascript:void(0);" data-product="{{ $product->id }}">
+                                            <div class="box-quick-button"><a class="btn add-to-wishlist"
+                                                    href="javascript:void(0);" data-product="{{ $product->id }}">
                                                     <svg class="d-inline-flex align-items-center justify-content-center"
                                                         width="28" height="28" viewbox="0 0 28 28"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -214,8 +212,9 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img class="imageHover"
-                                                    src="assets/imgs/page/homepage16/sp1.png" alt="guza"></a>
+                                                    src="{{ $product->image_url }}" alt="guza"><img
+                                                    class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
+                                                    alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
                                             </div>
@@ -290,8 +289,9 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img class="imageHover"
-                                                    src="assets/imgs/page/homepage16/sp1.png" alt="guza"></a>
+                                                    src="{{ $product->image_url }}" alt="guza"><img
+                                                    class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
+                                                    alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
                                             </div>
