@@ -14,7 +14,7 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $guarded = [];
-    // protected $with = ['category'];
+    protected $with = ['media'];
 
     public function category()
     {
