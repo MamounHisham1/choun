@@ -42,39 +42,17 @@
                     <div class="box-swiper button-slide-square">
                         <div class="swiper-container swiper-banner pb-0">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="banner-home-16">
-                                        <div class="banner-home-16-inner">
-                                            <h3 class="mb-10">Grab these HOT deals, <br class="d-none d-lg-block">now!
-                                            </h3>
-                                            <p class="body-p1 mb-25">Limited-time savings you won’t believe on the
-                                                tech you want <br class="d-none d-lg-block">want & need.</p><a
-                                                class="btn btn-border" href="#">Shop now</a>
+                                @foreach ($homeFirstBanner as $banner)
+                                    <div class="swiper-slide">
+                                        <div class="banner-home-16">
+                                            <div class="banner-home-16-inner">
+                                                <h3 class="mb-10">{{ $banner['message'] }}</h3>
+                                                <p class="body-p1 mb-25">{!! $banner['description'] !!}</p>
+                                                <a class="btn btn-border" href="#">Shop now</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-home-16">
-                                        <div class="banner-home-16-inner">
-                                            <h3 class="mb-10">Grab these HOT deals, <br class="d-none d-lg-block">now!
-                                            </h3>
-                                            <p class="body-p1 mb-25">Limited-time savings you won’t believe on the
-                                                tech you <br class="d-none d-lg-block">want & need.</p><a
-                                                class="btn btn-border" href="#">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-home-16">
-                                        <div class="banner-home-16-inner">
-                                            <h3 class="mb-10">Grab these HOT deals, <br class="d-none d-lg-block">now!
-                                            </h3>
-                                            <p class="body-p1 mb-25">Limited-time savings you won’t believe on the
-                                                tech you <br class="d-none d-lg-block">want & need.</p><a
-                                                class="btn btn-border" href="#">Shop now</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="box-pagination-button">
                                 <div
@@ -94,8 +72,10 @@
                                 height: 265px;">
                                 <div class="me-3" style="flex: 1;">
                                     <p class="text-muted fw-semibold mb-1">{{ $offer['message'] }}</p>
-                                    <h2 class="fw-bold mb-1" style="font-size: 1.75rem;">{{ $offer['product']->name }}</h2>
-                                    <a href="/shop/{{ $offer['product']->id }}/show" class="btn btn-outline-dark text-end"
+                                    <h2 class="fw-bold mb-1" style="font-size: 1.75rem;">{{ $offer['product']->name }}
+                                    </h2>
+                                    <a href="/shop/{{ $offer['product']->id }}/show"
+                                        class="btn btn-outline-dark text-end"
                                         style="padding: 0.5rem 1rem; font-weight: 500;">Learn more</a>
                                 </div>
                                 <img src="{{ $offer['product']->image_url }}" alt="MacBook Air" class="img-fluid"
@@ -119,8 +99,8 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="newproducts-tab" data-bs-toggle="tab"
-                                data-bs-target="#newproducts" type="button" role="tab"
-                                aria-controls="newproducts" aria-selected="false" data-index="2" data-items="1">New
+                                data-bs-target="#newproducts" type="button" role="tab" aria-controls="newproducts"
+                                aria-selected="false" data-index="2" data-items="1">New
                                 Products</button>
                         </li>
                         <li class="nav-item" role="presentation">

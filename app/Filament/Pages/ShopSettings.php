@@ -23,12 +23,9 @@ class ShopSettings extends Page
     protected static string $view = 'filament.pages.shop-settings';
 
     public ?array $data = [];
-    public ?array $bannerOne = [];
-    public ?array $offers = [];
-
     public function mount(): void
     {
-        $this->form->fill(HomeSetting::get()->last()['json_value']);
+        $this->form->fill(HomeSetting::get()->first()['json_value']);
     }
 
     public function form(Form $form): Form
@@ -77,7 +74,7 @@ class ShopSettings extends Page
                     ])
                     ->columns(3)
                     ->defaultItems(1)
-                    ->statePath('firstBanner')
+                    ->statePath('first_banner')
                     ->collapsible(),
             ])->statePath('data');
     }
@@ -86,20 +83,13 @@ class ShopSettings extends Page
     {
         $content = $this->form->getState();
         $homeOffers = $content['offers'];
-        $firstBanner = $content['firstBanner'];
+        $firstBanner = $content['first_banner'];
         HomeSetting::updateOrCreate(['key' => 'home_offers'], [
             'json_value' => $homeOffers,
         ]);
-        HomeSetting::updateOrCreate(['key' => 'first_banner'], [
+        HomeSetting::updateOrCreate(['key' => 'home_first_banner'], [
             'json_value' => $firstBanner,
         ]);
         Notification::make()->success()->title('Saved')->send();
     }
 }
-
-
-
-
-/* 
-   
-*/

@@ -21,20 +21,30 @@ class HomeController extends Controller
             ->orderByDesc('most_products')
             ->limit(8 * 4)
             ->pluck('product_id'));
+
         $latestProducts = Product::latest()->limit(8 * 3)->get();
         $featuredProducts = Product::latest()->get()->where('is_featured', true);
         $categories = Category::has('products', '>', 5)->latest()->limit(6)->get();
+
         $homeOffers = HomeSetting::where('key', 'home_offers')->first()->json_value;
         $homeOffers = array_map(function ($offer) {
-            $offer['product'] = Product::find($offer['product']);
+            $offer['product'] = Product::with('media')->find($offer['product']);
             return $offer;
         }, $homeOffers);
+
+        $homeFirstBanner = HomeSetting::where('key', 'home_first_banner')->first()->json_value;
+        $homeFirstBanner = array_map(function ($banner) {
+            $banner['product'] = Product::with('media')->find($banner['product']);
+            return $banner;
+        }, $homeFirstBanner);
+
         return view('index', [
             'bestProducts' => $bestProducts,
             'latestProducts' => $latestProducts,
             'featuredProducts' => $featuredProducts,
             'categories' => $categories,
             'homeOffers' => $homeOffers,
+            'homeFirstBanner' => $homeFirstBanner,
         ]);
     }
 }
