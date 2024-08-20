@@ -92,6 +92,16 @@ class ShopSettings extends Page
                     ])
                     ->statePath('second_banner')
                     ->columns(2),
+                
+                    Section::make('Categories')
+                    ->schema([
+                        Select::make('categories')
+                            ->multiple()
+                            ->options(Category::get()->pluck('name', 'id'))
+                            ->searchable()
+                            ->minItems(1)
+                            ->maxItems(6),
+                    ]),
 
             ])->statePath('data');
     }
@@ -102,10 +112,12 @@ class ShopSettings extends Page
         $homeOffers = $content['offers'];
         $firstBanner = $content['first_banner'];
         $secondBanner = $content['second_banner'];
+        $homeCategories = $content['categories'];
 
         HomeSetting::set('home_offers', $homeOffers);
         HomeSetting::set('home_first_banner', $firstBanner);
         HomeSetting::set('home_second_banner', $secondBanner);
+        HomeSetting::set('home_categories', $homeCategories);
 
         Notification::make()->success()->title('Saved')->send();
     }

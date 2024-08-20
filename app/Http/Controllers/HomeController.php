@@ -21,10 +21,14 @@ class HomeController extends Controller
             ->orderByDesc('most_products')
             ->limit(8 * 4)
             ->pluck('product_id'));
-
         $latestProducts = Product::latest()->limit(8 * 3)->get();
         $featuredProducts = Product::latest()->get()->where('is_featured', true);
-        $categories = Category::has('products', '>', 5)->latest()->limit(6)->get();
+
+        $categories = HomeSetting::where('key', 'home_categories')->first()->json_value;
+        $categories = array_map(function ($category) {
+            $category = Product::find($category);
+            return $category;
+        }, $categories);
 
         $homeOffers = HomeSetting::where('key', 'home_offers')->first()->json_value;
         $homeOffers = array_map(function ($offer) {
