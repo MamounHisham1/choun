@@ -47,7 +47,7 @@
                                         <div class="banner-home-16">
                                             <div class="banner-home-16-inner">
                                                 <h3 class="mb-10">{{ $banner['message'] }}</h3>
-                                                <p class="body-p1 mb-25">{!! $banner['description'] !!}</p>
+                                                <div class="body-p1 mb-25">{!! $banner['description'] !!}</div>
                                                 <a class="btn btn-border" href="#">Shop now</a>
                                             </div>
                                         </div>
@@ -351,9 +351,9 @@
     <section class="section banner-2-homepage16">
         <div class="container">
             <div class="text-center">
-                <h2 class="color-white mb-10">Awesome tech gifts</h2>
-                <p class="body-p1 color-white mb-30">Surprise them with the latest gadgets.</p><a
-                    class="btn btn-border-white" href="#">Shop now</a>
+                <h2 class="color-white mb-10">{{ $homeSecondBanner['category']->name }}</h2>
+                <div class="body-p1 color-white mb-30">{!! $homeSecondBanner['message'] !!}</div>
+                <a class="btn btn-border-white" href="/shop/categories/{{ $homeSecondBanner['category']->id }}">Shop now</a>
             </div>
         </div>
     </section>

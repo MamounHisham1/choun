@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\HomeSetting;
 use App\Models\Product;
+use App\Models\Category;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
@@ -42,7 +43,6 @@ class ShopSettings extends Page
                             ->required(),
                         ColorPicker::make('one.color')
                             ->label('Background color')
-                            ->hintColor('Light color recommended')
                             ->required(),
                         TextInput::make('two.message')
                             ->required(),
@@ -56,6 +56,7 @@ class ShopSettings extends Page
                     ])
                     ->statePath('offers')
                     ->columns(3),
+
                 Repeater::make('banner_one')
                     ->schema([
                         TextInput::make('message')
@@ -66,16 +67,32 @@ class ShopSettings extends Page
                             ->required(),
                         ColorPicker::make('color')
                             ->label('Background color')
-                            ->hintColor('Light color recommended')
                             ->required(),
                         RichEditor::make('description')
                             ->columnSpanFull()
                             ->required(),
                     ])
+                    ->defaultItems(2)
                     ->columns(3)
-                    ->defaultItems(1)
                     ->statePath('first_banner')
                     ->collapsible(),
+
+                Section::make('Banner')
+                    ->schema([
+                        Select::make('category')
+                            ->options(Category::get()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required(),
+                        ColorPicker::make('color')
+                            ->label('Background color')
+                            ->required(),
+                        RichEditor::make('message')
+                            ->columnSpanFull()
+                            ->required(),
+                    ])
+                    ->statePath('second_banner')
+                    ->columns(2),
+
             ])->statePath('data');
     }
 
@@ -84,12 +101,12 @@ class ShopSettings extends Page
         $content = $this->form->getState();
         $homeOffers = $content['offers'];
         $firstBanner = $content['first_banner'];
-        HomeSetting::updateOrCreate(['key' => 'home_offers'], [
-            'json_value' => $homeOffers,
-        ]);
-        HomeSetting::updateOrCreate(['key' => 'home_first_banner'], [
-            'json_value' => $firstBanner,
-        ]);
+        $secondBanner = $content['second_banner'];
+
+        HomeSetting::set('home_offers', $homeOffers);
+        HomeSetting::set('home_first_banner', $firstBanner);
+        HomeSetting::set('home_second_banner', $secondBanner);
+
         Notification::make()->success()->title('Saved')->send();
     }
 }

@@ -38,6 +38,9 @@ class HomeController extends Controller
             return $banner;
         }, $homeFirstBanner);
 
+        $homeSecondBanner = HomeSetting::where('key', 'home_second_banner')->first()->json_value;
+        $homeSecondBanner['category'] = Category::find($homeSecondBanner['category']);
+
         return view('index', [
             'bestProducts' => $bestProducts,
             'latestProducts' => $latestProducts,
@@ -45,6 +48,7 @@ class HomeController extends Controller
             'categories' => $categories,
             'homeOffers' => $homeOffers,
             'homeFirstBanner' => $homeFirstBanner,
+            'homeSecondBanner' => $homeSecondBanner,0
         ]);
     }
 }

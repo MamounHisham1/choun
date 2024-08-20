@@ -14,4 +14,11 @@ class HomeSetting extends Model
             'json_value' => 'json',
         ];
     }
+
+    public static function set(string $key, array $value) 
+    {
+        HomeSetting::updateOrCreate(['key' => $key], [
+            'json_value' => $value,
+        ]);
+    }
 }
