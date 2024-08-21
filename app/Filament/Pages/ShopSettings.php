@@ -19,21 +19,30 @@ use Filament\Pages\Page;
 class ShopSettings extends Page
 {
     use InteractsWithForms;
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-cog';
+
+    protected static ?int $navigationSort = 5;
 
     protected static string $view = 'filament.pages.shop-settings';
 
     public ?array $data = [];
     public function mount(): void
     {
-        $this->form->fill(HomeSetting::get()->first()['json_value']);
+        $settings = HomeSetting::all();
+        // dd($settings->firstWhere('key', 'home_first_banner')->json_value);
+        $this->form->fill([
+            'offers' => $settings->firstWhere('key', 'home_offers')->json_value,
+            'first_banner' => $settings->firstWhere('key', 'home_first_banner')->json_value,
+            'second_banner' => $settings->firstWhere('key', 'home_second_banner')->json_value,
+            'categories' => $settings->firstWhere('key', 'home_categories')->json_value,
+        ]);
     }
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make('Offers')
+                Section::make('offers')
                     ->schema([
                         TextInput::make('one.message')
                             ->required(),
@@ -93,7 +102,7 @@ class ShopSettings extends Page
                     ->statePath('second_banner')
                     ->columns(2),
                 
-                    Section::make('Categories')
+                    Section::make('categories')
                     ->schema([
                         Select::make('categories')
                             ->multiple()

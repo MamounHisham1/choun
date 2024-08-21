@@ -20,7 +20,7 @@ class CouponResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-ticket';
 
     public static function form(Form $form): Form
     {

@@ -348,33 +348,38 @@
             </div>
         </div>
     </section>
-    <section class="section banner-2-homepage16">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="color-white mb-10">{{ $homeSecondBanner['category']->name }}</h2>
-                <div class="body-p1 color-white mb-30">{!! $homeSecondBanner['message'] !!}</div>
-                <a class="btn btn-border-white" href="/shop/categories/{{ $homeSecondBanner['category']->id }}">Shop now</a>
+    @if ($homeSecondBanner)
+        <section class="section banner-2-homepage16">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="color-white mb-10">{{ $homeSecondBanner['category']->name }}</h2>
+                    <div class="body-p1 color-white mb-30">{!! $homeSecondBanner['message'] !!}</div>
+                    <a class="btn btn-border-white"
+                        href="/shop/categories/{{ $homeSecondBanner['category']->id }}">Shop now</a>
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="section category-homepage16">
-        <div class="container">
-            <h3 class="mb-40">Shop by Category</h3>
-            <div class="row">
-                @foreach ($categories as $category)
-                    <div class="col-lg-2 col-md-4 col-sm-6">
-                        <div class="cardCategoryCircle">
-                            <div class="cardImage"><a href="/shop/categories/{{ $category->id }}"><img
-                                        src="{{ $category->image_url }}" alt="Guza"></a></div>
-                            <div class="cardInfo">
-                                <p class="text-17-medium">{{ $category->name }}</p>
+        </section>
+    @endif
+    @if ($categories)
+        <section class="section category-homepage16">
+            <div class="container">
+                <h3 class="mb-40">Shop by Category</h3>
+                <div class="row">
+                    @foreach ($categories as $category)
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="cardCategoryCircle">
+                                <div class="cardImage"><a href="/shop/categories/{{ $category->id }}"><img
+                                            src="{{ $category->image_url }}" alt="Guza"></a></div>
+                                <div class="cardInfo">
+                                    <p class="text-17-medium">{{ $category->name }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <section class="section banner-3-homepage16">
         <div class="container">
             <div class="row">
