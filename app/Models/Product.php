@@ -28,6 +28,6 @@ class Product extends Model implements HasMedia
 
     public function imageUrl(): Attribute
     {
-        return Attribute::get(fn() => $this->getMedia('product-images')->first()?->getUrl());
+        return Attribute::get(fn() => $this->getMedia('product-images')->first()?->getUrl() ?? 'https://random.imagecdn.app/261/261');
     }
 }

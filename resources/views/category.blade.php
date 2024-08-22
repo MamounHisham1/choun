@@ -262,7 +262,7 @@
                 @foreach ($products as $product)
                     <div class="product-item">
                         <div class="cardProduct wow fadeInUp">
-                            <div class="cardImage"><a href="#"><img class="imageMain" src="{{ $product->image_url }}"
+                            <div class="cardImage"><a href="/shop/{{ $product->id }}/show"><img class="imageMain" src="{{ $product->image_url }}"
                                         alt="guza"><img class="imageHover" src="{{ $product->image_url }}" alt="guza"></a>
                                 <div class="button-select">
                                     <a href="/shop/{{ $product->id }}/show">More Details</a>
@@ -318,7 +318,7 @@
                                 <a href="/shop/{{ $product->id }}/show">
                                     <h6 class="text-16-medium cardTitle">{{ $product->name }}</h6>
                                 </a>
-                                <p class="body-p2 cardDesc">{{ $product->price }}</p>
+                                <p class="body-p2 cardDesc">{{ Number::currency($product->price, 'USD') }}</p>
                                 <div class="box-colors">
                                     <div class="item-color color-1"></div>
                                     <div class="item-color color-2"></div>

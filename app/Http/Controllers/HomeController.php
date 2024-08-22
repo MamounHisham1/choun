@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         $categories = HomeSetting::where('key', 'home_categories')->first()->json_value ?? [];
         $categories = array_map(function ($category) {
-            $category = Product::find($category);
+            $category = Category::find($category);
             return $category;
         }, $categories);
 

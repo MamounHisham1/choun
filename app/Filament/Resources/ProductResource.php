@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Filament\Forms;
@@ -31,6 +32,17 @@ class ProductResource extends Resource
                     ->searchable()
                     ->native(false)
                     ->required(),
+                Forms\Components\Select::make('brand_id')
+                    ->options(Brand::pluck('name', 'id'))
+                    ->searchable()
+                    ->native(false)
+                    ->required()
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required(),
+                        Forms\Components\FileUpload::make('image')
+                            ->image(),
+                    ])->createOptionUsing(fn($data) => Brand::create($data)),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),

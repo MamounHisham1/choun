@@ -31,10 +31,10 @@ class ShopSettings extends Page
         $settings = HomeSetting::all();
         // dd($settings->firstWhere('key', 'home_first_banner')->json_value);
         $this->form->fill([
-            'offers' => $settings->firstWhere('key', 'home_offers')->json_value,
-            'first_banner' => $settings->firstWhere('key', 'home_first_banner')->json_value,
-            'second_banner' => $settings->firstWhere('key', 'home_second_banner')->json_value,
-            'categories' => $settings->firstWhere('key', 'home_categories')->json_value,
+            'offers' => $settings->firstWhere('key', 'home_offers')?->json_value,
+            'first_banner' => $settings->firstWhere('key', 'home_first_banner')?->json_value,
+            'second_banner' => $settings->firstWhere('key', 'home_second_banner')?->json_value,
+            'categories' => $settings->firstWhere('key', 'home_categories')?->json_value,
         ]);
     }
 
