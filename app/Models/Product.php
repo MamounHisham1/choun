@@ -30,4 +30,9 @@ class Product extends Model implements HasMedia
     {
         return Attribute::get(fn() => $this->getMedia('product-images')->first()?->getUrl() ?? 'https://random.imagecdn.app/261/261');
     }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }

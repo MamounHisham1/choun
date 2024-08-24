@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\HomeSetting;
+use App\Models\Order;
 use App\Models\OrderLine;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+// use Filament\Notifications\Notification;
 
 class HomeController extends Controller
 {
@@ -15,7 +15,7 @@ class HomeController extends Controller
      * Handle the incoming request.
      */
     public function __invoke()
-    {
+    {   
         $bestProducts = Product::find(OrderLine::selectRaw('product_id,sum(quantity) as most_products')
             ->groupBy('product_id')
             ->orderByDesc('most_products')
@@ -43,7 +43,7 @@ class HomeController extends Controller
         }, $homeFirstBanner);
 
         $homeSecondBanner = HomeSetting::where('key', 'home_second_banner')->first()->json_value ?? [];
-        if(collect($homeSecondBanner)->has('category')) {
+        if (collect($homeSecondBanner)->has('category')) {
             Category::find($homeSecondBanner['category']);
         }
         $homeSecondBanner['category'] = Category::find($homeSecondBanner['category']);
@@ -55,7 +55,8 @@ class HomeController extends Controller
             'categories' => $categories,
             'homeOffers' => $homeOffers,
             'homeFirstBanner' => $homeFirstBanner,
-            'homeSecondBanner' => $homeSecondBanner,0
+            'homeSecondBanner' => $homeSecondBanner,
+            0
         ]);
     }
 }

@@ -1,4 +1,26 @@
 <x-layout>
+    @push('css')
+        <style>
+            .color-label {
+                margin-right: 8px;
+                /* Add space between circles */
+                cursor: pointer;
+            }
+
+            .color-circle {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                border: 2px solid #ccc;
+                transition: border-color 0.3s;
+            }
+
+            input[type="radio"]:checked+.color-circle {
+                border-color: #000;
+                /* Change to a different color when active */
+            }
+        </style>
+    @endpush
     <section class="section block-banner-shop">
         <div class="container">
             <h1 class="text-56-medium">Shop</h1>
@@ -22,12 +44,13 @@
                             <div class="box-collapse scrollFilter">
                                 <ul class="list-filter-checkbox">
                                     @foreach ($categories as $category)
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">{{ $category->name }}
-                                                <span class="neutral-medium">({{ $category->products->count() }})</span></span><span
-                                                class="checkmark"></span> </label>
-                                    </li>
+                                        <li>
+                                            <label class="cb-container">
+                                                <input type="checkbox" /><span class="text-small">{{ $category->name }}
+                                                    <span
+                                                        class="neutral-medium">({{ $category->products->count() }})</span></span><span
+                                                    class="checkmark"></span> </label>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -79,36 +102,14 @@
                             <h6 class="item-collapse">Brand</h6>
                             <div class="box-collapse scrollFilter">
                                 <ul class="list-filter-checkbox">
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">Adidas</span><span
-                                                class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">Chloe</span><span
-                                                class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">Kendo</span><span
-                                                class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">Nike</span><span
-                                                class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">Adidas</span><span
-                                                class="checkmark"></span>
-                                        </label>
-                                    </li>
+                                    @foreach ($brands as $brand)
+                                        <li>
+                                            <label class="cb-container">
+                                                <input type="checkbox" /><span class="text-small">{{ $brand->name }}</span><span
+                                                    class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -266,9 +267,18 @@
                                             {{ Number::currency($product->price, 'USD') }}
                                         </p>
                                         <div class="box-colors">
-                                            <div class="item-color color-1"></div>
-                                            <div class="item-color color-2"></div>
-                                            <div class="item-color color-3"></div>
+                                            <label class="color-label">
+                                                <input type="radio" name="color" value="red" class="d-none">
+                                                <div class="color-circle" style="background-color: red;"></div>
+                                            </label>
+                                            <label class="color-label">
+                                                <input type="radio" name="color" value="green" class="d-none">
+                                                <div class="color-circle" style="background-color: green;"></div>
+                                            </label>
+                                            <label class="color-label">
+                                                <input type="radio" name="color" value="blue" class="d-none">
+                                                <div class="color-circle" style="background-color: blue;"></div>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>

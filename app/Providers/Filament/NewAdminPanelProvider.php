@@ -51,7 +51,9 @@ class NewAdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('2s');
     }
 
     public function register(): void
