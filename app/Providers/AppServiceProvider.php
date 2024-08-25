@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Wishlist;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
+use LukePOLO\LaraCart\Facades\LaraCart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('*', function (View $view) {
-            $cartItems = Cart::getItems();
+            $cartItems = LaraCart::getItems();
             $wishlistItems = once(fn() => Wishlist::getItems(auth()->id()));
 
             $view->with([

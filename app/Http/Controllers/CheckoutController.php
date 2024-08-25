@@ -13,6 +13,7 @@ use App\OrderStatus;
 use App\Rules\ValidCoupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use LukePOLO\LaraCart\Facades\LaraCart;
 
 class CheckoutController extends Controller
 {
@@ -21,17 +22,18 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        if (empty(Cart::getItems())) {
+        if (empty(LaraCart::getItems())) {
             return redirect('/shop');
         }
 
         return view('checkout', [
-            'subtotal' => Cart::getSubtotal(),
+            'subtotal' => LaraCart::total(),
         ]);
     }
 
     public function store(Request $request)
     {
+        // dd(LaraCart::getItems());
         $data = $request->validate([
             'email' => ['required', 'email'],
             'first_name' => ['required'],
@@ -62,22 +64,32 @@ class CheckoutController extends Controller
             'status' => OrderStatus::Pending,
             'user_id' => $user?->id,
             'shipping_address_id' => $address->id,
-            'total' => Cart::getSubtotal(),
+            'total' => LaraCart::total($formatted = false),
         ]);
-        
+
         if (session()->has('coupon')) {
-            $order->update(['total' => Coupon::apply(Cart::getSubtotal())]);
+            $order->update(['total' => Coupon::apply(LaraCart::total($formatted = false))]);
         }
 
-        foreach (Cart::getItems() as $item) {
+        $basicAttributes = [
+            'id',
+            'qty',
+            'name',
+            'taxable',
+            'price',
+            'tax',
+        ];
+        foreach (LaraCart::getItems() as $item) {
+            $options = collect($item->options)->filter(fn($_, $key) => !in_array($key, $basicAttributes));
             $order->orderLines()->create([
-                'product_id' => $item->product->id,
-                'quantity' => $item->quantity,
-                'price' => $item->product->price,
+                'product_id' => $item->id,
+                'quantity' => $item->qty,
+                'price' => $item->price,
+                'options' => $options,
             ]);
         }
 
-        Cart::clearCart();
+        LaraCart::destroyCart();
         session()->flash('message', 'Your order has been sent successfully');
 
         return redirect('/');
@@ -96,7 +108,7 @@ class CheckoutController extends Controller
 
         Coupon::calc($activeCoupon);
 
-        $price = Coupon::apply(Cart::getSubtotal());
+        $price = Coupon::apply(LaraCart::total($formatted = false));
 
         $data = [
             'price' => $price,

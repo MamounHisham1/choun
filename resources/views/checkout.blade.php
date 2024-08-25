@@ -1,8 +1,4 @@
 <x-layout>
-    {{-- @foreach ($cartItems as $item)
-        @dump($item->product->price)
-    @endforeach
-    @dd($cartItems) --}}
     @push('css')
         <style>
             .cart-coupon {
@@ -59,13 +55,6 @@
                 right: 0;
                 top: 0;
             }
-
-            /* .cart-coupon .cuppon-form input[type=submit]:hover {
-                                    background-color: #fff;
-                                    border: medium none;
-                                    border-color: #000;
-                                    color: #000;
-                                } */
         </style>
     @endpush
     <div class="section block-breadcrumb">
@@ -222,16 +211,16 @@
                                 <p class="text-17-medium text-uppercase">Product</p>
                                 <div class="box-info-checkout-inner">
                                     <div class="list-items-cart">
-                                        @foreach ($cartItems->take(3) as $item)
+                                        @foreach ($cartItems as $item)
                                             <div class="item-cart">
-                                                <div class="item-cart-image">
-                                                    <img src="{{ $item->product->image_url }}" alt="Guza" />
-                                                </div>
+                                                {{-- <div class="item-cart-image">
+                                                    <img src="" alt="Guza" />
+                                                </div> --}}
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
                                                         <a class="text-17-medium"
-                                                            href="#">{{ $item->product->name }}
-                                                            - x{{ $item->quantity }}</a>
+                                                            href="/shop/{{ $item->id }}/show">{{ $item->name }}
+                                                            - x{{ $item->qty }}</a>
                                                         <p class="box-color">
                                                             <span class="body-p2 neutral-medium-dark">Color:
                                                             </span><span class="body-p2 neutral-dark">Navy </span>
@@ -243,7 +232,7 @@
                                                     </div>
                                                     <div class="item-cart-info-2">
                                                         <p class="body-p2">
-                                                            {{ Number::currency($item->product->price * $item->quantity, 'USD') }}
+                                                            {{ Number::currency($item->price * $item->qty, 'USD') }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -255,7 +244,7 @@
                                     <h5 class="neutral-medium-dark">Subtotal</h5>
                                     <div class="d-flex gap-4">
                                         <h5 id="subtotal" class="neutral-dark">
-                                            {{ Number::currency($subtotal, 'USD') }}
+                                            {{ $subtotal }}
                                         </h5>
                                         <h5 id="discounted" class="neutral-dark"></h5>
                                     </div>
@@ -281,7 +270,7 @@
                                 <div class="d-flex align-items-center justify-content-between box-border-bottom">
                                     <h5 class="neutral-medium-dark">Total</h5>
                                     <h5 id="total" class="color-9">
-                                        {{ Number::currency($subtotal + 50, 'USD') }}
+                                        {{ $subtotal }}
                                     </h5>
                                 </div>
                                 <div class="box-other-link text-start box-border-bottom">

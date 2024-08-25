@@ -35,23 +35,23 @@
                         <div class="item-cart-image"><img src="{{ '' }}" alt="Guza"></div>
                         <div class="item-cart-info">
                             <div class="item-cart-info-1"><a class="text-16-medium"
-                                    href="#">{{ $item->product->name }}</a>
+                                    href="#">{{ $item->name }}</a>
                                 <div class="box-info-size-color-product">
                                     <p class="box-color"><span class="body-p2 neutral-medium-dark">Color:</span><span
                                             class="body-p2 neutral-dark">Navy</span></p>
                                     <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
                                             class="body-p2 neutral-dark">S</span></p>
                                 </div>
-                                <p class="body-p2 d-block d-sm-none mb-8">{{ $item->product->price }}</p>
+                                <p class="body-p2 d-block d-sm-none mb-8">{{ $item->price }}</p>
                                 <div class="box-form-cart">
                                     <div class="form-cart detail-qty"><span class="minus"></span>
                                         <input class="qty-val form-control" type="text" name="quantity"
-                                            value="{{ $item->quantity }}" min="1"><span class="plus"></span>
+                                            value="{{ $item->qty }}" min="1"><span class="plus"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-cart-info-2">
-                                <p class="body-p2 d-none d-sm-block">{{ $item->product->price * $item->quantity }}</p><a
+                                <p class="body-p2 d-none d-sm-block">{{ $item->price * $item->qty }}</p><a
                                     class="btn-remove-cart" href="#"></a>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
         <div class="d-flex align-items-center justify-content-between mt-25 mb-15">
             @if ($subtotal > 0)
                 <h6 class="neutral-medium-dark">Subtotal</h6>
-                <h6 class="neutral-dark">{{ Number::currency($subtotal, 'USD') }}</h6>
+                <h6 class="neutral-dark">{{ $subtotal }}</h6>
             @endif
         </div>
         <div class="box-button-popup-cart d-flex align-items-center justify-content-between"><a

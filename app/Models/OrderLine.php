@@ -10,7 +10,14 @@ class OrderLine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_id', 'product_id', 'coupon_id', 'quantity', 'price'];
+    protected $fillable = ['order_id', 'product_id', 'coupon_id', 'quantity', 'price', 'options'];
+
+    public function casts(): array
+    {
+        return [
+            'options' => 'json',
+        ];
+    }
 
     public function product()
     {

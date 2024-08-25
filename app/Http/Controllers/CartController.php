@@ -6,12 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use LukePOLO\LaraCart\Facades\LaraCart;
 
 class CartController extends Controller
 {
     public function store(Request $request, Product $product)
     {
-        Cart::addToCart($product, $request->quantity);
+        // Cart::addToCart($product, $request->quantity);
+        LaraCart::add(
+            $product->id,
+            $product->name,
+            $request->quantity,
+            $product->price,
+            ['color' => 'red', 'size' => 'XL'],
+        );
 
         $data = [
             'status' => 200,
