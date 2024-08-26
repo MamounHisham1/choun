@@ -5,8 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AttributeResource\Pages;
 use App\Filament\Resources\AttributeResource\RelationManagers;
 use App\Models\Attribute;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -27,8 +29,11 @@ class AttributeResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->required()
-                    ->columnSpanFull()
                     ->maxLength(255),
+                Select::make('category_id')
+                    ->label('Category')
+                    ->options(Category::pluck('name', 'id'))
+                    ->searchable(),
                 Repeater::make('members')
                     ->columnSpanFull(2)
                     ->schema([

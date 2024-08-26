@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Cart;
 use App\Models\Wishlist;
+use Filament\Forms\Components\Select;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 use LukePOLO\LaraCart\Facades\LaraCart;
@@ -15,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
     }
 
     /**
@@ -32,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
                 'wishlistItems' => $wishlistItems,
             ]);
         });
+
+        Select::configureUsing(fn(Select $select) => $select->native(false));
     }
 }
 

@@ -4,10 +4,19 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Attribute;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -27,50 +36,50 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('category_id')
+                Select::make('category_id')
+                    ->label('Category')
                     ->options(Category::pluck('name', 'id'))
                     ->searchable()
-                    ->native(false)
                     ->required(),
-                Forms\Components\Select::make('brand_id')
+                Select::make('brand_id')
                     ->options(Brand::pluck('name', 'id'))
                     ->searchable()
                     ->native(false)
                     ->required()
                     ->createOptionForm([
-                        Forms\Components\TextInput::make('name')
+                        TextInput::make('name')
                             ->required(),
-                        Forms\Components\FileUpload::make('image')
+                        FileUpload::make('image')
                             ->image(),
                     ])->createOptionUsing(fn($data) => Brand::create($data)),
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\MarkdownEditor::make('description')
+                MarkdownEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('price')
+                TextInput::make('price')
                     ->required()
                     ->numeric()
                     ->prefix('$'),
-                Forms\Components\TextInput::make('quantity')
+                TextInput::make('quantity')
                     ->required()
                     ->numeric(),
-                Forms\Components\SpatieMediaLibraryFileUpload::make('images')
+                SpatieMediaLibraryFileUpload::make('images')
                     ->collection('product-images')
                     ->columnSpan(2)
                     ->multiple()
                     ->image()
                     ->imageEditor(),
-                Forms\Components\Toggle::make('is_featured')
+                Toggle::make('is_featured')
                     ->required(),
-                // Forms\Components\FileUpload::make('images')
-
-                //     ->multiple()
-                //     ->image()
-                //     ->imageEditor()
-                Forms\Components\Actions::make([
-                    Forms\Components\Actions\Action::make('random_fill')
+                Select::make('attributes')
+                    ->options(Attribute::pluck('name', 'id'))
+                    ->multiple()
+                    ->searchable()
+                    ->required(),
+                Actions::make([
+                    Action::make('random_fill')
                         ->label('Random Fill')
                         ->icon('heroicon-o-clipboard-document-list')
                         ->visible(fn(string $operation) => app()->environment('local') && $operation == 'create')
