@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Attribute;
+use App\Models\AttributeValue;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -13,6 +14,8 @@ use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
@@ -36,47 +39,73 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('category_id')
-                    ->label('Category')
-                    ->options(Category::pluck('name', 'id'))
-                    ->searchable()
-                    ->required(),
-                Select::make('brand_id')
-                    ->options(Brand::pluck('name', 'id'))
-                    ->searchable()
-                    ->native(false)
-                    ->required()
-                    ->createOptionForm([
-                        TextInput::make('name')
+                Section::make('Product Informations')
+                    ->schema([
+                        Select::make('category_id')
+                            ->label('Category')
+                            ->options(Category::pluck('name', 'id'))
+                            ->live()
+                            ->searchable()
                             ->required(),
-                        FileUpload::make('image')
-                            ->image(),
-                    ])->createOptionUsing(fn($data) => Brand::create($data)),
-                TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                MarkdownEditor::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('$'),
-                TextInput::make('quantity')
-                    ->required()
-                    ->numeric(),
-                SpatieMediaLibraryFileUpload::make('images')
-                    ->collection('product-images')
-                    ->columnSpan(2)
-                    ->multiple()
-                    ->image()
-                    ->imageEditor(),
+                        Select::make('brand_id')
+                            ->options(Brand::pluck('name', 'id'))
+                            ->searchable()
+                            ->native(false)
+                            ->required()
+                            ->createOptionForm([
+                                TextInput::make('name')
+                                    ->required(),
+                                FileUpload::make('image')
+                                    ->image(),
+                            ])->createOptionUsing(fn($data) => Brand::create($data)),
+                    ])->columns(2),
+                Section::make()
+                    ->schema([
+                        TextInput::make('name')
+                            ->required()
+                            ->live()
+                            ->maxLength(255),
+                        MarkdownEditor::make('description')
+                            ->required()
+                            ->columnSpanFull(),
+                    ]),
+                Section::make('Pricing')
+                    ->schema([
+                        TextInput::make('price')
+                            ->required()
+                            ->numeric()
+                            ->prefix('$'),
+                        TextInput::make('quantity')
+                            ->required()
+                            ->numeric(),
+                    ])->columns(2),
+                Section::make('Details')
+                    ->schema([
+                        Repeater::make('Attributes')
+                            ->schema([
+                                Select::make('attributes')
+                                    ->options(fn(Forms\Get $get) => Attribute::whereIn('category_id', [$get('../../category_id'), 'null'])->pluck('name', 'id'))
+                                    ->disabled(fn(Forms\Get $get): bool => !filled($get('../../category_id')))
+                                    ->live()
+                                    ->searchable()
+                                    ->required(),
+                                Select::make('values')
+                                    ->options(fn(Forms\Get $get) => AttributeValue::where('attribute_id', $get('attributes'))->pluck('name', 'id'))
+                                    ->disabled(fn(Forms\Get $get): bool => !filled($get('../../category_id')))
+                                    ->searchable()
+                                    ->required(),
+                            ])->columns(2)
+                    ]),
+                Section::make('images')
+                    ->schema([
+                        SpatieMediaLibraryFileUpload::make('images')
+                            ->collection('product-images')
+                            ->columnSpan(2)
+                            ->multiple()
+                            ->image()
+                            ->imageEditor(),
+                    ]),
                 Toggle::make('is_featured')
-                    ->required(),
-                Select::make('attributes')
-                    ->options(Attribute::pluck('name', 'id'))
-                    ->multiple()
-                    ->searchable()
                     ->required(),
                 Actions::make([
                     Action::make('random_fill')

@@ -4,8 +4,15 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StockResource\Pages;
 use App\Filament\Resources\StockResource\RelationManagers;
+use App\Models\Attribute;
+use App\Models\AttributeValue;
+use App\Models\Product;
 use App\Models\Stock;
 use Filament\Forms;
+use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,15 +30,40 @@ class StockResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('quantity')
+                Select::make('product_id')
+                    ->label('Product')
+                    ->options(Product::pluck('name', 'id'))
+                    ->searchable()
+                    ->required()
+                    ->live()
+                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
+                        $set('attribute_values', [
+                            'name' => [
+                                AttributeValue::pluck('name', 'id')
+                            ],
+                            'value' => [
+                                AttributeValue::pluck('value', 'id')
+                            ],
+                        ]);
+                        // dd($get());
+                    }),
+                TextInput::make('quantity')
                     ->required()
                     ->numeric(),
-                Forms\Components\TextInput::make('product_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('details')
-                    ->required(),
-            ]);
+                Repeater::make('attribute_values')
+                    ->schema([
+                        Select::make('attribute_value_id')
+                            ->label('Attribute')
+                            ->options(function (Forms\Get $get) {
+                                $product = Product::findOrFail($get('../../product_id'));
+                                return AttributeValue::whereHas('attribute', fn($query) => $query->where('category_id', $product->category_id))->pluck('name', 'id');
+                            })
+                            ->required(),
+                    ])
+                    ->defaultItems(0)
+                    ->disableItemCreation()
+                    ->deletable(false)
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table

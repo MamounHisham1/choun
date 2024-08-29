@@ -14,7 +14,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
+// use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AttributeResource extends Resource
@@ -34,8 +34,8 @@ class AttributeResource extends Resource
                     ->label('Category')
                     ->options(Category::pluck('name', 'id'))
                     ->searchable(),
-                Repeater::make('members')
-                    ->columnSpanFull(2)
+                Repeater::make('attributuesValues')
+                    ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
                             ->required(),
@@ -52,6 +52,10 @@ class AttributeResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->searchable()
+                    ->label('Category')
+                    ->placeholder('N/A'),
             ])
             ->filters([
                 //

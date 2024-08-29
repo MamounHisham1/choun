@@ -44,3 +44,8 @@ Route::get('/admin/orders/{order}', [AdminOrderController::class, 'show']);
 Route::patch('/admin/orders/{order}', [AdminOrderController::class, 'update']);
 Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'approve']);
 Route::post('/admin/orders/{order}/cancel', [AdminOrderController::class, 'cancel']);
+
+Route::get('test', function() {
+    $attributes = App\Models\Attribute::whereAny('category_id', )->pluck('name', 'id');
+    dd($attributes);
+});
