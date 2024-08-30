@@ -39,7 +39,7 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Product Informations')
+                Section::make('Product Information')
                     ->schema([
                         Select::make('category_id')
                             ->label('Category')
@@ -81,20 +81,25 @@ class ProductResource extends Resource
                     ])->columns(2),
                 Section::make('Details')
                     ->schema([
-                        Repeater::make('Attributes')
+                        Repeater::make('attributes')
                             ->schema([
-                                Select::make('attributes')
-                                    ->options(fn(Forms\Get $get) => Attribute::whereIn('category_id', [$get('../../category_id'), 'null'])->pluck('name', 'id'))
+                                Select::make('attribute_id')
+                                    ->label('Name')
+                                    ->options(fn(Forms\Get $get) => Attribute::where('category_id', $get('../../category_id'))->orWhere('category_id', null)->pluck('name', 'id'))
                                     ->disabled(fn(Forms\Get $get): bool => !filled($get('../../category_id')))
                                     ->live()
                                     ->searchable()
+                                    ->distinct()
                                     ->required(),
                                 Select::make('values')
-                                    ->options(fn(Forms\Get $get) => AttributeValue::where('attribute_id', $get('attributes'))->pluck('name', 'id'))
+                                    ->options(fn(Forms\Get $get) => AttributeValue::where('attribute_id', $get('attribute_id'))->pluck('name', 'id'))
                                     ->disabled(fn(Forms\Get $get): bool => !filled($get('../../category_id')))
+                                    ->multiple()
                                     ->searchable()
                                     ->required(),
-                            ])->columns(2)
+                            ])
+                            ->columns(2)
+                            ->distinct()
                     ]),
                 Section::make('images')
                     ->schema([

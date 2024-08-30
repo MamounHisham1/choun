@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Casts\Attribute as AttributeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -22,14 +23,14 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Category::class);
     }
 
-    public function images(): Attribute
+    public function images(): AttributeCast
     {
-        return Attribute::get(fn() => $this->getMedia('product-images'));
+        return AttributeCast::get(fn() => $this->getMedia('product-images'));
     }
 
-    public function imageUrl(): Attribute
+    public function imageUrl(): AttributeCast
     {
-        return Attribute::get(fn() => $this->getMedia('product-images')->first()?->getUrl() ?? 'https://random.imagecdn.app/261/261');
+        return AttributeCast::get(fn() => $this->getMedia('product-images')->first()?->getUrl() ?? 'https://random.imagecdn.app/261/261');
     }
 
     public function brand()
@@ -40,5 +41,14 @@ class Product extends Model implements HasMedia
     public function stocks(): HasMany
     {
         return $this->hasMany(Stock::class);
+    }
+
+    public function attributes(): BelongsToMany
+    {
+        return $this->belongsToMany(Attribute::class)
+            ->withPivot('values')
+            ->withCasts([
+                'values' => 'json'
+            ]);
     }
 }
