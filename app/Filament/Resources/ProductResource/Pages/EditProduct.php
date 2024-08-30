@@ -20,17 +20,28 @@ class EditProduct extends EditRecord
     }
 
     public function afterFill()
-    {  
+    {
         $product = Product::find($this->data['id']);
-        $test = [];
-        foreach($product->attributes as $attribute) {
-            $test[] = [
+        $attributes = [];
+        foreach ($product->attributes as $attribute) {
+            $attributes[] = [
                 'product_id' => $attribute->pivot->product_id,
                 'attribute_id' => $attribute->pivot->attribute_id,
                 'values' => json_decode($attribute->pivot->values),
             ];
         }
-        $this->data['attributes'] = $test;
+        $this->data['attributes'] = $attributes;
         return $this->data;
+    }
+
+    public function mutateFormDataBeforeSave(array $data): array
+    {
+        $product = $this->getRecord();
+        foreach ($data['attributes'] as $attribute) {
+            $product->attributes()->syncWithPivotValues($attribute['attribute_id'], [
+                'values' => json_decode($attribute['values'])
+            ]);
+        }
+        dd($product->attributes[1]);
     }
 }
