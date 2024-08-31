@@ -110,8 +110,7 @@ class ProductResource extends Resource
                             ->image()
                             ->imageEditor(),
                     ]),
-                Toggle::make('is_featured')
-                    ->required(),
+                Toggle::make('is_featured'),
                 Actions::make([
                     Action::make('random_fill')
                         ->label('Random Fill')

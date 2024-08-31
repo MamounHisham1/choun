@@ -37,11 +37,13 @@ class EditProduct extends EditRecord
     public function mutateFormDataBeforeSave(array $data): array
     {
         $product = $this->getRecord();
+        $product->attributes()->sync([]);
         foreach ($data['attributes'] as $attribute) {
-            $product->attributes()->syncWithPivotValues($attribute['attribute_id'], [
-                'values' => json_decode($attribute['values'])
+            $product->attributes()->attach($attribute['attribute_id'], [
+                'values' => json_encode($attribute['values'])
             ]);
         }
-        dd($product->attributes[1]);
+        unset($data['attributes']);
+        return $data;
     }
 }
