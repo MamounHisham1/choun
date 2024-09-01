@@ -21,8 +21,8 @@
                             <div class="product-image-slider product-image-slider-5">
                                 @foreach ($product->images as $image)
                                     <figure class="border-radius-10">
-                                        <a class="glightbox" href="{{ $image->getUrl() }}"><img src="{{ $image->getUrl() }}"
-                                                alt="kidify" /></a>
+                                        <a class="glightbox" href="{{ $image->getUrl() }}"><img
+                                                src="{{ $image->getUrl() }}" alt="kidify" /></a>
                                     </figure>
                                 @endforeach
                             </div>
@@ -60,29 +60,19 @@
                                 {{ $product->description }}
                             </p>
                         </div>
-                        <div class="block-color">
-                            <span>Color:</span>
-                            <label>Navy</label>
-                            <div class="list-colors">
-                                <div class="box-colors">
-                                    <div class="item-color color-1"></div>
-                                    <div class="item-color color-2 active"></div>
-                                    <div class="item-color color-3"></div>
-                                </div>
+                        @foreach ($attributes as $attribute)
+                            <div class="block-color d-flex gap-2">
+                                <span>{{ $attribute->pivot->attribute_id->name }}:</span>
+                                @foreach ($attribute->pivot->values as $value)
+                                    <div class="d-flex gap-3">
+                                        <x-forms.radio name="{{ $attribute->pivot->attribute_id->name }}"
+                                            value="{{ $value->id }}">
+                                            {{ $value->name }}
+                                        </x-forms.radio>
+                                    </div>
+                                @endforeach
                             </div>
-                        </div>
-                        <div class="block-size">
-                            <span>Size:</span>
-                            <label>S</label>
-                            <div class="box-list-sizes">
-                                <div class="list-sizes">
-                                    <span class="item-size out-stock">XS</span><span
-                                        class="item-size active">S</span><span class="item-size">M</span><span
-                                        class="item-size">XL</span>
-                                </div>
-                                <a class="text-17-medium link-underline" href="#">Size Guide</a>
-                            </div>
-                        </div>
+                        @endforeach
                         <div class="alert alert-success shop-alert d-none" id="success-alert"></div>
                         <div class="alert alert-danger shop-alert d-none" id="error-alert"></div>
                         <div class="block-quantity">

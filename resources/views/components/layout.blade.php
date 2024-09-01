@@ -24,6 +24,47 @@
     <link rel="stylesheet" type="text/css" href="/assets/choun/assets/css/main.css">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/choun/assets/imgs/.template/favicon.svg">
     <link href="/assets/choun/assets/css/style.css?v=1.0.0" rel="stylesheet">
+    <style>
+        .radio-badge {
+            display: inline-block;
+            /* padding: 3px 6px; */
+            /* border-radius: 50px; */
+            /* border: 2px solid trans parent; */
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .radio-badge:hover {
+            background-color: #b0b0b0;
+            color: #fff;
+            border-color: #8a8a8a;
+        }
+
+        .radio-badge input[type="radio"] {
+            display: none;
+        }
+
+        .radio-badge input[type="radio"]:checked+.badge-content {
+            background-color: #b0b0b0;
+            color: #fff;
+            border-color: #8a8a8a;
+        }
+
+        .badge-content {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 50px;
+            border: 2px solid #6c757d;
+            transition: all 0.3s ease;
+        }
+
+        .badge-icon {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    </style>
     @stack('css')
     <title>Home 16 - Electronic - Multipurpose Startup SaaS HTML Template</title>
 </head>
@@ -66,7 +107,6 @@
     @stack('scripts')
 
     <script>
-
         // Add to cart
         $(".add-to-cart").click(function(e) {
             $(this).attr('disabled', true);

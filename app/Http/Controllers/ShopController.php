@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attribute;
+use App\Models\AttributeValue;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -12,7 +13,6 @@ class ShopController extends Controller
 {
     public function index()
     {
-        // $attributes = Attribute::all();
         $brands = Brand::all()->splice(1);
         $products = Product::latest()->paginate(9);
         $categories = Category::has('products', '>', 0)->get();
@@ -20,15 +20,19 @@ class ShopController extends Controller
             'products' => $products,
             'categories' => $categories,
             'brands' => $brands,
-            // 'attributes' => $attributes,
         ]);
     }
 
     public function show(Product $product)
     {
-        
+        $attributes = $product->attributes;
+        $attributes->map(function($attribute) {
+            $attribute->pivot->attribute_id = Attribute::find($attribute->pivot->attribute_id);
+            $attribute->pivot->values = AttributeValue::find(json_decode($attribute->pivot->values));
+        });
         return view('show-product', [
             'product' => $product,
+            'attributes' => $attributes,
         ]);
     }
 }
