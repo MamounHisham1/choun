@@ -46,6 +46,6 @@ Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'appr
 Route::post('/admin/orders/{order}/cancel', [AdminOrderController::class, 'cancel']);
 
 Route::get('test', function() {
-    $attributes = App\Models\Attribute::whereAny('category_id', )->pluck('name', 'id');
-    dd($attributes);
+    $attributes = App\Models\Attribute::create(['name' => 'Test', 'category_id' => 1]);
+    dd($attributes->getSlugOptions());
 });
