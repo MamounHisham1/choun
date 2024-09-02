@@ -64,7 +64,7 @@
                             <div class="block-color d-flex gap-2">
                                 <span>{{ $attribute->pivot->attribute_id->name }}:</span>
                                 @foreach ($attribute->pivot->values as $value)
-                                    <div class="d-flex gap-3">
+                                    <div class="d-flex gap-1">
                                         <x-forms.radio name="{{ $attribute->pivot->attribute_id->name }}"
                                             value="{{ $value->id }}">
                                             {{ $value->name }}

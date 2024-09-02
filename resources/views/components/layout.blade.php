@@ -27,9 +27,13 @@
     <style>
         .radio-badge {
             display: inline-block;
-            /* padding: 3px 6px; */
-            /* border-radius: 50px; */
-            /* border: 2px solid trans parent; */
+            padding: `
+            
+            
+            
+            ;
+            border-radius: 50px;
+            border: 2px solid transparent;
             transition: all 0.3s ease;
             cursor: pointer;
             font-size: 1rem;
@@ -37,9 +41,8 @@
         }
 
         .radio-badge:hover {
-            background-color: #b0b0b0;
-            color: #fff;
-            border-color: #8a8a8a;
+            background-color: #f8f9fa;
+            border-color: #6c757d;
         }
 
         .radio-badge input[type="radio"] {
