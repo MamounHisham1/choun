@@ -4,6 +4,7 @@ namespace App;
 
 enum OrderStatus: string
 {
+    case Draft = 'draft';
     case Pending = 'pending';
     case Approved = 'approved';
     case Shipped = 'shipped';

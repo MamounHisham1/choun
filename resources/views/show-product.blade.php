@@ -60,6 +60,7 @@
                                 {{ $product->description }}
                             </p>
                         </div>
+                        <button id="btn">Hello</button>
                         @foreach ($attributes as $attribute)
                             <div class="block-color d-flex gap-2">
                                 <span>{{ $attribute->pivot->attribute_id->name }}:</span>
@@ -742,4 +743,18 @@
             </div>
         </div>
     </section>
+
+    @push('scripts')
+        <script>
+            $(function () {
+                $("#btn").click(function(e) {
+                    e.preventDefault();
+                    {{ $attributes }}.forEach(element => {
+                        console.log(element);
+                    });
+                });
+                
+            });
+        </script>
+    @endpush
 </x-layout>

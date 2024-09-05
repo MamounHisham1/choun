@@ -13,7 +13,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/shop', [ShopController::class, 'index']);
 Route::get('/shop/{product}/show', [ShopController::class, 'show']);
@@ -23,7 +23,7 @@ Route::post('/add-to-cart/{product}', [CartController::class, 'store']);
 
 Route::post('/add-to-wishlist/{product}', WishlistController::class);
 
-Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout', [CheckoutController::class, 'store']);
 Route::post('/checkout/apply-coupon', [CheckoutController::class, 'applyCoupon']);
 
@@ -46,6 +46,5 @@ Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'appr
 Route::post('/admin/orders/{order}/cancel', [AdminOrderController::class, 'cancel']);
 
 Route::get('test', function() {
-    $attributes = App\Models\Attribute::create(['name' => 'Test', 'category_id' => 1]);
-    dd($attributes->getSlugOptions());
+    
 });
