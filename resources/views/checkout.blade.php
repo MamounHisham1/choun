@@ -57,6 +57,9 @@
             }
         </style>
     @endpush
+    @if (Session::has('message'))
+        <x-admin.alert>{{ Session::get('message') }}</x-admin.alert>
+    @endif
     <div class="section block-breadcrumb">
         <div class="container">
             <div class="breadcrumbs">
@@ -284,17 +287,7 @@
                                     <div class="list-radio">
                                         <div class="item-radio">
                                             <label>
-                                                <input type="radio" name="payment" />Direct bank
-                                                transfer
-                                            </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info">
-                                                Please send a check to Store Name, Store Street,
-                                                Store Town, Store State / County, Store Postcode.
-                                            </p>
-                                        </div>
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="payment" checked="checked" />Cash on
+                                                <input type="radio" name="payment" value="cash" checked="checked" />Cash on
                                                 delivery
                                             </label>
                                             <p class="body-p2 neutral-medium-dark extra-info active">
@@ -304,17 +297,8 @@
                                         </div>
                                         <div class="item-radio">
                                             <label>
-                                                <input type="radio" name="payment" />Credit Card
+                                                <input type="radio" name="payment" value="stripe" />Credit Card
                                                 (Stripe)
-                                            </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info">
-                                                Please send a check to Store Name, Store Street,
-                                                Store Town, Store State / County, Store Postcode.
-                                            </p>
-                                        </div>
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="payment" />Paypal
                                             </label>
                                             <p class="body-p2 neutral-medium-dark extra-info">
                                                 Please send a check to Store Name, Store Street,

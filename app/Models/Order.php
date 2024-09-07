@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\OrderStatus;
+use App\PaymentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,7 @@ class Order extends Model
 
     protected $casts = [
         'status' => OrderStatus::class,
+        'payment_status' => PaymentStatus::class,
     ];
 
     public function orderLines()

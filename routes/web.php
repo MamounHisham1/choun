@@ -12,6 +12,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -24,6 +25,8 @@ Route::post('/add-to-cart/{product}', [CartController::class, 'store']);
 Route::post('/add-to-wishlist/{product}', WishlistController::class);
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/checkout/{order}/success', [CheckoutController::class, 'success'])->name('success');
+Route::get('/checkout/{order}/cancel', [CheckoutController::class, 'cancel'])->name('cancel');
 Route::post('/checkout', [CheckoutController::class, 'store']);
 Route::post('/checkout/apply-coupon', [CheckoutController::class, 'applyCoupon']);
 
@@ -45,6 +48,6 @@ Route::patch('/admin/orders/{order}', [AdminOrderController::class, 'update']);
 Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'approve']);
 Route::post('/admin/orders/{order}/cancel', [AdminOrderController::class, 'cancel']);
 
-Route::get('test', function() {
-    
+Route::any('test/{order}/success', function(Request $request, Order $order) {
+    dd($order);
 });
