@@ -110,7 +110,14 @@ class ProductResource extends Resource
                             ->image()
                             ->imageEditor(),
                     ]),
-                Toggle::make('is_featured'),
+                Section::make('visibility')
+                    ->schema([
+                        Toggle::make('is_featured'),
+                        Toggle::make('is_published')
+                            ->default(true),
+                    ])
+                    ->columns(2)
+                    ->columnSpan(1),
                 Actions::make([
                     Action::make('random_fill')
                         ->label('Random Fill')
@@ -120,7 +127,7 @@ class ProductResource extends Resource
                             $data = Product::factory()->make()->toArray();
                             $livewire->form->fill($data);
                         })
-                ])
+                ])->columnSpanFull(1)
 
             ]);
     }

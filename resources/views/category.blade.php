@@ -14,7 +14,7 @@
                                         </div>
                                         <div class="cardInfo"><a href="/shop/categories/{{ $category->id }}">
                                                 <h4 class="cardTitle">{{ $category->name }}
-                                                    ({{ $category->products->count() }})
+                                                    ({{ $category->products()->where('is_published', true)->count() }})
                                                 </h4>
                                             </a></div>
                                     </div>

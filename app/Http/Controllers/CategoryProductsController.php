@@ -11,8 +11,8 @@ class CategoryProductsController extends Controller
      */
     public function __invoke(Category $category)
     {   
-        $categories = Category::with('products')->has('products', '>', 0)->latest()->get();
-        $products = $category->products()->paginate(12);
+        $categories = Category::with('products')->whereHas('products', fn($query) => $query->where('is_published', true))->has('products', '>', 0)->latest()->get();
+        $products = $category->products()->where('is_published', true)->paginate(12);
         return view('category', [
             'categories' => $categories,
             'products' => $products,

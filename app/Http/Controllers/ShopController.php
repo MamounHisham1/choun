@@ -14,7 +14,7 @@ class ShopController extends Controller
     public function index()
     {
         $brands = Brand::all()->splice(1);
-        $products = Product::latest()->paginate(9);
+        $products = Product::where('is_published', true)->paginate(9);
         $categories = Category::has('products', '>', 0)->get();
         return view('shop', [
             'products' => $products,

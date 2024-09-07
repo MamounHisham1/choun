@@ -16,13 +16,13 @@ class HomeController extends Controller
      */
     public function __invoke()
     {   
-        $bestProducts = Product::find(OrderLine::selectRaw('product_id,sum(quantity) as most_products')
+        $bestProducts = Product::where('is_published', true)->find(OrderLine::selectRaw('product_id,sum(quantity) as most_products')
             ->groupBy('product_id')
             ->orderByDesc('most_products')
             ->limit(8 * 4)
             ->pluck('product_id'));
-        $latestProducts = Product::latest()->limit(8 * 3)->get();
-        $featuredProducts = Product::latest()->get()->where('is_featured', true);
+        $latestProducts = Product::where('is_published', true)->latest()->limit(8 * 3)->get();
+        $featuredProducts = Product::where('is_published', true)->latest()->get()->where('is_featured', true);
 
         $categories = HomeSetting::where('key', 'home_categories')->first()->json_value ?? [];
         $categories = array_map(function ($category) {
