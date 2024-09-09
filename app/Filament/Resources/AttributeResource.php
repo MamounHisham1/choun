@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class AttributeResource extends Resource
 {
     protected static ?string $model = Attribute::class;
+    protected static ?int $navigationSort = 21;
+
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

@@ -21,7 +21,7 @@ class ShopSettings extends Page
     use InteractsWithForms;
     protected static ?string $navigationIcon = 'heroicon-o-cog';
 
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 60;
 
     protected static string $view = 'filament.pages.shop-settings';
 
