@@ -1,4 +1,3 @@
-
 <div class="box-popup-preview"><a class="btn-close-popup" href="#"><img
     src="assets/imgs/template/icons/close-popup.svg" alt="kidify"></a>
 <div class="box-popup-content">
