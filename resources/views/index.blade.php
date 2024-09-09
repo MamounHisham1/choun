@@ -4,32 +4,25 @@
     @endif
     <section class="section icon-box-type1 wow fadeInUp">
         <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-between">
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="assets/imgs/page/homepage3/ship.svg" alt="Guza">
+                        <div class="item-image"> <img src="/assets/choun/assets/imgs/template/icons/shipping_world_wide.png" alt="Guza">
                         </div>
                         <div class="item-info"> <span class="text-18">Shipping Worldwide</span></div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="assets/imgs/page/homepage4/return.svg" alt="Guza">
+                        <div class="item-image"> <img src="/assets/choun/assets/imgs/template/icons/sixty_days_return.png" alt="Guza">
                         </div>
                         <div class="item-info"> <span class="text-18">60 - Days Returns</span></div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="assets/imgs/page/homepage4/payment.svg" alt="Guza"></div>
+                        <div class="item-image"> <img src="/assets/choun/assets/imgs/template/icons/security_payment.png" alt="Guza"></div>
                         <div class="item-info"> <span class="text-18">Security Payment</span></div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="assets/imgs/page/homepage4/cart.svg" alt="Guza">
-                        </div>
-                        <div class="item-info"> <span class="text-18">Order Tracking</span></div>
                     </div>
                 </div>
             </div>

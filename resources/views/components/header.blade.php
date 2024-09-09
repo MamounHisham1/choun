@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="header-logo"> <a class="d-flex" href="index.html"><img alt="luxride"
-                        src="/assets/imgs/template/logo.svg"></a></div>
+                        src="/assets/choun/assets/imgs/template/icons/logo.png"></a></div>
             <div class="header-account">
                 <a class="account-icon search" href="#">
                     <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"
@@ -128,105 +128,11 @@
                 <div class="mobile-menu-wrap mobile-header-border">
                     <nav>
                         <ul class="mobile-menu font-heading">
-                            <li class="has-children"><a class="active" href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Homepage - 1</a></li>
-                                    <li><a href="index-2.html">Homepage - 2</a></li>
-                                    <li><a href="index-3.html">Homepage - 3</a></li>
-                                    <li><a href="index-4.html">Homepage - 4</a></li>
-                                    <li><a href="index-5.html">Homepage - 5</a></li>
-                                    <li><a href="index-6.html">Homepage - 6</a></li>
-                                    <li><a href="index-7.html">Homepage - 7</a></li>
-                                    <li><a href="index-8.html">Homepage - 8</a></li>
-                                    <li><a href="index-9.html">Homepage - 9</a></li>
-                                    <li><a href="index-10.html">Homepage - 10</a></li>
-                                    <li><a href="index-11.html">Homepage - 11</a></li>
-                                    <li><a href="index-12.html">Homepage - 12</a></li>
-                                    <li><a href="index-13.html">Homepage - 13</a></li>
-                                    <li><a href="index-14.html">Homepage - 14</a></li>
-                                    <li><a href="index-15.html">Natural Skins</a></li>
-                                    <li><a href="index-16.html">Electronic</a></li>
-                                    <li><a href="index-17.html">Food Store</a></li>
-                                    <li><a href="index-18.html">Home Fashion 08</a></li>
-                                    <li><a href="index-19.html">Plants</a></li>
-                                    <li><a href="index-20.html">Bikes</a></li>
-                                    <li><a href="index-21.html">Baby Clothing</a></li>
-                                    <li><a href="index-22.html">Home Fashion 09</a></li>
-                                    <li><a href="index-23.html">Travel gear</a></li>
-                                    <li><a href="index-24.html">Coffee</a></li>
-                                    <li><a href="index-25.html">Home Fashion 07</a></li>
-                                    <li><a href="index-26.html">Shoes</a></li>
-                                    <li><a href="index-27.html">Phonecases</a></li>
-                                    <li><a href="index-28.html">Yoga Clothing</a></li>
-                                    <li><a href="index-29.html">Jewelry</a></li>
-                                    <li><a href="index-30.html">Socks</a></li>
-                                    <li><a href="index-31.html">Watch</a></li>
-                                    <li><a href="index-32.html">Book Store</a></li>
-                                    <li><a href="index-33.html">Glasses</a></li>
-                                    <li><a href="index-34.html">Jeans</a></li>
-                                </ul>
+                            <li class="has-children"><a class="active" href="/">Home</a>
                             </li>
-                            <li class="has-children"><a href="#">Shop</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop-left-filter.html">Shop - Left Filter</a></li>
-                                    <li><a href="shop-top-filter.html">Shop - Top Filter</a></li>
-                                    <li><a href="shop-canvas-filter.html">Shop - Canvas Filter</a></li>
-                                    <li><a href="shop-top-filter-showing.html">Shop - Top Filter Showing</a></li>
-                                    <li><a href="shop-show-category.html">Shop - Show Category Type1</a></li>
-                                    <li><a href="shop-show-category-2.html">Shop - Show Category Type 2</a></li>
-                                    <li><a href="shop-custom-banner.html">Shop - Custom Banner</a></li>
-                                    <li><a href="shop-load-more.html">Shop - Load More</a></li>
-                                    <li><a href="shop-infinity-scrolling.html">Shop - Infinity Scrolling</a></li>
-                                </ul>
+                            <li class="has-children"><a href="/shop">Shop</a>
                             </li>
-                            <li class="has-children"><a href="#">Products</a>
-                                <ul class="sub-menu">
-                                    <li><a href="product-single.html">Product Single 1</a></li>
-                                    <li><a href="product-single-2.html">Product Single 2</a></li>
-                                    <li><a href="product-single-3.html">Product Single 3</a></li>
-                                    <li><a href="product-single-4.html">Product Single 4</a></li>
-                                    <li><a href="product-single-5.html">Product Single 5</a></li>
-                                    <li><a href="product-single-6.html">Product Single 6</a></li>
-                                    <li><a href="product-single-7.html">Product Single 7</a></li>
-                                    <li><a href="product-single-8.html">Product Single 8</a></li>
-                                    <li><a href="product-single-9.html">Product Single 9</a></li>
-                                    <li><a href="product-single-10.html">Product Single 10</a></li>
-                                    <li><a href="product-single-11.html">Product Single 11</a></li>
-                                    <li><a href="product-single-12.html">Product Single 12</a></li>
-                                    <li><a href="product-single-13.html">Product Single 13</a></li>
-                                    <li><a href="product-single-14.html">Product Single 14</a></li>
-                                    <li><a href="product-single-15.html">Product Single 15</a></li>
-                                    <li><a href="product-single-16.html">Product Single 16</a></li>
-                                    <li><a href="product-single-17.html">Product Single 17</a></li>
-                                    <li><a href="product-single-18.html">Product Single 18</a></li>
-                                    <li><a href="product-single-19.html">Product Single 19</a></li>
-                                    <li><a href="product-single-20.html">Product Single 20</a></li>
-                                    <li><a href="product-single-21.html">Product Single 21</a></li>
-                                    <li><a href="product-single-22.html">Product Single 22</a></li>
-                                    <li><a href="product-single-23.html">Product Single 23</a></li>
-                                    <li><a href="product-single-24.html">Product Single 24</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-children"><a href="service-grid.html">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="cart.html">Your Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="store-location.html">Store Location</a></li>
-                                    <li><a href="about-us-1.html">About Us</a></li>
-                                    <li><a href="about-us-2.html">About Us 2</a></li>
-                                    <li><a href="lookbook.html">Lookbook 1</a></li>
-                                    <li><a href="lookbook-2.html">Lookbook 2</a></li>
-                                    <li><a href="lookbook-3.html">Lookbook 3</a></li>
-                                    <li><a href="faq.html">FAQs page</a></li>
-                                    <li><a href="store-location.html">Store Locations</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="carrers.html">Job and Carrers</a></li>
-                                    <li><a href="custome-service.html">Custome Services</a></li>
-                                    <li><a href="maintenance.html">Maintenance</a></li>
-                                    <li><a href="comming-soon.html">Comming soon</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-children"><a href="blog.html">Blog</a>
+                            <li class="has-children"><a href="/blog">Blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog-grid.html">Blog Grid</a></li>
                                     <li><a href="blog-masonry.html">Blog Grid 2</a></li>
@@ -234,7 +140,6 @@
                                     <li><a href="blog-single.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Elements</a></li>
                         </ul>
                     </nav>
                 </div>
