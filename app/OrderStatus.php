@@ -30,6 +30,7 @@ enum OrderStatus: string
             self::Canceled => 'danger',
             self::Shipped => 'primary',
             self::Arrived => 'gray',
+            default => '',
         };
     }
 

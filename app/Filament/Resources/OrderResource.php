@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
+use App\Filament\Resources\OrderResource\RelationManagers\OrderLinesRelationManager;
 use App\Models\Order;
 use App\OrderStatus;
 use Filament\Forms;
@@ -11,6 +12,8 @@ use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -38,6 +41,7 @@ class OrderResource extends Resource
                     ->required(),
                 Section::make('Shipping Address')
                     ->relationship('shippingAddress')
+                    ->columns(2)
                     ->schema([
                         TextInput::make('first_name')
                             ->required(),
@@ -47,14 +51,12 @@ class OrderResource extends Resource
                             ->required(),
                         TextInput::make('street')
                             ->required(),
-                        TextInput::make('apartment')
-                            ->required(),
+                        TextInput::make('apartment'),
                         TextInput::make('phone')
                             ->required(),
                         MarkdownEditor::make('note')
-                            ->required()
                             ->columnSpanFull(),
-                    ])->columns(2)
+                    ])
             ]);
     }
 
@@ -126,10 +128,35 @@ class OrderResource extends Resource
             ]);
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('status')
+                    ->badge()
+                    ->color(fn($state) => $state->color()),
+                \Filament\Infolists\Components\Section::make('Shipping Address')
+                    ->relationship('shippingAddress')
+                    ->columns(2)
+                    ->schema([
+                        TextEntry::make('first_name'),
+                        TextEntry::make('last_name'),
+                        TextEntry::make('city'),
+                        TextEntry::make('street'),
+                        TextEntry::make('apartment')
+                            ->placeholder('N\A'),
+                        TextEntry::make('phone'),
+                        TextEntry::make('note')
+                            ->placeholder('N\A')
+                            ->columnSpanFull(),
+                    ]),
+            ]);
+    }
+
     public static function getRelations(): array
     {
         return [
-            //
+            OrderLinesRelationManager::make(),
         ];
     }
 
@@ -137,9 +164,9 @@ class OrderResource extends Resource
     {
         return [
             'index' => Pages\ListOrders::route('/'),
-            // 'create' => Pages\CreateOrder::route('/create'),
+            'create' => Pages\CreateOrder::route('/create'),
             'view' => Pages\ViewOrder::route('/{record}'),
-            // 'edit' => Pages\EditOrder::route('/{record}/edit'),
+            'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
     }
 }

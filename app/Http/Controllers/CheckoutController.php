@@ -99,8 +99,9 @@ class CheckoutController extends Controller
 
         // If order payment cash, complete order.
         if ($request->payment == 'cash') {
-            $order->status = OrderStatus::Pending;
-            $order->payment_status = PaymentStatus::Pending;
+            $order->update([
+                'status' => OrderStatus::Pending,
+            ]);
 
             LaraCart::destroyCart();
             session()->flash('message', 'Your order has been sent successfully.');
@@ -136,8 +137,10 @@ class CheckoutController extends Controller
 
     public function success(Order $order)
     {
-        $order->status = OrderStatus::Approved;
-        $order->payment_status = PaymentStatus::Completed;
+        $order->update([
+            'status' => OrderStatus::Approved,
+            'payment_status' => PaymentStatus::Completed,
+        ]);
 
         LaraCart::destroyCart();
         session()->flash('message', 'Your order has been sent successfully.');
@@ -147,12 +150,14 @@ class CheckoutController extends Controller
 
     public function cancel(Order $order)
     {
-        $order->status = OrderStatus::Canceled;
-        $order->payment_status = PaymentStatus::Canceled;
+        $order->update([
+            'status' => OrderStatus::Canceled,
+            'payment_status' => PaymentStatus::Canceled,
+        ]);
 
         session()->flash('message', 'Something went wrong, please try again.');
 
-        return redirect('/');
+        return redirect('/checkout');
     }
 
     public function applyCoupon(Request $request)
