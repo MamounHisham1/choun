@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="header-logo"> <a class="d-flex" href="index.html"><img alt="luxride"
-                        src="/assets/choun/assets/imgs/template/icons/logo.png"></a></div>
+                        src="/assets/imgs/template/icons/logo.png"></a></div>
             <div class="header-account">
                 <a class="account-icon search" href="#">
                     <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"

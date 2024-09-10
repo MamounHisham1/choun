@@ -148,6 +148,7 @@ class ProductResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\ToggleColumn::make('is_featured'),
+                Tables\Columns\ToggleColumn::make('is_published'),
                 Tables\Columns\TextColumn::make('category.name')
                     ->numeric()
                     ->sortable(),

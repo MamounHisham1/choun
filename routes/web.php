@@ -35,19 +35,6 @@ Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::view('/account', 'account');
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
-Route::resource('/admin/products', AdminProductController::class);
-Route::resource('/admin/categories', AdminCategoryController::class);
-
-Route::get('/admin/orders', [AdminOrderController::class, 'index']);
-Route::get('/admin/orders/{order}', [AdminOrderController::class, 'show']);
-Route::patch('/admin/orders/{order}', [AdminOrderController::class, 'update']);
-Route::post('/admin/orders/{order}/approve', [AdminOrderController::class, 'approve']);
-Route::post('/admin/orders/{order}/cancel', [AdminOrderController::class, 'cancel']);
-
 Route::any('test/{order}/success', function(Request $request, Order $order) {
     dd($order);
 });

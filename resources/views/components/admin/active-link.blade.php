@@ -1,1 +1,0 @@
-<li class="breadcrumb-item"><a {{ $attributes }}>{{ $slot }}</a></li>

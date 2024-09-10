@@ -1,1 +1,0 @@
-<h4 class="card-title mb-2">{{ $slot }}</h4>

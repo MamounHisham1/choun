@@ -58,7 +58,7 @@
         </style>
     @endpush
     @if (Session::has('message'))
-        <x-admin.alert>{{ Session::get('message') }}</x-admin.alert>
+        <x-alert>{{ Session::get('message') }}</x-alert>
     @endif
     <div class="section block-breadcrumb">
         <div class="container">

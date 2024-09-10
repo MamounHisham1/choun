@@ -1,1 +1,0 @@
-<h3 class="card-text font-bold text-primary">{{ $slot }}</h3>

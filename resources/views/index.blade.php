@@ -1,27 +1,27 @@
 <x-layout>
     @if (Session::has('message'))
-        <x-admin.alert>{{ Session::get('message') }}</x-admin.alert>
+        <x-alert>{{ Session::get('message') }}</x-alert>
     @endif
     <section class="section icon-box-type1 wow fadeInUp">
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="/assets/choun/assets/imgs/template/icons/shipping_world_wide.png" alt="Guza">
+                        <div class="item-image"> <img src="/assets/imgs/template/icons/shipping_world_wide.png" alt="Guza">
                         </div>
                         <div class="item-info"> <span class="text-18">Shipping Worldwide</span></div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="/assets/choun/assets/imgs/template/icons/sixty_days_return.png" alt="Guza">
+                        <div class="item-image"> <img src="/assets/imgs/template/icons/sixty_days_return.png" alt="Guza">
                         </div>
                         <div class="item-info"> <span class="text-18">60 - Days Returns</span></div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="/assets/choun/assets/imgs/template/icons/security_payment.png" alt="Guza"></div>
+                        <div class="item-image"> <img src="/assets/imgs/template/icons/security_payment.png" alt="Guza"></div>
                         <div class="item-info"> <span class="text-18">Security Payment</span></div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
+                                                    class="imageHover" src="{{ $product->images->last()->getUrl() }}"
                                                     alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
@@ -163,7 +163,7 @@
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
+                                                    class="imageHover" src="{{ $product->images->last()->getUrl() }}"
                                                     alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
@@ -212,7 +212,7 @@
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="assets/imgs/page/homepage16/sp1.png"
+                                                    class="imageHover" src="{{ $product->images->last()->getUrl() }}"
                                                     alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
@@ -288,7 +288,7 @@
             </div>
         </section>
     @endif
-    <section class="section banner-3-homepage16">
+    {{-- <section class="section banner-3-homepage16">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-30">
@@ -323,7 +323,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="section block-review block-testimonials-type4">
         <div class="container">
             <div class="text-center">

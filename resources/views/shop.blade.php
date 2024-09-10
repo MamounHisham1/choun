@@ -203,8 +203,8 @@
                                 <div class="cardProduct wow fadeInUp">
                                     <div class="cardImage">
                                         <a href="#"><img class="imageMain" src="{{ $product->image_url }}"
-                                                alt="guza" /><img class="imageHover"
-                                                src="{{ $product->image_url }}" alt="guza" /></a>
+                                                alt="choun" /><img class="imageHover"
+                                                src="{{ $product->images->last()->getUrl() }}" alt="choun" /></a>
                                         <div class="button-select">
                                             <a href="/shop/{{ $product->id }}/show">More Details</a>
                                         </div>
@@ -300,8 +300,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="assets/imgs/page/homepage1/product8.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>
@@ -373,8 +373,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="assets/imgs/page/homepage1/product7.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>
@@ -446,8 +446,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="assets/imgs/page/homepage1/product6.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>
@@ -519,8 +519,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="assets/imgs/page/homepage1/product5.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="assets/imgs/page/homepage1/product1-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>

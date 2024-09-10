@@ -1,1 +1,0 @@
-<p class="card-text text-muted">{{ $slot }}</p>
