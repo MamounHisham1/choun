@@ -15,7 +15,7 @@ class ListOrders extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All orders'),
+            'all' => Tab::make('All'),
             'pending' => Tab::make('Pending')
                 ->modifyQueryUsing(fn($query) => $query->where('status', \App\OrderStatus::Pending))
                 ->badge(fn() => Order::where('status', \App\OrderStatus::Pending)->count())

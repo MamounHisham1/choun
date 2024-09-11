@@ -29,7 +29,6 @@ class ShopSettings extends Page
     public function mount(): void
     {
         $settings = HomeSetting::all();
-        // dd($settings->firstWhere('key', 'home_first_banner')->json_value);
         $this->form->fill([
             'offers' => $settings->firstWhere('key', 'home_offers')?->json_value,
             'first_banner' => $settings->firstWhere('key', 'home_first_banner')?->json_value,

@@ -8,7 +8,7 @@
                             <li><a class="active" href="/">Home</a></li>
                             <li><a href="/shop">Shop</a></li>
                             <li><a href="/blog">Blog</a></li>
-                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/about">About Us</a></li>
                         </ul>
                     </nav>
                     <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span

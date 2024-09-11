@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\OrderResource\RelationManagers;
 
+use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -30,6 +32,7 @@ class OrderLinesRelationManager extends RelationManager
                             ->money()
                     )
                     ->money(),
+                Tables\Columns\TextColumn::make('total')->money(),
                 Tables\Columns\TextColumn::make('quantity'),
             ])
             ->filters([

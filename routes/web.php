@@ -24,6 +24,8 @@ Route::post('/add-to-cart/{product}', [CartController::class, 'store']);
 
 Route::post('/add-to-wishlist/{product}', WishlistController::class);
 
+
+
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/checkout/{order}/success', [CheckoutController::class, 'success'])->name('success');
 Route::get('/checkout/{order}/cancel', [CheckoutController::class, 'cancel'])->name('cancel');

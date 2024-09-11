@@ -6,11 +6,17 @@ use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Filament\Resources\OrderResource\RelationManagers\OrderLinesRelationManager;
 use App\Models\Order;
+use App\Models\Product;
 use App\OrderStatus;
+use App\PaymentStatus;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Wizard;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
@@ -33,30 +39,64 @@ class OrderResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('status')
-                    ->options(OrderStatus::getStatuses())
-                    ->searchable()
-                    ->native(false)
-                    ->columns('full')
-                    ->required(),
-                Section::make('Shipping Address')
-                    ->relationship('shippingAddress')
-                    ->columns(2)
-                    ->schema([
-                        TextInput::make('first_name')
-                            ->required(),
-                        TextInput::make('last_name')
-                            ->required(),
-                        TextInput::make('city')
-                            ->required(),
-                        TextInput::make('street')
-                            ->required(),
-                        TextInput::make('apartment'),
-                        TextInput::make('phone')
-                            ->required(),
-                        MarkdownEditor::make('note')
-                            ->columnSpanFull(),
-                    ])
+                Wizard::make([
+                    Wizard\Step::make('Shipping Address')
+                        ->schema([
+                            Fieldset::make()->schema([
+                                Select::make('status')
+                                    ->options(OrderStatus::getStatuses())
+                                    ->default(OrderStatus::Pending)
+                                    ->native(false)
+                                    ->required(),
+                                Select::make('payment_method')
+                                    ->default('cash')
+                                    ->native(false)
+                                    ->required(),
+                                Select::make('payment_status')
+                                    ->options(PaymentStatus::getStatuses())
+                                    ->default(PaymentStatus::Pending)
+                                    ->native(false)
+                                    ->required(),
+                            ])->columns(3),
+                            Section::make('Shipping Address')
+                                ->relationship('shippingAddress')
+                                ->columns(2)
+                                ->schema([
+                                    TextInput::make('first_name')
+                                        ->required(),
+                                    TextInput::make('last_name')
+                                        ->required(),
+                                    TextInput::make('city')
+                                        ->required(),
+                                    TextInput::make('street')
+                                        ->required(),
+                                    TextInput::make('apartment'),
+                                    TextInput::make('phone')
+                                        ->required(),
+                                    MarkdownEditor::make('note')
+                                        ->columnSpanFull(),
+                                ]),
+                        ]),
+                    Wizard\Step::make('Order Items')->schema([
+                        Repeater::make('orderLines')->schema([
+                            Select::make('product_id')
+                                ->options(Product::pluck('name', 'id'))
+                                ->live()
+                                ->required()
+                                ->afterStateUpdated(fn($state, Forms\Set $set) => $set('price', Product::find($state)->price)),
+                            TextInput::make('price')
+                                ->required()
+                                ->numeric()
+                                ->prefix('$')
+                                ->minValue(0),
+                            TextInput::make('quantity')
+                                ->required()
+                                ->numeric()
+                                ->default(1)
+                                ->minValue(1),
+                        ])->relationship('orderLines'),
+                    ]),
+                ])->columnSpanFull(),
             ]);
     }
 
@@ -94,6 +134,7 @@ class OrderResource extends Resource
                     ->searchable()
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\Action::make('approve')
