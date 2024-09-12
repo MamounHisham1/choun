@@ -37,8 +37,6 @@ class CheckoutController extends Controller
         // Validate the data
         $data = $request->validate([
             'email' => ['required', 'email'],
-            'first_name' => ['required'],
-            'last_name' => ['required'],
             'street' => ['required'],
             'city' => ['required'],
             'phone' => ['required', 'numeric'],

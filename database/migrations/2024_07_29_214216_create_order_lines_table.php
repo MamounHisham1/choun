@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id');
             $table->foreignId('product_id');
-            $table->foreignId('coupon_id')->nullable();
-            $table->float('quantity');
+            $table->integer('quantity');
             $table->float('price');
+            $table->json('options')->nullable();
             $table->timestamps();
         });
     }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('attribute_product', function (Blueprint $table) {
             $table->foreignId('attribute_id')->constrained()->cascadeOnDelete();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->json('values');
 
             $table->primary(['attribute_id', 'product_id']);
         });

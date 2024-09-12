@@ -24,7 +24,7 @@ class Order extends Model
         return $this->hasMany(OrderLine::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -32,6 +32,11 @@ class Order extends Model
     public function shippingAddress(): BelongsTo
     {
         return $this->belongsTo(ShippingAddress::class);
+    }
+
+    public function coupon(): BelongsTo
+    {
+        return $this->belongsTo(Coupon::class);
     }
 
     public function approve()

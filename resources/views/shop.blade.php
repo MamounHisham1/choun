@@ -204,7 +204,7 @@
                                     <div class="cardImage">
                                         <a href="#"><img class="imageMain" src="{{ $product->image_url }}"
                                                 alt="choun" /><img class="imageHover"
-                                                src="{{ $product->images->last()->getUrl() }}" alt="choun" /></a>
+                                                src="{{ $product->images->last()?->getUrl() }}" alt="choun" /></a>
                                         <div class="button-select">
                                             <a href="/shop/{{ $product->id }}/show">More Details</a>
                                         </div>

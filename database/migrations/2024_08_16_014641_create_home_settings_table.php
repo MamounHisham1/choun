@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('home_settings', function (Blueprint $table) {
             $table->id();
             $table->string('key');
-            $table->text('value')->nullable();
             $table->json('json_value')->nullable();
             $table->timestamps();
         });

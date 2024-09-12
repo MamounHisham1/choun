@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('attributes', function (Blueprint $table) {
-            $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
+        Schema::create('brands', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('image');
+            $table->timestamps();
         });
+
+        DB::table('brands')->insert(['name' => 'N/A', 'image' => 'N/A']);
     }
 
     /**
@@ -21,8 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('attributes', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('brands');
     }
 };
+

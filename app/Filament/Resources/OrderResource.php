@@ -62,10 +62,6 @@ class OrderResource extends Resource
                                 ->relationship('shippingAddress')
                                 ->columns(2)
                                 ->schema([
-                                    TextInput::make('first_name')
-                                        ->required(),
-                                    TextInput::make('last_name')
-                                        ->required(),
                                     TextInput::make('city')
                                         ->required(),
                                     TextInput::make('street')
@@ -104,7 +100,7 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('shippingAddress.first_name')
+                Tables\Columns\TextColumn::make('user.first_name')
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
@@ -176,12 +172,17 @@ class OrderResource extends Resource
                 TextEntry::make('status')
                     ->badge()
                     ->color(fn($state) => $state->color()),
-                \Filament\Infolists\Components\Section::make('Shipping Address')
-                    ->relationship('shippingAddress')
+                \Filament\Infolists\Components\Section::make('Customer Details')
+                    ->relationship('user')
                     ->columns(2)
                     ->schema([
                         TextEntry::make('first_name'),
                         TextEntry::make('last_name'),
+                    ]),
+                \Filament\Infolists\Components\Section::make('Shipping Address')
+                    ->relationship('shippingAddress')
+                    ->columns(2)
+                    ->schema([
                         TextEntry::make('city'),
                         TextEntry::make('street'),
                         TextEntry::make('apartment')

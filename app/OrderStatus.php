@@ -17,12 +17,12 @@ enum OrderStatus: string
             ->mapWithKeys(fn($case) => [$case->value => $case->name]);
     }
 
-    public function name()
+    public function name(): string
     {
         return ucfirst($this->value);
     }
 
-    public function color()
+    public function color(): string
     {
         return match($this) {
             self::Pending => 'warning',

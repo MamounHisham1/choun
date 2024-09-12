@@ -24,11 +24,6 @@ class OrderLine extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function coupon()
-    {
-        return $this->belongsTo(Coupon::class);
-    }
-
     public function total(): Attribute
     {
         return Attribute::make(

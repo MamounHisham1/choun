@@ -114,7 +114,7 @@
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="{{ $product->images->last()->getUrl() }}"
+                                                    class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
                                                     alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
@@ -163,7 +163,7 @@
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="{{ $product->images->last()->getUrl() }}"
+                                                    class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
                                                     alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
@@ -212,7 +212,7 @@
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="{{ $product->images->last()->getUrl() }}"
+                                                    class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
                                                     alt="guza"></a>
                                             <div class="button-select">
                                                 <a href="/shop/{{ $product->id }}/show">Select Options</a>
