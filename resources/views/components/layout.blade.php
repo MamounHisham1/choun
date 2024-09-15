@@ -40,11 +40,6 @@
             font-weight: bold;
         }
 
-        .radio-badge:hover {
-            background-color: #f8f9fa;
-            border-color: #6c757d;
-        }
-
         .radio-badge input[type="radio"] {
             display: none;
         }
@@ -105,7 +100,6 @@
     <script src="/assets/js/vendors/jquery.timepicker.min.js"></script>
     <script src="/assets/js/vendors/glightbox.min.js"></script>
     <script src="/assets/js/main.js?v=1.0.0"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @livewireScripts
     @stack('scripts')
 

@@ -1,5 +1,5 @@
 <label class="radio-badge">
-    <input {{ $attributes(['type' => "radio", 'name' => "options", 'value' => "option1"]) }}>
+    <input {{ $attributes(['type' => "radio"]) }}>
     <span class="badge-content">{{ $slot }}</span>
 </label>
 

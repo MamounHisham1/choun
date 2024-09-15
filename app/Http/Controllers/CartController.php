@@ -10,25 +10,18 @@ use LukePOLO\LaraCart\Facades\LaraCart;
 
 class CartController extends Controller
 {
-    public function store(Request $request, Product $product)
-    {
-        // Cart::addToCart($product, $request->quantity);
-        LaraCart::add(
-            $product->id,
-            $product->name,
-            $request->quantity,
-            $product->price,
-            ['color' => 'red', 'size' => 'XL'],
-        );
+    // public function store(Request $request, Product $product)
+    // {
+    //     // Cart::addToCart($product, $request->quantity);
 
-        $data = [
-            'status' => 200,
-            'message' => 'Product added to cart',
-            'cartItems' => Cart::getItems(),
-            'price' => Cart::getSubtotal(),
-        ];
+    //     $data = [
+    //         'status' => 200,
+    //         'message' => 'Product added to cart',
+    //         'cartItems' => Cart::getItems(),
+    //         'price' => Cart::getSubtotal(),
+    //     ];
 
-        return response()->json($data);
-    }
+    //     return response()->json($data);
+    // }
 
 }

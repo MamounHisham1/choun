@@ -25,11 +25,7 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
-        // $attributes = $product->attributes;
-        // $attributes->map(function($attribute) {
-        //     $attribute->pivot->attribute_id = Attribute::find($attribute->pivot->attribute_id);
-        //     $attribute->pivot->values = AttributeValue::find(json_decode($attribute->pivot->values));
-        // });
+        // $atE
         session()->flash('product', $product);
         return view('show-product', [
             'product' => $product,
