@@ -22,7 +22,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->back();
     }
 
     /**

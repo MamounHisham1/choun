@@ -178,6 +178,7 @@ class OrderResource extends Resource
                     ->schema([
                         TextEntry::make('first_name'),
                         TextEntry::make('last_name'),
+                        TextEntry::make('email'),
                     ]),
                 \Filament\Infolists\Components\Section::make('Shipping Address')
                     ->relationship('shippingAddress')

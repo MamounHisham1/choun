@@ -96,12 +96,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box-title-checkout mt-30">
+                        {{-- <div class="box-title-checkout mt-30">
                             <h4 class="mb-25">Billing Details</h4>
                             <h5 class="mb-20">Contact information</h5>
-                        </div>
+                        </div> --}}
                         <div class="box-form-checkout form-comment">
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="form-label" for="email">Email Address *</label>
                                 <input class="form-control" name="email" id="email" type="email"
                                     value="{{ Auth::user()?->email ?? old('email') }}" required />
@@ -112,11 +112,11 @@
                                     <input class="cb-left" type="checkbox" />Email me with
                                     news and offers
                                 </label>
-                            </div>
+                            </div> --}}
                             <h4 class="mt-32 mb-25">Shipping address</h4>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label class="form-label" for="firstname">First Name *</label>
                                         <input class="form-control" name="first_name" id="firstname" type="text"
                                             value="{{ Auth::user()?->first_name ?? old('first_name') }}" required />
@@ -133,7 +133,7 @@
                                         @error('last_name')
                                             <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -155,12 +155,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div
-                                        class="form-grouqui - x
-                                    Color: Navy
-                                    
-                                    Size: S
-                                    
-                                    0p">
+                                        class="form-group">
                                         <label class="form-label" for="towncity">Town / City *</label>
                                         <input class="form-control" name="city" id="towncity" type="text"
                                             value="{{ old('city') }}" required />
@@ -287,7 +282,8 @@
                                     <div class="list-radio">
                                         <div class="item-radio">
                                             <label>
-                                                <input type="radio" name="payment" value="cash" checked="checked" />Cash on
+                                                <input type="radio" name="payment" value="cash"
+                                                    checked="checked" />Cash on
                                                 delivery
                                             </label>
                                             <p class="body-p2 neutral-medium-dark extra-info active">
@@ -321,7 +317,14 @@
                                     </div>
                                 </div>
                                 <div class="box-button-checkout">
-                                    <button type="submit" class="btn btn-black" href="#">Place Order</button>
+                                    @guest
+                                        <a class="account-icon account btn btn-black" href="#">
+                                            Sign up first
+                                        </a>
+                                    @endguest
+                                    @auth
+                                        <button type="submit" class="btn btn-black" href="#">Place Order</button>
+                                    @endauth
                                 </div>
                             </div>
                         </div>
@@ -341,23 +344,32 @@
                     data: {
                         'coupon': code,
                         "_token": "{{ csrf_token() }}",
-                    },<div class="bg-[#FEEBC8] p-6 rounded-lg max-w-sm mx-auto">
-    <p class="text-sm text-gray-700 font-semibold">NEW ARRIVALS</p>
-    <h2 class="text-2xl font-bold text-gray-900 mt-2">MacBook Air</h2>
-    <h3 class="text-xl font-medium text-gray-900">M2 Chip</h3>
-    <div class="mt-4 relative">
-        <img src="https://via.placeholder.com/300x150.png" alt="MacBook Air" class="rounded-lg">
-    </div>
-    <button class="mt-4 bg-white text-black font-semibold py-2 px-4 border border-black rounded-lg">
-        Learn more
-    </button>
-</div>
+                    },
+                    <
+                    div class = "bg-[#FEEBC8] p-6 rounded-lg max-w-sm mx-auto" >
+                    <
+                    p class = "text-sm text-gray-700 font-semibold" > NEW ARRIVALS < /p> <
+                    h2 class = "text-2xl font-bold text-gray-900 mt-2" > MacBook Air < /h2> <
+                    h3 class = "text-xl font-medium text-gray-900" > M2 Chip < /h3> <
+                    div class = "mt-4 relative" >
+                    <
+                    img src = "https://via.placeholder.com/300x150.png"
+                    alt = "MacBook Air"
+                    class = "rounded-lg" >
+                    <
+                    /div> <
+                    button class =
+                    "mt-4 bg-white text-black font-semibold py-2 px-4 border border-black rounded-lg" >
+                    Learn more <
+                    /button> < /
+                    div >
 
                     success: function(data) {
                         $('#discounted').html(
                             `$${data['price'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);
                         $('#subtotal').css('text-decoration', 'line-through');
-                        $('#total').html(`$${data['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);
+                        $('#total').html(
+                            `$${data['total'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);
                     },
                     error: function() {
                         $('#discounted').html('');

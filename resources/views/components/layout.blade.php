@@ -111,94 +111,45 @@
 
     <script>
         // Add to cart
-        $(".add-to-cart").click(function(e) {
-            $(this).attr('disabled', true);
-            $(this).addClass('disabled');
-            const that = this;
-            $.ajax({
-                type: "POST",
-                url: "/add-to-cart/" + $(this).data('product'),
-                data: {
-                    quantity: $('#qty').val(),
-                    "_token": "{{ csrf_token() }}",
-                },
-                success: function(data) {
-                    $("#success-alert").html(data['message']);
-                    $("#success-alert").toggleClass("d-none");
-                    const cart = parseInt($("#cart-tag").html()) || 0;
-                    $("#cart-tag").html(cart + 1);
-                    setTimeout(() => {
-                        $("#success-alert").toggleClass("d-none");
-                    }, 2000);
-                    $('#cart-tag').addClass("number-tag");
-                    parseInt($("#cart-tag").html());
 
-                    // Update cart items and subtotal in the popup
-                    updateCartPopup(data.cartItems, data.subtotal);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    $("#error-alert").html("Product not found");
-                    $("#error-alert").toggleClass("d-none");
-                    setTimeout(() => {
-                        $("#error-alert").toggleClass("d-none");
-                    }, 2000);
-                },
-                complete: () => {
-                    $(that).removeAttr("disabled");
-                    $(that).removeClass('disabled');
-                },
-            });
-        });
+        // $(".add-to-cart").click(function(e) {
+        //     $(this).attr('disabled', true);
+        //     $(this).addClass('disabled');
+        //     const that = this;
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/add-to-cart/" + $(this).data('product'),
+        //         data: {
+        //             quantity: $('#qty').val(),
+        //             "_token": "{{ csrf_token() }}",
+        //         },
+        //         success: function(data) {
+        //             $("#success-alert").html(data['message']);
+        //             $("#success-alert").toggleClass("d-none");
+        //             const cart = parseInt($("#cart-tag").html()) || 0;
+        //             $("#cart-tag").html(cart + 1);
+        //             setTimeout(() => {
+        //                 $("#success-alert").toggleClass("d-none");
+        //             }, 2000);
+        //             $('#cart-tag').addClass("number-tag");
+        //             parseInt($("#cart-tag").html());
 
-        // Render cart items
-        function updateCartPopup(cartItems, subtotal) {
-            let cartHtml = '';
-            cartItems.forEach(item => {
-                cartHtml += `
-            <div class="item-cart">
-                <div class="item-cart-image"><img src="" alt="${item[0].name}"></div>
-                <div class="item-cart-info">
-                    <div class="item-cart-info-1"><a class="text-16-medium" href="#">${item[0].name}</a>
-                        <div class="box-info-size-color-product">
-                            <p class="box-color"><span class="body-p2 neutral-medium-dark">Color:</span><span
-                                    class="body-p2 neutral-dark">Navy</span></p>
-                            <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
-                                    class="body-p2 neutral-dark">S</span></p>
-                        </div>
-                        <p class="body-p2 d-block d-sm-none mb-8">${item[0].price}</p>
-                        <div class="box-form-cart">
-                            <div class="form-cart detail-qty"><span class="minus"></span>
-                                <input class="qty-val form-control" type="text" name="quantity"
-                                    value="${item[1]}" min="1"><span class="plus"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-cart-info-2">
-                        <p class="body-p2 d-none d-sm-block">${item[0].price * item[1]}</p><a class="btn-remove-cart"
-                            href="#"></a>
-                    </div>
-                </div>
-            </div>`;
-            });
-
-            if (cartItems.length > 0) {
-                cartHtml += `
-            <div class="d-flex align-items-center justify-content-between mt-25 mb-15">
-                <h6 class="neutral-medium-dark">Subtotal</h6>
-                <h6 class="neutral-dark">${subtotal}</h6>
-            </div>`;
-            } else {
-                cartHtml = `
-            <div class="box-empty-cart">
-                <div class="icon-empty-cart"><img src="assets/imgs/template/icons/empty-cart.svg" alt="Guza"></div>
-                <div class="info-empty-cart">
-                    <p class="text-17 neutral-medium-dark">Your cart is empty</p><a class="link-underline" href="#">Add from Wishlist</a>
-                </div>
-            </div>`;
-            }
-
-            $('.list-items-cart').html(cartHtml);
-        }
+        //             // Update cart items and subtotal in the popup
+        //             updateCartPopup(data.cartItems, data.subtotal);
+        //         },
+        //         error: function(jqXHR, textStatus, errorThrown) {
+        //             $("#error-alert").html("Product not found");
+        //             $("#error-alert").toggleClass("d-none");
+        //             setTimeout(() => {
+        //                 $("#error-alert").toggleClass("d-none");
+        //             }, 2000);
+        //         },
+        //         complete: () => {
+        //             $(that).removeAttr("disabled");
+        //             $(that).removeClass('disabled');
+        //         },
+        //     });
+        // });
 
         // Add to wishlist
         $(".add-to-wishlist").click(function(e) {

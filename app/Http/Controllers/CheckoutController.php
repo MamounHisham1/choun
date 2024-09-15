@@ -36,28 +36,19 @@ class CheckoutController extends Controller
     {
         // Validate the data
         $data = $request->validate([
-            'email' => ['required', 'email'],
             'street' => ['required'],
             'city' => ['required'],
             'phone' => ['required', 'numeric'],
         ]);
 
         $user = Auth::user();
+        
+        $data['user_id'] = $user->id;
 
-        // Check if the user is want to create an account
-        // TODO: All users should create an account before ordering
-        if (!$user && $request->has('create-account')) {
-            $request->validate([
-                'email' => ['unique:users,email'],
-            ]);
+        $request->has('note') ? $data['note'] = $request->note : $data['note'] = null;
+        
+        $request->has('apartment') ? $data['apartment'] = $request->apartment : $data['apartment'] = null;
 
-            $user = User::create([
-                ...$data,
-                'password' => '12345678'
-            ]);
-            Auth::login($user);
-        }
-        $data['user_id'] = $user?->id;
         $address = ShippingAddress::create($data);
 
         // Create the order
@@ -66,7 +57,7 @@ class CheckoutController extends Controller
             'status' => OrderStatus::Draft,
             'payment_method' => $request->payment,
             'payment_status' => PaymentStatus::Pending,
-            'user_id' => $user?->id,
+            'user_id' => $user->id,
             'shipping_address_id' => $address->id,
             'total' => LaraCart::total($formatted = false),
         ]);
