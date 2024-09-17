@@ -1,9 +1,8 @@
 <div class="box-popup-search ele-popup-search">
     <div class="box-search-overlay"></div>
     <div class="box-search-wrapper"><a class="btn-close-popup" href="#">
-            <svg class="icon-16 d-inline-flex align-items-center justify-content-center" fill="#111111"
-                stroke="#111111" width="24" height="24" viewbox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
+            <svg class="icon-16 d-inline-flex align-items-center justify-content-center" fill="#111111" stroke="#111111"
+                width="24" height="24" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                 </path>
             </svg></a>
@@ -20,23 +19,21 @@
                 <input class="form-control search-icon" type="text">
             </div>
         </form>
-        <div class="box-quick-search"><span class="text-17 neutral-medium-dark">Quick search:</span><a
-                class="text-17" href="#">T-Shirt</a><a class="text-17" href="#">Jeans</a><a
-                class="text-17" href="#">Mens</a></div>
+        <div class="box-quick-search"><span class="text-17 neutral-medium-dark">Quick search:</span><a class="text-17"
+                href="#">T-Shirt</a><a class="text-17" href="#">Jeans</a><a class="text-17"
+                href="#">Mens</a></div>
         <div class="box-products-search">
             <h6 class="text-18-medium mb-10">You May Also Like</h6>
             <div class="box-list-product-search">
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-1.png" alt="guza"><img
-                                    class="imageHover" src="assets/imgs/page/popup/product-5.png"
-                                    alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-1.png" alt="choun"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-5.png" alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
-                                    <svg class="d-inline-flex align-items-center justify-content-center"
-                                        width="28" height="28" viewbox="0 0 28 28"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="d-inline-flex align-items-center justify-content-center" width="28"
+                                        height="28" viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_116_452)">
                                             <path
                                                 d="M14.001 6.52898C16.35 4.41998 19.98 4.48998 22.243 6.75698C24.505 9.02498 24.583 12.637 22.479 14.993L13.999 23.485L5.52101 14.993C3.41701 12.637 3.49601 9.01898 5.75701 6.75698C8.02201 4.49298 11.645 4.41698 14.001 6.52898ZM20.827 8.16998C19.327 6.66798 16.907 6.60698 15.337 8.01698L14.002 9.21498L12.666 8.01798C11.091 6.60598 8.67601 6.66798 7.17201 8.17198C5.68201 9.66198 5.60701 12.047 6.98001 13.623L14 20.654L21.02 13.624C22.394 12.047 22.319 9.66498 20.827 8.16998Z"
@@ -49,8 +46,8 @@
                                             </clippath>
                                         </defs>
                                     </svg></a><a class="btn" href="#">
-                                    <svg class="d-inline-flex align-items-center justify-content-center"
-                                        width="24" height="24" viewbox="0 0 24 24" fill="none"
+                                    <svg class="d-inline-flex align-items-center justify-content-center" width="24"
+                                        height="24" viewbox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_200_1102)">
                                             <path
@@ -64,8 +61,8 @@
                                             </clippath>
                                         </defs>
                                     </svg></a><a class="btn preview-product" href="#">
-                                    <svg class="d-inline-flex align-items-center justify-content-center"
-                                        width="28" height="28" viewbox="0 0 28 28" fill=""
+                                    <svg class="d-inline-flex align-items-center justify-content-center" width="28"
+                                        height="28" viewbox="0 0 28 28" fill=""
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_91_73)">
                                             <path
@@ -89,9 +86,8 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-2.png" alt="guza"><img
-                                    class="imageHover" src="assets/imgs/page/popup/product-6.png"
-                                    alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-2.png" alt="choun"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-6.png" alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"
@@ -149,9 +145,8 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-3.png" alt="guza"><img
-                                    class="imageHover" src="assets/imgs/page/popup/product-7.png"
-                                    alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-3.png" alt="choun"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-7.png" alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"
@@ -209,9 +204,8 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-4.png" alt="guza"><img
-                                    class="imageHover" src="assets/imgs/page/popup/product-8.png"
-                                    alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-4.png" alt="choun"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-8.png" alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"

@@ -206,7 +206,7 @@
                                                 alt="choun" /><img class="imageHover"
                                                 src="{{ $product->images->last()?->getUrl() }}" alt="choun" /></a>
                                         <div class="button-select">
-                                            <a href="/shop/{{ $product->id }}/show">More Details</a>
+                                            <a href="/shop/{{ $product->slug }}">More Details</a>
                                         </div>
                                         <div class="box-quick-button">
                                             <a class="btn" href="#">
@@ -258,7 +258,7 @@
                                         </div>
                                     </div>
                                     <div class="cardInfo">
-                                        <a href="/shop/{{ $product->id }}/show">
+                                        <a href="/shop/{{ $product->slug }}">
                                             <h6 class="text-16-medium cardTitle">
                                                 {{ $product->name }}
                                             </h6>

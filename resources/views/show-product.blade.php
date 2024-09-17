@@ -45,11 +45,11 @@
                         </p>
                         <h3 class="mb-5">{{ $product->name }}</h3>
                         <div class="block-rating">
-                            <img src="/assets/imgs/template/icons/star-fill.svg" alt="Guza" /><img
-                                src="/assets/imgs/template/icons/star-fill.svg" alt="Guza" /><img
-                                src="/assets/imgs/template/icons/star-fill.svg" alt="Guza" /><img
-                                src="/assets/imgs/template/icons/star-fill.svg" alt="Guza" /><img
-                                src="/assets/imgs/template/icons/star-none.svg" alt="Guza" /><span
+                            <img src="/assets/imgs/template/icons/star-fill.svg" alt="choun" /><img
+                                src="/assets/imgs/template/icons/star-fill.svg" alt="choun" /><img
+                                src="/assets/imgs/template/icons/star-fill.svg" alt="choun" /><img
+                                src="/assets/imgs/template/icons/star-fill.svg" alt="choun" /><img
+                                src="/assets/imgs/template/icons/star-none.svg" alt="choun" /><span
                                 class="text-17 neutral-medium-dark">(5)</span>
                         </div>
                         <div class="block-price">
@@ -60,7 +60,7 @@
                                 {{ $product->description }}
                             </p>
                         </div>
-                        
+
                         <livewire:add-to-cart :$product />
 
                         <div class="block-shipping">
@@ -406,8 +406,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="/assets/imgs/page/homepage1/product8.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="/assets/imgs/page/homepage1/product1-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="/assets/imgs/page/homepage1/product1-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>
@@ -479,8 +479,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="/assets/imgs/page/homepage1/product7.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="/assets/imgs/page/homepage1/product2-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="/assets/imgs/page/homepage1/product2-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>
@@ -552,8 +552,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="/assets/imgs/page/homepage1/product6.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="/assets/imgs/page/homepage1/product1-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="/assets/imgs/page/homepage1/product1-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>
@@ -625,8 +625,8 @@
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="/assets/imgs/page/homepage1/product5.png"
-                                    alt="guza" /><img class="imageHover"
-                                    src="/assets/imgs/page/homepage1/product2-hover.png" alt="guza" /></a>
+                                    alt="choun" /><img class="imageHover"
+                                    src="/assets/imgs/page/homepage1/product2-hover.png" alt="choun" /></a>
                             <div class="button-select">
                                 <a href="#">Select Options</a>
                             </div>

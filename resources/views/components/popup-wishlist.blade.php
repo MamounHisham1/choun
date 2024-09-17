@@ -8,7 +8,7 @@
         <h5 class="mb-15">Your Wishlist</h5>
         <div class="box-products-cart">
             <div class="box-empty-cart d-none">
-                <div class="icon-empty-cart"><img src="assets/imgs/template/icons/empty-cart.svg" alt="Guza"></div>
+                <div class="icon-empty-cart"><img src="assets/imgs/template/icons/empty-cart.svg" alt="choun"></div>
                 <div class="info-empty-cart">
                     <p class="text-17 neutral-medium-dark">Your cart is empty</p><a class="link-underline"
                         href="#">Add from Wishlist</a>
@@ -17,9 +17,10 @@
             <div class="list-items-cart">
                 @foreach ($wishlistItems as $product)
                     <div class="item-cart">
-                        <div class="item-cart-image"><img src="assets/imgs/page/cart/sp.png" alt="Guza"></div>
+                        <div class="item-cart-image"><img src="assets/imgs/page/cart/sp.png" alt="choun"></div>
                         <div class="item-cart-info">
-                            <div class="item-cart-info-1"><a class="text-16-medium" href="#">{{ $product->name }}</a>
+                            <div class="item-cart-info-1"><a class="text-16-medium"
+                                    href="#">{{ $product->name }}</a>
                                 <div class="box-info-size-color-product">
                                     <p class="box-color"><span class="body-p2 neutral-medium-dark">Color:</span><span
                                             class="body-p2 neutral-dark">Navy</span></p>
@@ -32,8 +33,8 @@
                                 </div>
                             </div>
                             <div class="item-cart-info-2">
-                                <p class="body-p2 d-none d-sm-block">${{ $product->price }}</p><a class="btn-remove-cart"
-                                    href="#"></a>
+                                <p class="body-p2 d-none d-sm-block">${{ $product->price }}</p><a
+                                    class="btn-remove-cart" href="#"></a>
                             </div>
                         </div>
                     </div>
@@ -46,8 +47,8 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-1.png" alt="guza"><img class="imageHover"
-                                    src="assets/imgs/page/popup/product-5.png" alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-1.png" alt="choun"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-5.png" alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center" width="28"
@@ -104,8 +105,8 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/popup/product-2.png" alt="guza"><img class="imageHover"
-                                    src="assets/imgs/page/popup/product-6.png" alt="guza"></a>
+                                    src="assets/imgs/page/popup/product-2.png" alt="choun"><img class="imageHover"
+                                    src="assets/imgs/page/popup/product-6.png" alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"

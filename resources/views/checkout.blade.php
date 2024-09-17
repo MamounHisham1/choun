@@ -154,8 +154,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <div
-                                        class="form-group">
+                                    <div class="form-group">
                                         <label class="form-label" for="towncity">Town / City *</label>
                                         <input class="form-control" name="city" id="towncity" type="text"
                                             value="{{ old('city') }}" required />
@@ -212,12 +211,12 @@
                                         @foreach ($cartItems as $item)
                                             <div class="item-cart">
                                                 {{-- <div class="item-cart-image">
-                                                    <img src="" alt="Guza" />
+                                                    <img src="" alt="choun" />
                                                 </div> --}}
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
                                                         <a class="text-17-medium"
-                                                            href="/shop/{{ $item->id }}/show">{{ $item->name }}
+                                                            href="/shop/{{ $item->id }}">{{ $item->name }}
                                                             - x{{ $item->qty }}</a>
                                                         <p class="box-color">
                                                             <span class="body-p2 neutral-medium-dark">Color:

@@ -22,7 +22,7 @@ class CustomerResource extends Resource
     protected static ?string $label = 'Customers';
 
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function getEloquentQuery(): Builder
     {

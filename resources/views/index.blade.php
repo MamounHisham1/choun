@@ -7,21 +7,24 @@
             <div class="row d-flex justify-content-between">
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="/assets/imgs/template/icons/shipping_world_wide.png" alt="Guza">
+                        <div class="item-image"> <img src="/assets/imgs/template/icons/shipping_world_wide.png"
+                                alt="choun">
                         </div>
                         <div class="item-info"> <span class="text-18">Shipping Worldwide</span></div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="/assets/imgs/template/icons/sixty_days_return.png" alt="Guza">
+                        <div class="item-image"> <img src="/assets/imgs/template/icons/sixty_days_return.png"
+                                alt="choun">
                         </div>
                         <div class="item-info"> <span class="text-18">60 - Days Returns</span></div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="box-icon-type-1">
-                        <div class="item-image"> <img src="/assets/imgs/template/icons/security_payment.png" alt="Guza"></div>
+                        <div class="item-image"> <img src="/assets/imgs/template/icons/security_payment.png"
+                                alt="choun"></div>
                         <div class="item-info"> <span class="text-18">Security Payment</span></div>
                     </div>
                 </div>
@@ -113,15 +116,15 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img
+                                                    src="{{ $product->image_url }}" alt="choun"><img
                                                     class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
-                                                    alt="guza"></a>
+                                                    alt="choun"></a>
                                             <div class="button-select">
-                                                <a href="/shop/{{ $product->id }}/show">Select Options</a>
+                                                <a href="/shop/{{ $product->slug }}">Select Options</a>
                                             </div>
                                             <div class="box-quick-button">
-                                                <a class="btn add-to-wishlist"
-                                                    href="javascript:void(0);" data-product="{{ $product->id }}">
+                                                <a class="btn add-to-wishlist" href="javascript:void(0);"
+                                                    data-product="{{ $product->id }}">
                                                     <svg class="d-inline-flex align-items-center justify-content-center"
                                                         width="28" height="28" viewbox="0 0 28 28"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +145,7 @@
                                             </div>
                                         </div>
                                         <div class="cardInfo">
-                                            <a href="/shop/{{ $product->id }}/show">
+                                            <a href="/shop/{{ $product->slug }}">
                                                 <h6 class="text-17-medium mb-10">{{ $product->name }}</h6>
                                             </a>
                                             <p class="body-p2 cardDesc"><span
@@ -162,15 +165,16 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
-                                                    alt="guza"></a>
+                                                    src="{{ $product->image_url }}" alt="choun"><img
+                                                    class="imageHover"
+                                                    src="{{ $product->images->last()?->getUrl() }}"
+                                                    alt="choun"></a>
                                             <div class="button-select">
-                                                <a href="/shop/{{ $product->id }}/show">Select Options</a>
+                                                <a href="/shop/{{ $product->slug }}">Select Options</a>
                                             </div>
                                             <div class="box-quick-button">
-                                                <a class="btn add-to-wishlist"
-                                                    href="javascript:void(0);" data-product="{{ $product->id }}">
+                                                <a class="btn add-to-wishlist" href="javascript:void(0);"
+                                                    data-product="{{ $product->id }}">
                                                     <svg class="d-inline-flex align-items-center justify-content-center"
                                                         width="28" height="28" viewbox="0 0 28 28"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -191,7 +195,7 @@
                                             </div>
                                         </div>
                                         <div class="cardInfo">
-                                            <a href="/shop/{{ $product->id }}/show">
+                                            <a href="/shop/{{ $product->slug }}">
                                                 <h6 class="text-17-medium mb-10">{{ $product->name }}</h6>
                                             </a>
                                             <p class="body-p2 cardDesc"><span
@@ -211,15 +215,16 @@
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
                                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                                    src="{{ $product->image_url }}" alt="guza"><img
-                                                    class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
-                                                    alt="guza"></a>
+                                                    src="{{ $product->image_url }}" alt="choun"><img
+                                                    class="imageHover"
+                                                    src="{{ $product->images->last()?->getUrl() }}"
+                                                    alt="choun"></a>
                                             <div class="button-select">
-                                                <a href="/shop/{{ $product->id }}/show">Select Options</a>
+                                                <a href="/shop/{{ $product->slug }}">Select Options</a>
                                             </div>
                                             <div class="box-quick-button">
-                                                <a class="btn add-to-wishlist"
-                                                    href="javascript:void(0);" data-product="{{ $product->id }}">
+                                                <a class="btn add-to-wishlist" href="javascript:void(0);"
+                                                    data-product="{{ $product->id }}">
                                                     <svg class="d-inline-flex align-items-center justify-content-center"
                                                         width="28" height="28" viewbox="0 0 28 28"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -240,7 +245,7 @@
                                             </div>
                                         </div>
                                         <div class="cardInfo">
-                                            <a href="/shop/{{ $product->id }}/show">
+                                            <a href="/shop/{{ $product->slug }}">
                                                 <h6 class="text-17-medium mb-10">{{ $product->name }}</h6>
                                             </a>
                                             <p class="body-p2 cardDesc"><span
@@ -276,8 +281,8 @@
                     @foreach ($categories as $category)
                         <div class="col-lg-2 col-md-4 col-sm-6">
                             <div class="cardCategoryCircle">
-                                <div class="cardImage"><a href="/shop/categories/{{ $category->id }}"><img
-                                            src="{{ $category->image_url }}" alt="Guza"></a></div>
+                                <div class="cardImage"><a href="/shop/categories/{{ $category->slug }}"><img
+                                            src="{{ $category->image_url }}" alt="choun"></a></div>
                                 <div class="cardInfo">
                                     <p class="text-17-medium">{{ $category->name }}</p>
                                 </div>
@@ -295,7 +300,7 @@
                     <div class="box-banner-3">
                         <div class="box-banner-3-left">
                             <div class="box-banner-3-image"><img src="assets/imgs/page/homepage16/speaker.svg"
-                                    alt="Guza"></div>
+                                    alt="choun"></div>
                             <div class="box-banner-3-info">
                                 <h4 class="mb-5">Next-level audio</h4>
                                 <p class="text-16 mb-20">Turn up the drama on movie night with speakers & sound
@@ -303,14 +308,14 @@
                             </div>
                         </div>
                         <div class="box-banner-3-right"> <img src="assets/imgs/page/homepage16/speaker2.png"
-                                alt="Guza"></div>
+                                alt="choun"></div>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-30">
                     <div class="box-banner-3 box-banner-3-2">
                         <div class="box-banner-3-left">
                             <div class="box-banner-3-image"><img src="assets/imgs/page/homepage16/smartwatch.svg"
-                                    alt="Guza"></div>
+                                    alt="choun"></div>
                             <div class="box-banner-3-info">
                                 <h4 class="mb-5">Apple Watch</h4>
                                 <p class="text-16 mb-20">Give Dad the gift of Apple Watch. Now up to $70 off.</p>
@@ -318,7 +323,7 @@
                             </div>
                         </div>
                         <div class="box-banner-3-right"> <img src="assets/imgs/page/homepage16/smartwatch.png"
-                                alt="Guza"></div>
+                                alt="choun"></div>
                     </div>
                 </div>
             </div>
@@ -336,16 +341,16 @@
                             <div class="cardReview">
                                 <div class="cardAuthor mb-20">
                                     <div class="cardImageAuthor"><img src="assets/imgs/page/homepage12/author.png"
-                                            alt="Guza"></div>
+                                            alt="choun"></div>
                                     <div class="cardNameAuthor">
                                         <p class="text-17-medium">Kate Smith</p>
                                     </div>
                                 </div>
                                 <div class="cardRate mb-10"> <img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg" alt="Guza">
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg" alt="choun">
                                 </div>
                                 <h6 class="mb-20">Perfect indoor play tent!</h6>
                                 <div class="cardText mb-0">
@@ -358,16 +363,16 @@
                             <div class="cardReview">
                                 <div class="cardAuthor mb-20">
                                     <div class="cardImageAuthor"><img src="assets/imgs/page/homepage12/author.png"
-                                            alt="Guza"></div>
+                                            alt="choun"></div>
                                     <div class="cardNameAuthor">
                                         <p class="text-17-medium">Kate Smith</p>
                                     </div>
                                 </div>
                                 <div class="cardRate mb-10"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg" alt="Guza">
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg" alt="choun">
                                 </div>
                                 <h6 class="mb-20">Perfect indoor play tent!</h6>
                                 <div class="cardText mb-0">
@@ -380,16 +385,16 @@
                             <div class="cardReview">
                                 <div class="cardAuthor mb-20">
                                     <div class="cardImageAuthor"><img src="assets/imgs/page/homepage12/author.png"
-                                            alt="Guza"></div>
+                                            alt="choun"></div>
                                     <div class="cardNameAuthor">
                                         <p class="text-17-medium">Kate Smith</p>
                                     </div>
                                 </div>
                                 <div class="cardRate mb-10"> <img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg"
-                                        alt="Guza"><img src="assets/imgs/template/icons/star.svg" alt="Guza">
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg"
+                                        alt="choun"><img src="assets/imgs/template/icons/star.svg" alt="choun">
                                 </div>
                                 <h6 class="mb-20">Perfect indoor play tent!</h6>
                                 <div class="cardText mb-0">

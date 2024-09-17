@@ -23,7 +23,7 @@ class AttributeResource extends Resource
     protected static ?int $navigationSort = 21;
 
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
 
     public static function form(Form $form): Form
     {

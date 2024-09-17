@@ -10,9 +10,9 @@
                                 <div class="swiper-slide">
                                     <div class="cardCategorySmall cardCategorySmallStyle2 wow fadeInUp">
                                         <div class="cardImage"><a href="{{ $category->id }}"><img
-                                                    src="{{ $category->image_url }}" alt="Guza"></a>
+                                                    src="{{ $category->image_url }}" alt="choun"></a>
                                         </div>
-                                        <div class="cardInfo"><a href="/shop/categories/{{ $category->id }}">
+                                        <div class="cardInfo"><a href="/shop/categories/{{ $category->slug }}">
                                                 <h4 class="cardTitle">{{ $category->name }}
                                                     ({{ $category->products()->where('is_published', true)->count() }})
                                                 </h4>
@@ -262,10 +262,11 @@
                 @foreach ($products as $product)
                     <div class="product-item">
                         <div class="cardProduct wow fadeInUp">
-                            <div class="cardImage"><a href="/shop/{{ $product->id }}/show"><img class="imageMain" src="{{ $product->image_url }}"
-                                        alt="guza"><img class="imageHover" src="{{ $product->image_url }}" alt="guza"></a>
+                            <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
+                                        src="{{ $product->image_url }}" alt="choun"><img class="imageHover"
+                                        src="{{ $product->image_url }}" alt="choun"></a>
                                 <div class="button-select">
-                                    <a href="/shop/{{ $product->id }}/show">More Details</a>
+                                    <a href="/shop/{{ $product->slug }}">More Details</a>
                                 </div>
                                 <div class="box-quick-button"><a class="btn" href="#">
                                         <svg class="d-inline-flex align-items-center justify-content-center"
@@ -315,7 +316,7 @@
                                         </svg></a></div>
                             </div>
                             <div class="cardInfo">
-                                <a href="/shop/{{ $product->id }}/show">
+                                <a href="/shop/{{ $product->slug }}">
                                     <h6 class="text-16-medium cardTitle">{{ $product->name }}</h6>
                                 </a>
                                 <p class="body-p2 cardDesc">{{ Number::currency($product->price, 'USD') }}</p>

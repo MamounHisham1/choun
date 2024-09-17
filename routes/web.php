@@ -17,11 +17,11 @@ use Illuminate\Http\Request;
 Route::get('/', HomeController::class)->name('home');
 
 Route::get('/shop', [ShopController::class, 'index']);
-Route::get('/shop/{product}/show', [ShopController::class, 'show']);
+Route::get('/shop/{product:slug}', [ShopController::class, 'show']);
 
-Route::get('/shop/categories/{category}', CategoryProductsController::class);
+Route::get('/shop/categories/{category:slug}', CategoryProductsController::class);
+
 Route::post('/add-to-cart/{product}', [CartController::class, 'store']);
-
 Route::post('/add-to-wishlist/{product}', WishlistController::class);
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');

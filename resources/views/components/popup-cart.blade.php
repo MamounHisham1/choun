@@ -22,7 +22,7 @@
         </div>
         <div class="box-products-cart">
             <div class="box-empty-cart d-none">
-                <div class="icon-empty-cart"><img src="assets/imgs/template/icons/empty-cart.svg" alt="Guza">
+                <div class="icon-empty-cart"><img src="assets/imgs/template/icons/empty-cart.svg" alt="choun">
                 </div>
                 <div class="info-empty-cart">
                     <p class="text-17 neutral-medium-dark">Your cart is empty</p><a class="link-underline"
@@ -32,7 +32,7 @@
             <div class="list-items-cart">
                 @foreach ($cartItems as $item)
                     <div class="item-cart">
-                        <div class="item-cart-image"><img src="{{ '' }}" alt="Guza"></div>
+                        <div class="item-cart-image"><img src="{{ '' }}" alt="choun"></div>
                         <div class="item-cart-info">
                             <div class="item-cart-info-1"><a class="text-16-medium"
                                     href="#">{{ $item->name }}</a>
@@ -65,8 +65,8 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/shop1/sp.png" alt="guza"><img class="imageHover"
-                                    src="assets/imgs/page/shop1/sp.png" alt="guza"></a>
+                                    src="assets/imgs/page/shop1/sp.png" alt="choun"><img class="imageHover"
+                                    src="assets/imgs/page/shop1/sp.png" alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"
@@ -124,9 +124,9 @@
                 <div class="item-product-search">
                     <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
                         <div class="cardImage"><a href="#"><img class="imageMain"
-                                    src="assets/imgs/page/shop1/sp2.png" alt="guza"><img
+                                    src="assets/imgs/page/shop1/sp2.png" alt="choun"><img
                                     class="imageHover" src="assets/imgs/page/shop1/sp2.png"
-                                    alt="guza"></a>
+                                    alt="choun"></a>
                             <div class="button-select"><a href="#">Select Options</a></div>
                             <div class="box-quick-button"><a class="btn" href="#">
                                     <svg class="d-inline-flex align-items-center justify-content-center"

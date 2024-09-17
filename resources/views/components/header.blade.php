@@ -15,8 +15,11 @@
                             class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
                 </div>
             </div>
-            <div class="header-logo"> <a class="d-flex" href="index.html"><img alt="luxride"
-                        src="/assets/imgs/template/icons/logo.png"></a></div>
+            <div class="header-logo">
+                <a class="d-flex" href="/">
+                    <img alt="luxride" src="/assets/imgs/template/icons/logo.png">
+                </a>
+            </div>
             <div class="header-account">
                 <a class="account-icon search" href="#">
                     <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"
@@ -120,9 +123,9 @@
             <div class="mobile-menu-head">
                 <div class="box-head-1"><a class="link-underline mr-20 account-icon account" href="#">Login</a><a
                         class="link-underline account-icon account" href="#">Sign Up</a><a class="close-mobile"
-                        href="#"><img src="/assets/imgs/template/icons/close.svg" alt="Guza"></a></div>
+                        href="#"><img src="/assets/imgs/template/icons/close.svg" alt="choun"></a></div>
                 <div class="box-head-2"><a class="back-mobile" href="#"><img
-                            src="/assets/imgs/template/icons/back.svg" alt="Guza"></a></div>
+                            src="/assets/imgs/template/icons/back.svg" alt="choun"></a></div>
             </div>
             <div class="perfect-scroll">
                 <div class="mobile-menu-wrap mobile-header-border">
