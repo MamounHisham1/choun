@@ -7,6 +7,8 @@ use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Filament\Resources\OrderResource\RelationManagers\OrderLinesRelationManager;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ShippingAddress;
+use App\Models\User;
 use App\OrderStatus;
 use App\PaymentStatus;
 use Filament\Forms;
@@ -16,6 +18,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Wizard;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\TextEntry;
@@ -24,6 +27,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Icetalker\FilamentTableRepeater\Forms\Components\TableRepeater;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -43,22 +47,37 @@ class OrderResource extends Resource
                     Wizard\Step::make('Shipping Address')
                         ->schema([
                             Fieldset::make()->schema([
+                                Select::make('user_id')
+                                    ->label('Customer')
+                                    ->visible(fn($get): bool => $get('returning_customer?'))
+                                    ->options(User::whereRole('customer')->get()->pluck('name', 'id'))
+                                    ->live()
+                                    ->required(),
+                                Select::make('shipping_address_id')
+                                    ->label('Shipping Address')
+                                    ->visible(fn($get): bool => $get('returning_customer?'))
+                                    ->disabled(fn($get): bool => ! $get('user_id'))
+                                    ->options(fn($get) => ShippingAddress::where('user_id', $get('user_id'))->get()->pluck('full_address', 'id'))
+                                    ->live()
+                                    ->required(),
+                                Toggle::make('returning_customer?')
+                                    ->live(),
+                            ]),
+                            Fieldset::make()->schema([
                                 Select::make('status')
                                     ->options(OrderStatus::getStatuses())
                                     ->default(OrderStatus::Pending)
-                                    ->native(false)
                                     ->required(),
                                 Select::make('payment_method')
                                     ->default('cash')
-                                    ->native(false)
                                     ->required(),
                                 Select::make('payment_status')
                                     ->options(PaymentStatus::getStatuses())
                                     ->default(PaymentStatus::Pending)
-                                    ->native(false)
                                     ->required(),
                             ])->columns(3),
                             Section::make('Shipping Address')
+                                ->visible(fn($get): bool => !$get('returning_customer?'))
                                 ->relationship('shippingAddress')
                                 ->columns(2)
                                 ->schema([
@@ -69,13 +88,14 @@ class OrderResource extends Resource
                                     TextInput::make('apartment'),
                                     TextInput::make('phone')
                                         ->required(),
-                                    MarkdownEditor::make('note')
-                                        ->columnSpanFull(),
                                 ]),
+                            MarkdownEditor::make('note')
+                                ->columnSpanFull(),
                         ]),
                     Wizard\Step::make('Order Items')->schema([
-                        Repeater::make('orderLines')->schema([
+                        TableRepeater::make('orderLines')->schema([
                             Select::make('product_id')
+                                ->label('Product')
                                 ->options(Product::pluck('name', 'id'))
                                 ->live()
                                 ->required()
@@ -189,10 +209,10 @@ class OrderResource extends Resource
                         TextEntry::make('apartment')
                             ->placeholder('N\A'),
                         TextEntry::make('phone'),
-                        TextEntry::make('note')
-                            ->placeholder('N\A')
-                            ->columnSpanFull(),
                     ]),
+                    TextEntry::make('note')
+                        ->placeholder('N\A')
+                        ->columnSpanFull(),
             ]);
     }
 

@@ -18,7 +18,7 @@ class LatestOrders extends BaseWidget
                 Order::latest()->limit(10)
             )
             ->columns([
-                Tables\Columns\TextColumn::make('shippingAddress.first_name')
+                Tables\Columns\TextColumn::make('user.first_name')
                     ->label('Name')
                     ->searchable()
                     ->sortable(),
@@ -80,6 +80,4 @@ class LatestOrders extends BaseWidget
                 ]),
             ]);
     }
-
-    
 }

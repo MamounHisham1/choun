@@ -31,7 +31,6 @@ class CouponResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Select::make('type')
                     ->options(['percentage' => 'Percentage', 'money' => 'Money'])
-                    ->native(false)
                     ->required(),
                 Forms\Components\TextInput::make('amount')
                     ->required()
@@ -39,10 +38,8 @@ class CouponResource extends Resource
                 Forms\Components\TextInput::make('usage_limit')
                     ->numeric(),
                 Forms\Components\DatePicker::make('start_date')
-                    ->native(false)
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
-                    ->native(false)
                     ->required(),
                 Forms\Components\Select::make('category_id')
                     ->options(Category::pluck('name', 'id'))

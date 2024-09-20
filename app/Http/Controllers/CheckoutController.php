@@ -29,6 +29,7 @@ class CheckoutController extends Controller
 
         return view('checkout', [
             'subtotal' => LaraCart::total(),
+            'shippingAddress' => auth()?->user()?->shippingAddresses?->last(),
         ]);
     }
 
@@ -44,8 +45,6 @@ class CheckoutController extends Controller
         $user = Auth::user();
         
         $data['user_id'] = $user->id;
-
-        $request->has('note') ? $data['note'] = $request->note : $data['note'] = null;
         
         $request->has('apartment') ? $data['apartment'] = $request->apartment : $data['apartment'] = null;
 

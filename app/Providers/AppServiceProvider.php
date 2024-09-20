@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Cart;
 use App\Models\Wishlist;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -35,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Select::configureUsing(fn(Select $select) => $select->native(false));
+        DatePicker::configureUsing(fn(DatePicker $date) => $date->native(false));
     }
 }
 

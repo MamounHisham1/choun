@@ -56,7 +56,6 @@ class HomeController extends Controller
             'homeOffers' => $homeOffers,
             'homeFirstBanner' => $homeFirstBanner,
             'homeSecondBanner' => $homeSecondBanner,
-            0
         ]);
     }
 }

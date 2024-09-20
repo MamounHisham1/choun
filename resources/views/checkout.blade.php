@@ -76,14 +76,6 @@
                 @csrf
                 <div class="row mt-20">
                     <div class="col-lg-6">
-                        @guest
-                            <div class="box-customer-login">
-                                Returning customer?
-                                <a class="account-icon account" href="#">
-                                    Click here to login
-                                </a>
-                            </div>
-                        @endguest
                         <div class="cart-coupon" x-data="{ show: false }">
                             <div class="cart-coupon">
                                 <div class="box-gift-coupon account">
@@ -96,50 +88,24 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="box-title-checkout mt-30">
-                            <h4 class="mb-25">Billing Details</h4>
-                            <h5 class="mb-20">Contact information</h5>
-                        </div> --}}
                         <div class="box-form-checkout form-comment">
-                            {{-- <div class="form-group">
-                                <label class="form-label" for="email">Email Address *</label>
-                                <input class="form-control" name="email" id="email" type="email"
-                                    value="{{ Auth::user()?->email ?? old('email') }}" required />
-                                @error('email')
-                                    <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
-                                @enderror
-                                <label class="mt-12">
-                                    <input class="cb-left" type="checkbox" />Email me with
-                                    news and offers
-                                </label>
-                            </div> --}}
                             <h4 class="mt-32 mb-25">Shipping address</h4>
                             <div class="row">
-                                <div class="col-lg-6">
-                                    {{-- <div class="form-group">
-                                        <label class="form-label" for="firstname">First Name *</label>
-                                        <input class="form-control" name="first_name" id="firstname" type="text"
-                                            value="{{ Auth::user()?->first_name ?? old('first_name') }}" required />
-                                        @error('first_name')
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="towncity">Town / City *</label>
+                                        <input class="form-control" name="city" id="towncity" type="text"
+                                            value="{{ old('city') ?? $shippingAddress->city ?? '' }}" required />
+                                        @error('city')
                                             <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
                                         @enderror
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="lastname">Last Name *</label>
-                                        <input class="form-control" name="last_name" id="lastname" type="text"
-                                            value="{{ Auth::user()?->last_name ?? old('last_name') }}" required />
-                                        @error('last_name')
-                                            <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
-                                        @enderror
-                                    </div> --}}
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="form-label" for="address">Street Address *</label>
                                         <input class="form-control" name="street" id="address" type="text"
-                                            value="{{ old('street') }}" required />
+                                            value="{{ old('street') ?? $shippingAddress->street ?? '' }}" required />
                                         @error('street')
                                             <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
                                         @enderror
@@ -150,46 +116,17 @@
                                         <label class="form-label" for="apartment">Apartment, suite, unit, etc.
                                             (optional)</label>
                                         <input class="form-control" name="apartment" id="apartment" type="text"
-                                            value="{{ old('apartment') }}" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label class="form-label" for="towncity">Town / City *</label>
-                                        <input class="form-control" name="city" id="towncity" type="text"
-                                            value="{{ old('city') }}" required />
-                                        @error('city')
-                                            <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
-                                        @enderror
+                                            value="{{ old('apartment') ?? $shippingAddress->apartment ?? '' }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="form-label" for="phone">Phone *</label>
                                         <input class="form-control" name="phone" id="phone" type="text"
-                                            value="{{ old('phone') }}" required />
+                                            value="{{ old('phone') ?? $shippingAddress->phone ?? '' }}" required />
                                         @error('phone')
                                             <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
                                         @enderror
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    @guest
-                                        <div class="form-group">
-                                            <label>
-                                                <input class="cb-left" name="create-account" value="1"
-                                                    type="checkbox" />Create an
-                                                account?
-                                            </label>
-                                        </div>
-                                    @endguest
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>
-                                            <input class="cb-left" type="checkbox" />Ship to a
-                                            different address?
-                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

@@ -36,7 +36,7 @@ class AddToCart extends Component
     {
         // dd($this->data);
         LaraCart::add(
-            $this->product->slug,
+            $this->product->id,
             $this->product->name,
             $this->data['quantity'],
             $this->product->price,

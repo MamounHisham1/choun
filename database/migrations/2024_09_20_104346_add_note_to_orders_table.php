@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_lines', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('order_id');
-            $table->foreignId('product_id');
-            $table->integer('quantity');
-            $table->float('price');
+        Schema::table('orders', function (Blueprint $table) {
             $table->text('note')->nullable();
-            $table->json('options')->nullable();
-            $table->timestamps();
         });
     }
 
@@ -28,6 +21,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_lines');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('note');
+        });
+
+        Schema::table('order_lines', function (Blueprint $table) {
+            $table->dropColumn('note');
+        });
     }
 };

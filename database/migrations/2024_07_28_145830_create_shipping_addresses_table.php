@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('apartment')->nullable();
             $table->string('city');
             $table->string('phone');
-            $table->text('note')->nullable();
 
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
 
         });

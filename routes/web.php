@@ -35,6 +35,6 @@ Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::view('/account', 'account');
 
-Route::any('test/{order}/success', function (Request $request, Order $order) {
-    dd($order);
+Route::get('test', function () {
+    // 
 });

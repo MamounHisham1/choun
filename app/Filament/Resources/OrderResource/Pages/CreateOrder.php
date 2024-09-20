@@ -13,10 +13,14 @@ class CreateOrder extends CreateRecord
 
     public function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['shipping_address_id'] = ShippingAddress::create($this->form->getRawState()['shippingAddress'])->id;
         $orderLines = $this->form->getRawState()['orderLines'];
         $total = collect($orderLines)->map(fn($orderLine) => $orderLine['price'] * $orderLine['quantity'])->sum();
         $data['total'] = $total;
+
+        if (! $data['returning_customer?']) {
+            $data['shipping_address_id'] = ShippingAddress::create($this->form->getRawState()['shippingAddress'])->id;
+            return $data;
+        }
         return $data;
     }
 }

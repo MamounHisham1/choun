@@ -25,11 +25,9 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
-        // $atE
         session()->flash('product', $product);
         return view('show-product', [
             'product' => $product,
-            // 'attributes' => $attributes,
         ]);
     }
 }
