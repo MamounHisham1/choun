@@ -48,16 +48,17 @@ class CheckoutController extends Controller
         
         $request->has('apartment') ? $data['apartment'] = $request->apartment : $data['apartment'] = null;
 
-        $address = ShippingAddress::create($data);
+        $shippingAddress = ShippingAddress::create($data);
 
         // Create the order
         /** @var Order */
-        $order = Order::create([
+        $order = Order::create([ 
+            'code' => str('CH-'.date('mds').$shippingAddress->id),
             'status' => OrderStatus::Draft,
             'payment_method' => $request->payment,
             'payment_status' => PaymentStatus::Pending,
             'user_id' => $user->id,
-            'shipping_address_id' => $address->id,
+            'shipping_address_id' => $shippingAddress->id,
             'total' => LaraCart::total($formatted = false),
         ]);
 

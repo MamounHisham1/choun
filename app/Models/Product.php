@@ -55,7 +55,7 @@ class Product extends Model implements HasMedia
             ]);
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')

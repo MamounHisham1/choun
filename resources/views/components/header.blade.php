@@ -17,7 +17,7 @@
             </div>
             <div class="header-logo">
                 <a class="d-flex" href="/">
-                    <img alt="luxride" src="/assets/imgs/template/icons/logo.png">
+                    <img alt="luxride" src="/assets/imgs/template/icons/logo.png" width="150px">
                 </a>
             </div>
             <div class="header-account">
@@ -93,7 +93,8 @@
                             </clippath>
                         </defs>
                     </svg>
-                </a><a class="account-icon cart" href="#">
+                </a>
+                <a class="account-icon cart" href="#">
                     @if (count($cartItems) > 0)
                         <span id="cart-tag" class="number-tag">{{ count($cartItems) }}</span>
                     @else
@@ -136,12 +137,6 @@
                             <li class="has-children"><a href="/shop">Shop</a>
                             </li>
                             <li class="has-children"><a href="/blog">Blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog-grid.html">Blog Grid</a></li>
-                                    <li><a href="blog-masonry.html">Blog Grid 2</a></li>
-                                    <li><a href="blog-list.html">Blog List</a></li>
-                                    <li><a href="blog-single.html">Blog Details</a></li>
-                                </ul>
                             </li>
                         </ul>
                     </nav>

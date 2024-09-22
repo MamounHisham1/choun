@@ -16,11 +16,13 @@ class CreateOrder extends CreateRecord
         $orderLines = $this->form->getRawState()['orderLines'];
         $total = collect($orderLines)->map(fn($orderLine) => $orderLine['price'] * $orderLine['quantity'])->sum();
         $data['total'] = $total;
-
+        
         if (! $data['returning_customer?']) {
             $data['shipping_address_id'] = ShippingAddress::create($this->form->getRawState()['shippingAddress'])->id;
+            $data['code'] = str('CH-'.date('mds').$data['shipping_address_id']);
             return $data;
         }
+        $data['code'] = str('CH-'.date('mds').$data['shipping_address_id']);
         return $data;
     }
 }

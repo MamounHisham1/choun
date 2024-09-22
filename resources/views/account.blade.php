@@ -17,12 +17,22 @@
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show active" data-bs-parent="#account">
                     <div class="accordion-body">
-                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
-                        does limit overflow.
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <h5>First name: <span class="fs-6 fw-light">{{ auth()->user()->first_name }}</span>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <h5>Last name: <span class="fs-6 fw-light">{{ auth()->user()->last_name }}</span>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <h5>Email: <span class="fs-6 fw-light">{{ auth()->user()->email }}</span></h5>
+                                </div>
+                            </div>
+                            <a href="#">Reset password?</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,24 +50,23 @@
                                 <tr>
                                     <th>Order Code</th>
                                     <th>Status</th>
-                                    <th>Quantity</th>
                                     <th>Subtotal</th>
+                                    <th>Shipping address</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#CH85181</td>
-                                    <td>Pending</td>
-                                    <td>10</td>
-                                    <td>1990</td>
-                                    <td><a href="/account/orders/">view order</a></td>
-                                </tr>
-                                <tr>
-                                    <td>#CH5181</td>
-                                    <td>Pending</td>
-                                    <td>10</td>
-                                    <td>1990</td>
-                                </tr>
+                                @foreach (auth()->user()->orders as $order)
+                                    <tr>
+                                        <td>{{ $order->code }}</td>
+                                        <td>{{ $order->status }}</td>
+                                        <td>{{ $order->total }}</td>
+                                        <td>{{ $order->shippingAddress->full_address }}</td>
+                                        <td><a href="/account/orders/{{ $order->id }}">View order</a></td>
+                                        @if (abs($order->created_at->diffInHours(now())) < 6)
+                                            <td><a href="/account/orders/{{ $order->id }}/edit">Edit order</a></td>
+                                        @endif
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
