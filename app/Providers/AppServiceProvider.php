@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\User;
 use App\Models\Wishlist;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 use LukePOLO\LaraCart\Facades\LaraCart;
@@ -17,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        
+
     }
 
     /**
@@ -37,6 +40,8 @@ class AppServiceProvider extends ServiceProvider
 
         Select::configureUsing(fn(Select $select) => $select->native(false));
         DatePicker::configureUsing(fn(DatePicker $date) => $date->native(false));
+
+        Gate::before(fn(?User $user) => $user?->role === 'admin');
     }
 }
 

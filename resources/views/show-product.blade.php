@@ -167,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="sizechart" role="tabpanel" aria-labelledby="sizechart-tab">
+                    {{-- <div class="tab-pane fade" id="sizechart" role="tabpanel" aria-labelledby="sizechart-tab">
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <tbody>
@@ -186,7 +186,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                         <div class="comments-area">
                             <div class="row">
