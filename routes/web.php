@@ -37,7 +37,9 @@ Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 Route::view('/account', 'account')->middleware('auth');
 Route::get('/account/orders/{order}', [OrderController::class, 'show'])->middleware('auth');
 Route::get('/account/orders/{order}/edit', [OrderController::class, 'edit'])->middleware('auth');
-Route::post('/account/orders/{orderLine}/destroy', [OrderController::class, 'destroyOrderLine'])->middleware('auth');
+Route::post('account/orders/{order}/update', [OrderController::class, 'update'])->middleware('auth');
+Route::post('/account/orders/{order}/destroy', [OrderController::class, 'destroy'])->middleware('auth');
+Route::post('/account/orders/item/{orderLine}/destroy', [OrderController::class, 'destroyOrderLine'])->middleware('auth');
 
 Route::get('test', function () {
     // 

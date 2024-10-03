@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Wishlist;
+use App\Policies\OrderPolicy;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\Facades\Gate;
@@ -41,8 +42,8 @@ class AppServiceProvider extends ServiceProvider
         Select::configureUsing(fn(Select $select) => $select->native(false));
         DatePicker::configureUsing(fn(DatePicker $date) => $date->native(false));
 
-        Gate::before(fn(?User $user) => $user?->role === 'admin');
-        Gate::define('order', fn(User $user, Order $order): bool => $order->user_id === $user->id);
+        Gate::before(fn(?User $user) => $user?->role !== 'admin');
+        Gate::policy(Order::class, OrderPolicy::class);
     }
 }
 

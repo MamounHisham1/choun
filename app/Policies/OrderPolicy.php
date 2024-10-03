@@ -19,9 +19,9 @@ class OrderPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Order $order): bool
+    public function view(User $user, Order $order)
     {
-        
+        return $user->id === $order->user_id;
     }
 
     /**
