@@ -5,7 +5,7 @@
                 <ul>
                     <li><a href="/">Home </a></li>
                     <li><a href="/shop">Shop</a></li>
-                    <li><a href="/shop/categories/{{ $product->category->id }}">{{ $product->category->name }}</a></li>
+                    <li><a href="/shop/categories/{{ $product->category->slug }}">{{ $product->category->name }}</a></li>
                     <li><a href="#">{{ $product->name }}</a></li>
                 </ul>
             </div>

@@ -24,7 +24,9 @@
                     wire:model="data.quantity" />
                 <span class="plus" x-on:click="quantity++"></span>
             </div>
-            <button type="submit" class="btn btn-black">Add to Cart</button>
+            <button type="submit" class="btn btn-black"
+                x-on:click="$wire.on('item-added-to-cart', (event) => showToast('success', event[0].message))">Add to
+                Cart</button>
             <button class="btn btn-navy">Buy Now</button>
             <a class="btn btn-wishlist" href="#">
                 <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"

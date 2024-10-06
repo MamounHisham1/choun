@@ -92,9 +92,12 @@ class CheckoutController extends Controller
                 'status' => OrderStatus::Pending,
             ]);
 
+            // Empty the cart
             LaraCart::destroyCart();
-            session()->flash('message', 'Your order has been sent successfully.');
 
+            // Send notification
+            notifyUser('success', 'Your order has been sent successfully.');
+            
             return redirect('/');
         }
 
@@ -132,7 +135,8 @@ class CheckoutController extends Controller
         ]);
 
         LaraCart::destroyCart();
-        session()->flash('message', 'Your order has been sent successfully.');
+        
+        notifyUser('success', 'Your order has been sent successfully.');
 
         return redirect('/');
     }
@@ -144,7 +148,7 @@ class CheckoutController extends Controller
             'payment_status' => PaymentStatus::Canceled,
         ]);
 
-        session()->flash('message', 'Something went wrong, please try again.');
+        notifyUser('danger', 'Something went wrong, please try again.');
 
         return redirect('/checkout');
     }

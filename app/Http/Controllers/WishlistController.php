@@ -11,7 +11,7 @@ class WishlistController extends Controller
     public function __invoke(Request $request, Product $product)
     {
         $user_id = auth()->id();
-        
+
         Wishlist::create([
             'product_id' => $product->id,
             'user_id' => $user_id,
@@ -19,10 +19,10 @@ class WishlistController extends Controller
 
         $data = [
             'status' => 200,
+            'bg' => 'success',
             'message' => 'Product added to wishlist',
             'wishlistItems' => Wishlist::getItems($user_id),
         ];
-
-        return response()->json($data);   
+        return response()->json($data);
     }
 }

@@ -42,7 +42,7 @@ class AddToCart extends Component
             $this->product->price,
             [$this->data['attributes'] ?? null],
         );
-
+        $this->dispatch('item-added-to-cart', ['message' => 'Item added to cart']);
         return response("Added to cart", 200);
     }
 }

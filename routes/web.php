@@ -33,6 +33,7 @@ Route::post('/checkout/apply-coupon', [CheckoutController::class, 'applyCoupon']
 
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
+Route::redirect('/login/login', '/')->name('login');
 
 Route::view('/account', 'account')->middleware('auth');
 Route::get('/account/orders/{order}', [OrderController::class, 'show'])->middleware('auth');
