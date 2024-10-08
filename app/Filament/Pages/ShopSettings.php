@@ -119,10 +119,12 @@ class ShopSettings extends Page
                             ->schema([
                                 TextInput::make('from')
                                     ->live()
-                                    ->numeric(),
+                                    ->numeric()
+                                    ->prefix('$'),
                                 TextInput::make('to')
                                     ->minValue(fn($get) => $get('from') + 1)
-                                    ->numeric(),
+                                    ->numeric()
+                                    ->prefix('$'),
                             ]),
                     ]),
 
