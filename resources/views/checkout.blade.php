@@ -79,7 +79,7 @@
                         <div class="cart-coupon" x-data="{ show: false }">
                             <div class="cart-coupon">
                                 <div class="box-gift-coupon account">
-                                    Have a coupon? <a href="javascript:void(0);" @click="show = true"
+                                    Have a coupon? <a href="javascript:void(0);" x-on:click="show = true"
                                         x-show="!show">Click here to enter your code</a>
                                 </div>
                                 <div class="cuppon-form" x-show="show" x-transition.duration.200ms>

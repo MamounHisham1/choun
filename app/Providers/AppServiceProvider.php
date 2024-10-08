@@ -42,8 +42,7 @@ class AppServiceProvider extends ServiceProvider
         Select::configureUsing(fn(Select $select) => $select->native(false));
         DatePicker::configureUsing(fn(DatePicker $date) => $date->native(false));
 
-        Gate::before(fn(?User $user) => $user?->role !== 'admin');
-        Gate::policy(Order::class, OrderPolicy::class);
+        // Gate::before(fn(?User $user) => $user?->role !== 'admin');
     }
 }
 

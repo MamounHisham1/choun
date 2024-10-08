@@ -37,114 +37,82 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="wrapper-overlay"></div>
-                    <div class="box-filters-sidebar">
-                        <h5 class="title-filter">Filter</h5>
-                        <div class="block-filter">
-                            <h6 class="item-collapse">Categories</h6>
-                            <div class="box-collapse scrollFilter">
-                                <ul class="list-filter-checkbox">
-                                    @foreach ($categories as $category)
-                                        <li>
-                                            <label class="cb-container">
-                                                <input type="checkbox" /><span class="text-small">{{ $category->name }}
-                                                    <span
-                                                        class="neutral-medium">({{ $category->products->count() }})</span></span><span
-                                                    class="checkmark"></span> </label>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="block-filter">
-                            <h6 class="item-collapse">Colors</h6>
-                            <div class="box-collapse scrollFilter">
-                                <ul class="list-colors">
-                                    <li class="active">
-                                        <div class="box-colors">
-                                            <div class="item-color color-4"></div>
-                                            <label>Blue</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="box-colors">
-                                            <div class="item-color color-3"></div>
-                                            <label>Grey</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="box-colors">
-                                            <div class="item-color color-5"></div>
-                                            <label>Red</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="box-colors">
-                                            <div class="item-color color-6"></div>
-                                            <label>Yellow</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="block-filter">
-                            <h6 class="item-collapse">Size</h6>
-                            <div class="box-collapse scrollFilter">
-                                <div class="block-size">
-                                    <div class="list-sizes">
-                                        <span class="item-size">XS </span><span class="item-size active">S </span><span
-                                            class="item-size">M </span><span class="item-size">XL
-                                        </span>
-                                    </div>
+                    <x-forms.form method="GET" action="/shop/filter">
+                        <div class="box-filters-sidebar">
+                            <h5 class="title-filter">Filter</h5>
+                            <div class="block-filter">
+                                <h6 class="item-collapse">Categories</h6>
+                                <div class="box-collapse scrollFilter">
+                                    <ul class="list-filter-checkbox">
+                                        @foreach ($categories as $category)
+                                            <li>
+                                                <label class="cb-container">
+                                                    <input type="checkbox" name="categories[]"
+                                                        value="{{ $category->id }}" multiple
+                                                        @checked(in_array($category->id, request('categories') ?? [])) /><span
+                                                        class="text-small">{{ $category->name }}
+                                                        <span
+                                                            class="neutral-medium">({{ $category->products->count() }})</span></span><span
+                                                        class="checkmark"></span> </label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="block-filter">
-                            <h6 class="item-collapse">Brand</h6>
-                            <div class="box-collapse scrollFilter">
-                                <ul class="list-filter-checkbox">
-                                    @foreach ($brands as $brand)
+                            <div class="block-filter">
+                                <h6 class="item-collapse">Brand</h6>
+                                <div class="box-collapse scrollFilter">
+                                    <ul class="list-filter-checkbox">
+                                        @foreach ($brands as $brand)
+                                            <li>
+                                                <label class="cb-container">
+                                                    <input type="checkbox" name="brands[]" value="{{ $brand->id }}"
+                                                        multiple @checked(in_array($brand->id, request('brands') ?? [])) /><span
+                                                        class="text-small">{{ $brand->name }}</span><span
+                                                        class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="block-filter">
+                                <h6 class="item-collapse">Price</h6>
+                                <div class="box-collapse scrollFilter">
+                                    <ul class="list-filter-checkbox">
                                         <li>
                                             <label class="cb-container">
-                                                <input type="checkbox" /><span class="text-small">{{ $brand->name }}</span><span
-                                                    class="checkmark"></span>
+                                                <input type="radio" name="price" value="99_149" /><span
+                                                    class="text-small">$99.00 -
+                                                    $149.00</span><span class="checkmark"></span>
                                             </label>
                                         </li>
-                                    @endforeach
-                                </ul>
+                                        <li>
+                                            <label class="cb-container">
+                                                <input type="radio" name="price" value="150_249" /><span
+                                                    class="text-small">$150.00 -
+                                                    $249.00</span><span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="cb-container">
+                                                <input type="radio" name="price" value="250_399" /><span
+                                                    class="text-small">$250.00 -
+                                                    $399.00</span><span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="cb-container">
+                                                <input type="radio" name="price" value="400_999999" /><span
+                                                    class="text-small">$400.00 +</span><span class="checkmark"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                        <div class="block-filter">
-                            <h6 class="item-collapse">Price</h6>
-                            <div class="box-collapse scrollFilter">
-                                <ul class="list-filter-checkbox">
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">$10.00 -
-                                                $49.00</span><span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">$50.00 -
-                                                $99.00</span><span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">$100.00 -
-                                                $199.00</span><span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">$200.00 +</span><span
-                                                class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    </x-forms.form>
                 </div>
                 <div class="col-lg-9">
                     <div class="box-filter-top">
