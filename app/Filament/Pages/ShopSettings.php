@@ -11,6 +11,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Icetalker\FilamentTableRepeater\Forms\Components\TableRepeater;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -34,6 +35,7 @@ class ShopSettings extends Page
             'first_banner' => $settings->firstWhere('key', 'home_first_banner')?->json_value,
             'second_banner' => $settings->firstWhere('key', 'home_second_banner')?->json_value,
             'categories' => $settings->firstWhere('key', 'home_categories')?->json_value,
+            'price_filter' => $settings->firstWhere('key', 'shop_price_filter')?->json_value,
         ]);
     }
 
@@ -100,8 +102,8 @@ class ShopSettings extends Page
                     ])
                     ->statePath('second_banner')
                     ->columns(2),
-                
-                    Section::make('categories')
+
+                Section::make('categories')
                     ->schema([
                         Select::make('categories')
                             ->multiple()
@@ -109,6 +111,19 @@ class ShopSettings extends Page
                             ->searchable()
                             ->minItems(1)
                             ->maxItems(6),
+                    ]),
+
+                Section::make('filters')
+                    ->schema([
+                        TableRepeater::make('price_filter')
+                            ->schema([
+                                TextInput::make('from')
+                                    ->live()
+                                    ->numeric(),
+                                TextInput::make('to')
+                                    ->minValue(fn($get) => $get('from') + 1)
+                                    ->numeric(),
+                            ]),
                     ]),
 
             ])->statePath('data');
@@ -121,11 +136,13 @@ class ShopSettings extends Page
         $firstBanner = $content['first_banner'];
         $secondBanner = $content['second_banner'];
         $homeCategories = $content['categories'];
+        $shopFilters = $content['price_filter'];
 
         HomeSetting::set('home_offers', $homeOffers);
         HomeSetting::set('home_first_banner', $firstBanner);
         HomeSetting::set('home_second_banner', $secondBanner);
         HomeSetting::set('home_categories', $homeCategories);
+        HomeSetting::set('shop_price_filter', $shopFilters);
 
         Notification::make()->success()->title('Saved')->send();
     }

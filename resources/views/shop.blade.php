@@ -52,7 +52,7 @@
                                                         @checked(in_array($category->id, request('categories') ?? [])) /><span
                                                         class="text-small">{{ $category->name }}
                                                         <span
-                                                            class="neutral-medium">({{ $category->products->count() }})</span></span><span
+                                                            class="neutral-medium">({{ $category->products_count }})</span></span><span
                                                         class="checkmark"></span> </label>
                                             </li>
                                         @endforeach
@@ -82,35 +82,26 @@
                                     <ul class="list-filter-checkbox">
                                         <li>
                                             <label class="cb-container">
-                                                <input type="radio" name="price" value="99_149" /><span
-                                                    class="text-small">$99.00 -
-                                                    $149.00</span><span class="checkmark"></span>
+                                                <input type="radio" name="price" value="0" checked><span
+                                                    class="text-small">All</span><span class="checkmark"></span>
                                             </label>
                                         </li>
-                                        <li>
-                                            <label class="cb-container">
-                                                <input type="radio" name="price" value="150_249" /><span
-                                                    class="text-small">$150.00 -
-                                                    $249.00</span><span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="cb-container">
-                                                <input type="radio" name="price" value="250_399" /><span
-                                                    class="text-small">$250.00 -
-                                                    $399.00</span><span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="cb-container">
-                                                <input type="radio" name="price" value="400_999999" /><span
-                                                    class="text-small">$400.00 +</span><span class="checkmark"></span>
-                                            </label>
-                                        </li>
+                                        @foreach ($prices as $price)
+                                            <li>
+                                                <label class="cb-container">
+                                                    <input type="radio" name="price"
+                                                        value="{{ implode('_', $price) }}"
+                                                        @checked(request('price') == implode('_', $price))><span
+                                                        class="text-small">${{ implode(' - $', $price) }}</span><span
+                                                        class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary mb-3"
+                                style="padding: 0.375rem 0.75rem;">Submit</button>
                         </div>
                     </x-forms.form>
                 </div>
@@ -155,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-your-filter">
+                    {{-- <div class="box-your-filter">
                         <div class="block-text-filter">
                             <span class="body-p2 neutral-medium-dark">Your filter</span>
                         </div>
@@ -164,7 +155,7 @@
                                 class="btn btn-tag-filter" href="#">Women<span class="close-tag"></span></a><a
                                 class="clear-filter link-underline" href="#">Clear All</a>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="box-list-products">
                         @foreach ($products as $product)
                             <div class="product-item">
