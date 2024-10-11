@@ -86,16 +86,9 @@ class CheckoutController extends Controller
             ]);
         }
 
-        // If order payment cash, complete order.
         if ($request->payment == 'cash') {
-            $order->update([
-                'status' => OrderStatus::Pending,
-            ]);
-
-            // Empty the cart
+            $order->update(['status' => OrderStatus::Pending]);
             LaraCart::destroyCart();
-
-            // Send notification
             notifyUser('success', 'Your order has been sent successfully.');
             
             return redirect('/');

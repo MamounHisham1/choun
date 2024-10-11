@@ -22,6 +22,25 @@ class Order extends Model
         'payment_status' => PaymentStatus::class,
     ];
 
+    public static function booted()
+    {
+        static::updating(function (Order $order) {
+            if ($order->isDirty('status') && $order->status == OrderStatus::Approved) {
+                $order->load('orderLines.product');
+                $order->orderLines->each(
+                    fn(OrderLine $orderLine) => $orderLine->product->decrement('quantity', $orderLine->quantity)
+                );
+            }
+
+            if ($order->isDirty('status') && $order->status == OrderStatus::Canceled) {
+                $order->load('orderLines.product');
+                $order->orderLines->each(
+                    fn(OrderLine $orderLine) => $orderLine->product->increment('quantity', $orderLine->quantity)
+                );
+            }
+        });
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()

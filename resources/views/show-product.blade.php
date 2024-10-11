@@ -72,13 +72,13 @@
                             </div>
                         </div>
                         <div class="block-tags-product">
-                            <p class="body-p2">
+                            {{-- <p class="body-p2">
                                 <span class="neutral-medium-dark">SKU:</span><span
                                     class="neutral-dark">C66R8B47MP</span>
-                            </p>
+                            </p> --}}
                             <p class="body-p2">
-                                <span class="neutral-medium-dark">Categories:</span><a class="neutral-dark"
-                                    href="#">Dress,</a><a class="neutral-dark" href="#">Pants</a>
+                                <span class="neutral-medium-dark">Category:</span>
+                                <a class="neutral-dark" href="/shop/categories/{{ $product->category->slug }}">{{ $product->category->name }}</a>
                             </p>
                             <p class="body-p2">
                                 <span class="neutral-medium-dark">Tags:</span><a class="neutral-dark"
