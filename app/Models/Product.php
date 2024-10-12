@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute as AttributeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
@@ -18,25 +19,15 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
     use HasSlug;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
     protected $with = ['media'];
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function images(): AttributeCast
-    {
-        return AttributeCast::get(fn() => $this->getMedia('product-images'));
-    }
-
-    public function imageUrl(): AttributeCast
-    {
-        return AttributeCast::get(fn() => $this->getMedia('product-images')->first()?->getUrl() ?? 'https://random.imagecdn.app/261/261');
-    }
-
-    public function brand()
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }
@@ -54,6 +45,24 @@ class Product extends Model implements HasMedia
                 'values' => 'json'
             ]);
     }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function images(): AttributeCast
+    {
+        return AttributeCast::get(fn() => $this->getMedia('product-images'));
+    }
+
+    public function imageUrl(): AttributeCast
+    {
+        return AttributeCast::get(fn() => $this->getMedia('product-images')
+            ->first()
+                ?->getUrl() ?? 'https://random.imagecdn.app/261/261');
+    }
+
 
     public function getSlugOptions(): SlugOptions
     {

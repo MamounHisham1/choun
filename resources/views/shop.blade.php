@@ -160,15 +160,16 @@
                         @foreach ($products as $product)
                             <div class="product-item">
                                 <div class="cardProduct wow fadeInUp">
-                                    <div class="cardImage">
-                                        <a href="#"><img class="imageMain" src="{{ $product->image_url }}"
-                                                alt="choun" /><img class="imageHover"
-                                                src="{{ $product->images->last()?->getUrl() }}" alt="choun" /></a>
+                                    <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
+                                                src="{{ $product->image_url }}" alt="choun"><img
+                                                class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
+                                                alt="choun"></a>
                                         <div class="button-select">
-                                            <a href="/shop/{{ $product->slug }}">More Details</a>
+                                            <a href="/shop/{{ $product->slug }}">Select Options</a>
                                         </div>
                                         <div class="box-quick-button">
-                                            <a class="btn" href="#">
+                                            <a class="btn add-to-wishlist" href="javascript:void(0);"
+                                                data-product="{{ $product->id }}">
                                                 <svg class="d-inline-flex align-items-center justify-content-center"
                                                     width="28" height="28" viewbox="0 0 28 28"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -180,65 +181,21 @@
                                                     <defs>
                                                         <clippath id="clip0_116_452">
                                                             <rect width="24" height="24" fill="white"
-                                                                transform="translate(2 2)"></rect>
+                                                                transform="translate(2 2)">
+                                                            </rect>
                                                         </clippath>
                                                     </defs>
-                                                </svg></a><a class="btn" href="#">
-                                                <svg class="d-inline-flex align-items-center justify-content-center"
-                                                    width="24" height="24" viewbox="0 0 24 24" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <g clip-path="url(#clip0_200_1102)">
-                                                        <path
-                                                            d="M15.375 12.0416L19.5 16.1666L15.375 20.2916L14.1967 19.1133L16.31 16.9991L5.33333 17V15.3333H16.31L14.1967 13.22L15.375 12.0416ZM8.625 3.70831L9.80333 4.88665L7.69 6.99998H18.6667V8.66665H7.69L9.80333 10.78L8.625 11.9583L4.5 7.83331L8.625 3.70831Z"
-                                                            fill=""></path>
-                                                    </g>
-                                                    <defs>
-                                                        <clippath id="clip0_200_1102">
-                                                            <rect width="20" height="20" fill="white"
-                                                                transform="translate(2 2)"></rect>
-                                                        </clippath>
-                                                    </defs>
-                                                </svg></a><a class="btn preview-product" href="#">
-                                                <svg class="d-inline-flex align-items-center justify-content-center"
-                                                    width="28" height="28" viewbox="0 0 28 28" fill=""
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <g clip-path="url(#clip0_91_73)">
-                                                        <path
-                                                            d="M20.031 18.617L24.314 22.899L22.899 24.314L18.617 20.031C17.0237 21.3082 15.042 22.0029 13 22C8.032 22 4 17.968 4 13C4 8.032 8.032 4 13 4C17.968 4 22 8.032 22 13C22.0029 15.042 21.3082 17.0237 20.031 18.617ZM18.025 17.875C19.2941 16.5699 20.0029 14.8204 20 13C20 9.132 16.867 6 13 6C9.132 6 6 9.132 6 13C6 16.867 9.132 20 13 20C14.8204 20.0029 16.5699 19.2941 17.875 18.025L18.025 17.875Z"
-                                                            fill=""></path>
-                                                    </g>
-                                                    <defs>
-                                                        <clippath id="clip0_91_73">
-                                                            <rect width="24" height="24" fill="white"
-                                                                transform="translate(2 2)"></rect>
-                                                        </clippath>
-                                                    </defs>
-                                                </svg></a>
+                                                </svg>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="cardInfo">
                                         <a href="/shop/{{ $product->slug }}">
-                                            <h6 class="text-16-medium cardTitle">
-                                                {{ $product->name }}
-                                            </h6>
+                                            <h6 class="text-17-medium mb-10">{{ $product->name }}</h6>
                                         </a>
-                                        <p class="body-p2 cardDesc">
-                                            {{ Number::currency($product->price, 'USD') }}
-                                        </p>
-                                        <div class="box-colors">
-                                            <label class="color-label">
-                                                <input type="radio" name="color" value="red" class="d-none">
-                                                <div class="color-circle" style="background-color: red;"></div>
-                                            </label>
-                                            <label class="color-label">
-                                                <input type="radio" name="color" value="green" class="d-none">
-                                                <div class="color-circle" style="background-color: green;"></div>
-                                            </label>
-                                            <label class="color-label">
-                                                <input type="radio" name="color" value="blue" class="d-none">
-                                                <div class="color-circle" style="background-color: blue;"></div>
-                                            </label>
-                                        </div>
+                                        <p class="body-p2 cardDesc"><span
+                                                class="price-line">${{ $product->price }}</span><span
+                                                class="price-main">${{ $product->price }}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -249,7 +206,7 @@
             </div>
         </div>
     </section>
-    <section class="section block-may-also-like">
+    {{-- <section class="section block-may-also-like">
         <div class="container">
             <div class="text-center">
                 <h3 class="mb-60">Recently Viewed Products</h3>
@@ -549,5 +506,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </x-layout>

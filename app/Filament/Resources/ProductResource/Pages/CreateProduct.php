@@ -10,8 +10,7 @@ class CreateProduct extends CreateRecord
 {
     protected static string $resource = ProductResource::class;
 
-    public function 
-    BeforeCreate(array $data): array
+    public function mutateFormDataBeforeCreate(array $data): array
     {
         session()->flash('attributes', $data['attributes']);
         unset($data['attributes']);

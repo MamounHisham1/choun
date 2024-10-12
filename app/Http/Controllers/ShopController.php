@@ -31,9 +31,11 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
-        // session()->flash('product', $product);
+        $products = $product->category->products->where('id', '!==', $product->id);
+
         return view('show-product', [
             'product' => $product,
+            'products' => $products,
         ]);
     }
 

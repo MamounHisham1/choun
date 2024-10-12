@@ -9,6 +9,7 @@ use App\Models\AttributeValue;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
@@ -51,6 +52,7 @@ class ProductResource extends Resource
                             ->searchable()
                             ->required(),
                         Select::make('brand_id')
+                            ->label('Brand')
                             ->options(Brand::pluck('name', 'id'))
                             ->searchable()
                             ->native(false)
@@ -61,6 +63,11 @@ class ProductResource extends Resource
                                 FileUpload::make('image')
                                     ->image(),
                             ])->createOptionUsing(fn($data) => Brand::create($data)),
+                        Select::make('tags')
+                            ->relationship('tags', 'name')
+                            ->multiple()
+                            ->preload()
+                            ->searchable(),
                     ])->columns(2),
                 Section::make()
                     ->schema([

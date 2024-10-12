@@ -78,15 +78,19 @@
                             </p> --}}
                             <p class="body-p2">
                                 <span class="neutral-medium-dark">Category:</span>
-                                <a class="neutral-dark" href="/shop/categories/{{ $product->category->slug }}">{{ $product->category->name }}</a>
+                                <a class="neutral-dark"
+                                    href="/shop/categories/{{ $product->category->slug }}">{{ $product->category->name }}</a>
                             </p>
-                            <p class="body-p2">
-                                <span class="neutral-medium-dark">Tags:</span><a class="neutral-dark"
-                                    href="#">fashion,</a><a class="neutral-dark" href="#">shoes,</a><a
-                                    class="neutral-dark" href="#">women</a>
-                            </p>
+                            @if ($product->tags->isNotEmpty())
+                                <p class="body-p2">
+                                    <span class="neutral-medium-dark">Tags:</span>
+                                    @foreach ($product->tags as $tag)
+                                        <span class="badge bg-secondary">{{ $tag->name }}</span>
+                                    @endforeach
+                                </p>
+                            @endif
                         </div>
-                        <div class="block-socials-product">
+                        {{-- <div class="block-socials-product">
                             <span class="body-p2 neutral-medium-dark">Share:</span><a class="social-neutral-dark"
                                 href="#">
                                 <svg width="24" height="24" viewbox="0 0 24 24" fill="none"
@@ -113,11 +117,11 @@
                                         d="M14.6001 10.0078C12.1001 10.0078 10.1079 12.0391 10.1079 14.5C10.1079 17 12.1001 18.9922 14.6001 18.9922C17.061 18.9922 19.0923 17 19.0923 14.5C19.0923 12.0391 17.061 10.0078 14.6001 10.0078ZM14.6001 17.4297C12.9985 17.4297 11.6704 16.1406 11.6704 14.5C11.6704 12.8984 12.9595 11.6094 14.6001 11.6094C16.2017 11.6094 17.4907 12.8984 17.4907 14.5C17.4907 16.1406 16.2017 17.4297 14.6001 17.4297ZM20.3032 9.85156C20.3032 9.26562 19.8345 8.79688 19.2485 8.79688C18.6626 8.79688 18.1938 9.26562 18.1938 9.85156C18.1938 10.4375 18.6626 10.9062 19.2485 10.9062C19.8345 10.9062 20.3032 10.4375 20.3032 9.85156ZM23.272 10.9062C23.1938 9.5 22.8813 8.25 21.8657 7.23438C20.8501 6.21875 19.6001 5.90625 18.1938 5.82812C16.7485 5.75 12.4126 5.75 10.9673 5.82812C9.56104 5.90625 8.3501 6.21875 7.29541 7.23438C6.27979 8.25 5.96729 9.5 5.88916 10.9062C5.81104 12.3516 5.81104 16.6875 5.88916 18.1328C5.96729 19.5391 6.27979 20.75 7.29541 21.8047C8.3501 22.8203 9.56104 23.1328 10.9673 23.2109C12.4126 23.2891 16.7485 23.2891 18.1938 23.2109C19.6001 23.1328 20.8501 22.8203 21.8657 21.8047C22.8813 20.75 23.1938 19.5391 23.272 18.1328C23.3501 16.6875 23.3501 12.3516 23.272 10.9062ZM21.397 19.6562C21.1235 20.4375 20.4985 21.0234 19.7563 21.3359C18.5845 21.8047 15.8501 21.6875 14.6001 21.6875C13.311 21.6875 10.5767 21.8047 9.44385 21.3359C8.6626 21.0234 8.07666 20.4375 7.76416 19.6562C7.29541 18.5234 7.4126 15.7891 7.4126 14.5C7.4126 13.25 7.29541 10.5156 7.76416 9.34375C8.07666 8.60156 8.6626 8.01562 9.44385 7.70312C10.5767 7.23438 13.311 7.35156 14.6001 7.35156C15.8501 7.35156 18.5845 7.23438 19.7563 7.70312C20.4985 7.97656 21.0845 8.60156 21.397 9.34375C21.8657 10.5156 21.7485 13.25 21.7485 14.5C21.7485 15.7891 21.8657 18.5234 21.397 19.6562Z"
                                         fill=""></path>
                                 </svg></a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
-            <div class="box-detail-product">
+            {{-- <div class="box-detail-product">
                 <ul class="nav-tabs nav-tab-product" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
@@ -167,26 +171,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="tab-pane fade" id="sizechart" role="tabpanel" aria-labelledby="sizechart-tab">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <tbody>
-                                    <tr>
-                                        <th>Color</th>
-                                        <td>Red</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Size</th>
-                                        <td>XL</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Weight</th>
-                                        <td>300gr</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> --}}
                     <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                         <div class="comments-area">
                             <div class="row">
@@ -393,7 +377,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <section class="section block-may-also-like">
@@ -402,7 +386,93 @@
                 <h3 class="mb-60">You May Also Like</h3>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                @foreach ($products as $product)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="cardProduct wow fadeInUp">
+                            <div class="cardImage">
+                                <a href="/shop/{{ $product->slug }}"><img class="imageMain"
+                                        src="{{ $product->image_url }}" alt="choun" /><img class="imageHover"
+                                        src="{{ $product->images->last()?->getUrl() }}" alt="choun" /></a>
+                                <div class="button-select">
+                                    <a href="/shop/{{ $product->slug }}">More Details</a>
+                                </div>
+                                <div class="box-quick-button">
+                                    <a class="btn" href="#">
+                                        <svg class="d-inline-flex align-items-center justify-content-center"
+                                            width="28" height="28" viewbox="0 0 28 28"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_116_452)">
+                                                <path
+                                                    d="M14.001 6.52898C16.35 4.41998 19.98 4.48998 22.243 6.75698C24.505 9.02498 24.583 12.637 22.479 14.993L13.999 23.485L5.52101 14.993C3.41701 12.637 3.49601 9.01898 5.75701 6.75698C8.02201 4.49298 11.645 4.41698 14.001 6.52898ZM20.827 8.16998C19.327 6.66798 16.907 6.60698 15.337 8.01698L14.002 9.21498L12.666 8.01798C11.091 6.60598 8.67601 6.66798 7.17201 8.17198C5.68201 9.66198 5.60701 12.047 6.98001 13.623L14 20.654L21.02 13.624C22.394 12.047 22.319 9.66498 20.827 8.16998Z"
+                                                    fill=""></path>
+                                            </g>
+                                            <defs>
+                                                <clippath id="clip0_116_452">
+                                                    <rect width="24" height="24" fill="white"
+                                                        transform="translate(2 2)"></rect>
+                                                </clippath>
+                                            </defs>
+                                        </svg></a><a class="btn" href="#">
+                                        <svg class="d-inline-flex align-items-center justify-content-center"
+                                            width="24" height="24" viewbox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_200_1102)">
+                                                <path
+                                                    d="M15.375 12.0416L19.5 16.1666L15.375 20.2916L14.1967 19.1133L16.31 16.9991L5.33333 17V15.3333H16.31L14.1967 13.22L15.375 12.0416ZM8.625 3.70831L9.80333 4.88665L7.69 6.99998H18.6667V8.66665H7.69L9.80333 10.78L8.625 11.9583L4.5 7.83331L8.625 3.70831Z"
+                                                    fill=""></path>
+                                            </g>
+                                            <defs>
+                                                <clippath id="clip0_200_1102">
+                                                    <rect width="20" height="20" fill="white"
+                                                        transform="translate(2 2)"></rect>
+                                                </clippath>
+                                            </defs>
+                                        </svg></a><a class="btn preview-product" href="#">
+                                        <svg class="d-inline-flex align-items-center justify-content-center"
+                                            width="28" height="28" viewbox="0 0 28 28" fill=""
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_91_73)">
+                                                <path
+                                                    d="M20.031 18.617L24.314 22.899L22.899 24.314L18.617 20.031C17.0237 21.3082 15.042 22.0029 13 22C8.032 22 4 17.968 4 13C4 8.032 8.032 4 13 4C17.968 4 22 8.032 22 13C22.0029 15.042 21.3082 17.0237 20.031 18.617ZM18.025 17.875C19.2941 16.5699 20.0029 14.8204 20 13C20 9.132 16.867 6 13 6C9.132 6 6 9.132 6 13C6 16.867 9.132 20 13 20C14.8204 20.0029 16.5699 19.2941 17.875 18.025L18.025 17.875Z"
+                                                    fill=""></path>
+                                            </g>
+                                            <defs>
+                                                <clippath id="clip0_91_73">
+                                                    <rect width="24" height="24" fill="white"
+                                                        transform="translate(2 2)"></rect>
+                                                </clippath>
+                                            </defs>
+                                        </svg></a>
+                                </div>
+                            </div>
+                            <div class="cardInfo">
+                                <a href="/shop/{{ $product->slug }}">
+                                    <h6 class="text-16-medium cardTitle">
+                                        {{ $product->name }}
+                                    </h6>
+                                </a>
+                                <p class="body-p2 cardDesc">
+                                    {{ Number::currency($product->price, 'USD') }}
+                                </p>
+                                <div class="box-colors">
+                                    <label class="color-label">
+                                        <input type="radio" name="color" value="red" class="d-none">
+                                        <div class="color-circle" style="background-color: red;"></div>
+                                    </label>
+                                    <label class="color-label">
+                                        <input type="radio" name="color" value="green" class="d-none">
+                                        <div class="color-circle" style="background-color: green;"></div>
+                                    </label>
+                                    <label class="color-label">
+                                        <input type="radio" name="color" value="blue" class="d-none">
+                                        <div class="color-circle" style="background-color: blue;"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-lg-3 col-md-6">
                     <div class="cardProduct wow fadeInUp">
                         <div class="cardImage">
                             <a href="#"><img class="imageMain" src="/assets/imgs/page/homepage1/product8.png"
@@ -693,7 +763,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

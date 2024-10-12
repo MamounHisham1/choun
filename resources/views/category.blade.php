@@ -1,6 +1,5 @@
 <x-layout>
     <x-categories-layout>
-
         <x-categories-container>
             <div class="box-shop-category-top">
                 <div class="box-swiper">
@@ -46,7 +45,7 @@
                                                         class="text-small">{{ $category->name }} <span
                                                             class="neutral-medium">({{ $category->products->count() }})</span></span><span
                                                         class="checkmark"></span>
-                                                </label><span class="arrow-down"></span>
+                                                </label>
                                             </li>
                                         @endforeach
                                     </ul>

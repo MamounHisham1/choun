@@ -60,7 +60,7 @@
 
         .sticky-toast {
             position: fixed;
-            top: 20px;
+            top: 50px;
             right: 20px;
             z-index: 1050;
         }
@@ -75,13 +75,12 @@
 
 <body>
     <div class="toast-container sticky-toast">
-        <div id="flashToast" class="toast text-white" role="alert" aria-live="assertive" aria-atomic="true"
+        <div id="flashToast" class="toast text-white" role="alert"
             style="display: none;">
             <div class="toast-body d-flex align-items-center">
                 <i id="toastIcon" class="toast-icon"></i>
                 <span id="toastMessage"></span>
-                <button type="button" class="btn-close ms-auto me-2" data-bs-dismiss="toast"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close ms-auto me-2" data-bs-dismiss="toast"></button>
             </div>
         </div>
     </div>
@@ -162,10 +161,10 @@
 
         });
         function showToast(bgClass, message) {
-            const $flashToast = $('#flashToast');
+            const flashToast = $('#flashToast');
 
             // Update the background color and message
-            $flashToast.removeClass().addClass('toast text-white bg-' + bgClass);
+            flashToast.removeClass().addClass('toast text-white bg-' + bgClass);
             $('#toastMessage').text(message);
 
             // Set the correct icon based on the background class
@@ -187,7 +186,7 @@
             $('#toastIcon').removeClass().addClass('toast-icon bi ' + iconClass);
 
             // Show the toast
-            $flashToast.show().toast({
+            flashToast.show().toast({
                 autohide: true,
                 delay: 5000 // 5 seconds delay
             }).toast('show');

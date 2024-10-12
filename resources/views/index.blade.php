@@ -115,7 +115,7 @@
                             @foreach ($productsChunk as $product)
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
-                                        <div class="cardImage"><a href="#"><img class="imageMain"
+                                        <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="choun"><img
                                                     class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
                                                     alt="choun"></a>
@@ -164,7 +164,7 @@
                             @foreach ($productsChunk as $product)
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
-                                        <div class="cardImage"><a href="#"><img class="imageMain"
+                                        <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="choun"><img
                                                     class="imageHover"
                                                     src="{{ $product->images->last()?->getUrl() }}"
@@ -214,7 +214,7 @@
                             @foreach ($productsChunk as $product)
                                 <x-tab-card>
                                     <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
-                                        <div class="cardImage"><a href="#"><img class="imageMain"
+                                        <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="choun"><img
                                                     class="imageHover"
                                                     src="{{ $product->images->last()?->getUrl() }}"
