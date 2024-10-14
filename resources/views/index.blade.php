@@ -70,7 +70,7 @@
                                     <p class="text-muted fw-semibold mb-1">{{ $offer['message'] }}</p>
                                     <h2 class="fw-bold mb-1" style="font-size: 1.75rem;">{{ $offer['product']->name }}
                                     </h2>
-                                    <a href="/shop/{{ $offer['product']->id }}/show"
+                                    <a href="/shop/{{ $offer['product']->slug }}"
                                         class="btn btn-outline-dark text-end"
                                         style="padding: 0.5rem 1rem; font-weight: 500;">Learn more</a>
                                 </div>
@@ -268,7 +268,7 @@
                     <h2 class="color-white mb-10">{{ $homeSecondBanner['category']->name }}</h2>
                     <div class="body-p1 color-white mb-30">{!! $homeSecondBanner['message'] !!}</div>
                     <a class="btn btn-border-white"
-                        href="/shop/categories/{{ $homeSecondBanner['category']->id }}">Shop now</a>
+                        href="/shop/categories/{{ $homeSecondBanner['category']->slug }}">Shop now</a>
                 </div>
             </div>
         </section>

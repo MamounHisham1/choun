@@ -14,28 +14,28 @@
                         <div class="col-lg-3 mb-30">
                             <h6 class="color-white mb-20">Company</h6>
                             <ul class="menu-footer">
-                                <li><a href="about-us-1.html">About us</a></li>
-                                <li><a href="carrers.html">Careers</a></li>
-                                <li><a href="store-location.html">Store Locator</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Store Locator</a></li>
+                                <li><a href="#">Contact Us</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-3 mb-30">
                             <h6 class="color-white mb-20">Customer Care</h6>
                             <ul class="menu-footer">
-                                <li><a href="about-us-1.html">Size Guide</a></li>
-                                <li><a href="custome-service.html">Help & FAQs</a></li>
-                                <li><a href="faq.html">Return My Order</a></li>
-                                <li><a href="store-location.html">Refer a Friend</a></li>
+                                <li><a href="#">Size Guide</a></li>
+                                <li><a href="#">Help & FAQs</a></li>
+                                <li><a href="#">Return My Order</a></li>
+                                <li><a href="#">Refer a Friend</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-3 mb-30">
                             <h6 class="color-white mb-20">Terms & Policies</h6>
                             <ul class="menu-footer">
-                                <li><a href="faq.html">Duties & Taxes</a></li>
-                                <li><a href="store-location.html">Shipping Info</a></li>
-                                <li><a href="store-location.html">Privacy Policy</a></li>
-                                <li><a href="store-location.html">Terms Conditions</a></li>
+                                <li><a href="#">Duties & Taxes</a></li>
+                                <li><a href="#">Shipping Info</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms Conditions</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-3 mb-30">
