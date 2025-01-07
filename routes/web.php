@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
@@ -42,6 +43,9 @@ Route::get('/account/orders/{order}/edit', [OrderController::class, 'edit'])->mi
 Route::post('account/orders/{order}/update', [OrderController::class, 'update'])->middleware('auth');
 Route::post('/account/orders/{order}/destroy', [OrderController::class, 'destroy'])->middleware('auth');
 Route::post('/account/orders/item/{orderLine}/destroy', [OrderController::class, 'destroyOrderLine'])->middleware('auth');
+
+Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('test', function () {
     // 

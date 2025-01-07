@@ -7,7 +7,7 @@
                         <ul class="main-menu">
                             <li><a class="active" href="/">Home</a></li>
                             <li><a href="/shop">Shop</a></li>
-                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/blogs">Blog</a></li>
                             <li><a href="/about">About Us</a></li>
                         </ul>
                     </nav>
@@ -17,7 +17,7 @@
             </div>
             <div class="header-logo">
                 <a class="d-flex" href="/">
-                    <img alt="luxride" src="/assets/imgs/template/icons/logo.png" width="150px">
+                    <img alt="electron" src="/assets/imgs/template/electron-logo-png_seeklogo-468387-removebg-preview.png" style="width: 40px;">
                 </a>
             </div>
             <div class="header-account">
@@ -136,7 +136,7 @@
                             </li>
                             <li class="has-children"><a href="/shop">Shop</a>
                             </li>
-                            <li class="has-children"><a href="/blog">Blog</a>
+                            <li class="has-children"><a href="/blogs">Blog</a>
                             </li>
                         </ul>
                     </nav>

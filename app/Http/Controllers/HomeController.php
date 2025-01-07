@@ -25,10 +25,7 @@ class HomeController extends Controller
         $featuredProducts = Product::where('is_published', true)->latest()->get()->where('is_featured', true);
 
         $categories = HomeSetting::where('key', 'home_categories')->first()->json_value ?? [];
-        $categories = array_map(function ($category) {
-            $category = Category::find($category);
-            return $category;
-        }, $categories);
+        $categories = Category::whereIn('id', $categories)->get();
 
         $homeOffers = HomeSetting::where('key', 'home_offers')->first()->json_value ?? [];
         $homeOffers = array_map(function ($offer) {

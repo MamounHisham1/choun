@@ -15,9 +15,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory;
-    use InteractsWithMedia;
-    use HasSlug;
+    use HasFactory, InteractsWithMedia, HasSlug;
 
     protected $guarded = ['id'];
     protected $with = ['media'];
