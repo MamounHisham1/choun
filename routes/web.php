@@ -45,6 +45,7 @@ Route::post('/account/orders/{order}/destroy', [OrderController::class, 'destroy
 Route::post('/account/orders/item/{orderLine}/destroy', [OrderController::class, 'destroyOrderLine'])->middleware('auth');
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blogs/load-more', [BlogController::class, 'loadMore'])->name('blog.load-more');
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('test', function () {

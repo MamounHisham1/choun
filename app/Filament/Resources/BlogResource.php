@@ -5,8 +5,11 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\BlogResource\Pages;
 use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
+use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -32,15 +35,18 @@ class BlogResource extends Resource
             ->schema([
                 TextInput::make('title')
                     ->maxLength(255),
-                TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Textarea::make('content')
-                    ->columnSpanFull(),
+                Select::make('category_id')
+                    ->label('Category')
+                    ->options(Category::all()->pluck('name', 'id'))
+                    ->searchable()
+                    ->preload(),
                 FileUpload::make('image_url')
-                    ->image(),
-                Toggle::make('is_published')
-                    ->required(),
+                    ->label('Image')
+                    ->image()
+                    ->columnSpanFull(),
+                RichEditor::make('content')
+                    ->columnSpanFull(),
+                Toggle::make('is_published'),
             ]);
     }
 
@@ -50,7 +56,7 @@ class BlogResource extends Resource
             ->columns([
                 TextColumn::make('title')
                     ->searchable(),
-                TextColumn::make('slug')
+                TextColumn::make('category.name')
                     ->searchable(),
                 ImageColumn::make('image_url'),
                 IconColumn::make('is_published')
