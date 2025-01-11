@@ -95,7 +95,7 @@
     <x-popup-preview />
     <x-popup-search />
     <x-popup-account />
-    <x-popup-cart />
+    <livewire:slider-cart />
     <x-popup-wishlist />
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

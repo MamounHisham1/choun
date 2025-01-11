@@ -30,7 +30,8 @@ class NewAdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => Color::Cyan,
+                'gray' => Color::Stone,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -59,6 +60,6 @@ class NewAdminPanelProvider extends PanelProvider
     public function register(): void
     {
         parent::register();
-        FilamentView::registerRenderHook('panels::body.end', fn(): String => Blade::render("@vite('resources/js/app.js')"));
+        FilamentView::registerRenderHook('panels::body.end', fn(): string => Blade::render("@vite('resources/js/app.js')"));
     }
 }

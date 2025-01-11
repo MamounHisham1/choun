@@ -39,7 +39,7 @@
                         <div class="cardBlog wow fadeInUp">
                             <div class="cardImage">
                                 <a href="{{ route('blog.show', $blog->slug) }}">
-                                    <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
+                                    <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}">
                                 </a>
                             </div>
                             <div class="cardInfo">

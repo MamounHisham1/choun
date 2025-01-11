@@ -46,7 +46,7 @@ Route::post('/account/orders/item/{orderLine}/destroy', [OrderController::class,
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blogs/load-more', [BlogController::class, 'loadMore'])->name('blog.load-more');
-Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blogs/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('test', function () {
     // 
