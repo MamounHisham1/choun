@@ -17,7 +17,7 @@ class Product extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia, HasSlug;
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
     protected $with = ['media'];
 
     public function category(): BelongsTo
@@ -60,7 +60,6 @@ class Product extends Model implements HasMedia
             ->first()
                 ?->getUrl() ?? 'https://random.imagecdn.app/261/261');
     }
-
 
     public function getSlugOptions(): SlugOptions
     {

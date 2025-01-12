@@ -8,7 +8,7 @@ use LukePOLO\LaraCart\Facades\LaraCart;
 
 class ItemsCount extends Component
 {
-    #[On('item-added-to-cart')]
+    #[On('item-added-to-cart'), On('item-deleted-from-cart')]
     public function render()
     {
         $cartItems = LaraCart::getItems();

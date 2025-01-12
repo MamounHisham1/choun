@@ -17,7 +17,7 @@
         </p>
         <div class="box-progress-bar-block">
             <div class="progress">
-                <div class="progress-bar" style="width: {{ $subtotal > 990 ? 100 : $subtotal / 990 * 100 }}%"></div>
+                <div class="progress-bar" style="width: {{ $subtotal > 990 ? 100 : ($subtotal / 990) * 100 }}%"></div>
             </div>
         </div>
         <div class="box-products-cart">
@@ -32,41 +32,43 @@
             </div>
             <div class="list-items-cart">
                 @foreach ($cartItems as $item)
-                <div class="item-cart">
-                    <div class="item-cart-image"><img src="{{ '' }}" alt="choun"></div>
-                    <div class="item-cart-info">
-                        <div class="item-cart-info-1"><a class="text-16-medium" href="#">{{ $item->name }}</a>
-                            <div class="box-info-size-color-product">
-                                <p class="box-color"><span class="body-p2 neutral-medium-dark">Color:</span><span
-                                        class="body-p2 neutral-dark">Navy</span></p>
-                                <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
-                                        class="body-p2 neutral-dark">S</span></p>
-                            </div>
-                            <p class="body-p2 d-block d-sm-none mb-8">{{ $item->price }}</p>
-                            <div class="box-form-cart">
-                                <div class="form-cart detail-qty"><span class="minus"></span>
-                                    <input class="qty-val form-control" type="text" name="quantity"
-                                        value="{{ $item->qty }}" min="1"><span class="plus"></span>
+                    <div class="item-cart">
+                        <div class="item-cart-image"><img src="{{ '' }}" alt="choun"></div>
+                        <div class="item-cart-info">
+                            <div class="item-cart-info-1">
+                                <a class="text-16-medium"
+                                    href="{{ route('shop.show', App\Models\Product::find( collect($cartItems)->first()->id)->first()->slug) }}">{{ $item->name }}</a>
+                                <div class="box-info-size-color-product">
+                                    <p class="box-color">
+                                        <span class="body-p2 neutral-medium-dark">Color:</span>
+                                        <span class="body-p2 neutral-dark">Navy</span>
+                                    </p>
+                                    <p class="box-size">
+                                        <span class="body-p2 neutral-medium-dark">Size:</span>
+                                        <span class="body-p2 neutral-dark">S</span>
+                                    </p>
+                                </div>
+                                <p class="body-p2 d-block d-sm-none mb-8">{{ Number::currency($item->price, 'USD') }}</p>
+                                <div class="box-form-cart">
+                                    <div class="form-cart detail-qty"><span class="minus"></span>
+                                        <input class="qty-val form-control" type="text" name="quantity"
+                                            value="{{ $item->qty }}" min="1"><span class="plus"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item-cart-info-2">
-                            <p class="body-p2 d-none d-sm-block">{{ $item->price * $item->qty }}</p><a
-                                class="btn-remove-cart" href="#"></a>
+                            <div class="item-cart-info-2">
+                                <p class="body-p2 d-none d-sm-block">{{ Number::currency($item->price * $item->qty) }}</p>
+                                <a class="btn-remove-cart" href="#" wire:click.prevent="removeItem({{ $item->id }})" x-on:click="$wire.on('item-deleted-from-cart', (event) => showToast('success', event[0].message))"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
-            </div>
-        </div>
-        <div class="box-fire">
-            <div class="icon-fire body-p2">Checkout now 09:14 before they’re<span class="text-17-medium">GONE!</span>
             </div>
         </div>
         <div class="d-flex align-items-center justify-content-between mt-25 mb-15">
             @if ($subtotal > 0)
-            <h6 class="neutral-medium-dark">Subtotal</h6>
-            <h6 class="neutral-dark">{{ $subtotal }}</h6>
+                <h6 class="neutral-medium-dark">Subtotal</h6>
+                <h6 class="neutral-dark">{{ Number::currency($subtotal) }}</h6>
             @endif
         </div>
         <div class="box-button-popup-cart d-flex align-items-center justify-content-between">

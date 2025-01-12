@@ -148,12 +148,12 @@
                                         @foreach ($cartItems as $item)
                                             <div class="item-cart">
                                                 {{-- <div class="item-cart-image">
-                                                    <img src="" alt="choun" />
+                                                    <img src="{{ $item->imageUrl() }}" alt="choun" />
                                                 </div> --}}
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
                                                         <a class="text-17-medium"
-                                                            href="/shop/{{ $item->id }}">{{ $item->name }}
+                                                            href="/shop/{{ $item->slug }}">{{ $item->name }}
                                                             - x{{ $item->qty }}</a>
                                                         <p class="box-color">
                                                             <span class="body-p2 neutral-medium-dark">Color:
