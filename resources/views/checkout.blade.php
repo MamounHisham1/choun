@@ -95,7 +95,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="towncity">Town / City *</label>
                                         <input class="form-control" name="city" id="towncity" type="text"
-                                            value="{{ old('city') ?? $shippingAddress->city ?? '' }}" required />
+                                            value="{{ old('city') ?? ($shippingAddress->city ?? '') }}" required />
                                         @error('city')
                                             <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
                                         @enderror
@@ -105,7 +105,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="address">Street Address *</label>
                                         <input class="form-control" name="street" id="address" type="text"
-                                            value="{{ old('street') ?? $shippingAddress->street ?? '' }}" required />
+                                            value="{{ old('street') ?? ($shippingAddress->street ?? '') }}" required />
                                         @error('street')
                                             <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
                                         @enderror
@@ -116,14 +116,14 @@
                                         <label class="form-label" for="apartment">Apartment, suite, unit, etc.
                                             (optional)</label>
                                         <input class="form-control" name="apartment" id="apartment" type="text"
-                                            value="{{ old('apartment') ?? $shippingAddress->apartment ?? '' }}" />
+                                            value="{{ old('apartment') ?? ($shippingAddress->apartment ?? '') }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label class="form-label" for="phone">Phone *</label>
                                         <input class="form-control" name="phone" id="phone" type="text"
-                                            value="{{ old('phone') ?? $shippingAddress->phone ?? '' }}" required />
+                                            value="{{ old('phone') ?? ($shippingAddress->phone ?? '') }}" required />
                                         @error('phone')
                                             <p class="text-sm text-danger mt-1">{{ $errors->first() }}</p>
                                         @enderror
@@ -237,6 +237,16 @@
                                                 Store Town, Store State / County, Store Postcode.
                                             </p>
                                         </div>
+                                        <div class="item-radio">
+                                            <label>
+                                                <input type="radio" name="payment" value="tap" />Credit Card
+                                                (Tap)
+                                            </label>
+                                            <p class="body-p2 neutral-medium-dark extra-info">
+                                                Please send a check to Store Name, Store Street,
+                                                Store Town, Store State / County, Store Postcode.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="box-desc-checkout">
@@ -280,26 +290,7 @@
                     data: {
                         'coupon': code,
                         "_token": "{{ csrf_token() }}",
-                    },
-                    <
-                    div class = "bg-[#FEEBC8] p-6 rounded-lg max-w-sm mx-auto" >
-                    <
-                    p class = "text-sm text-gray-700 font-semibold" > NEW ARRIVALS < /p> <
-                    h2 class = "text-2xl font-bold text-gray-900 mt-2" > MacBook Air < /h2> <
-                    h3 class = "text-xl font-medium text-gray-900" > M2 Chip < /h3> <
-                    div class = "mt-4 relative" >
-                    <
-                    img src = "https://via.placeholder.com/300x150.png"
-                    alt = "MacBook Air"
-                    class = "rounded-lg" >
-                    <
-                    /div> <
-                    button class =
-                    "mt-4 bg-white text-black font-semibold py-2 px-4 border border-black rounded-lg" >
-                    Learn more <
-                    /button> < /
-                    div >
-
+                    }
                     success: function(data) {
                         $('#discounted').html(
                             `$${data['price'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);

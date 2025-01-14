@@ -12,15 +12,15 @@ use App\Models\User;
 use App\OrderStatus;
 use App\PaymentStatus;
 use App\Rules\ValidCoupon;
+use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use LukePOLO\LaraCart\Facades\LaraCart;
 
 class CheckoutController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    protected array $lineItems = [];
+
     public function index()
     {
         if (empty(LaraCart::getItems())) {
@@ -43,17 +43,17 @@ class CheckoutController extends Controller
         ]);
 
         $user = Auth::user();
-        
+
         $data['user_id'] = $user->id;
-        
+
         $request->has('apartment') ? $data['apartment'] = $request->apartment : $data['apartment'] = null;
 
         $shippingAddress = ShippingAddress::create($data);
 
         // Create the order
         /** @var Order */
-        $order = Order::create([ 
-            'code' => str('CH-'.date('mds').$shippingAddress->id),
+        $order = Order::create([
+            'code' => str('CH-' . date('mds') . $shippingAddress->id),
             'status' => OrderStatus::Draft,
             'payment_method' => $request->payment,
             'payment_status' => PaymentStatus::Pending,
@@ -90,14 +90,25 @@ class CheckoutController extends Controller
             $order->update(['status' => OrderStatus::Pending]);
             LaraCart::destroyCart();
             notifyUser('success', 'Your order has been sent successfully.');
-            
+
             return redirect('/');
         }
 
-        // If order payment is credit card, go to stripe to finish
-        $lineItems = [];
+        // If order payment is stripe go to finish
+        if ($request->payment === 'stripe') {
+            return $this->stripe($order);
+        }
+
+        // If order payment is tap go to finish
+        if ($request->payment === 'tap') {
+            return $this->tap($order);
+        }
+    }
+
+    private function stripe(Order $order)
+    {
         foreach ($order->orderLines as $orderLine) {
-            $lineItems[] = [
+            $this->lineItems[] = [
                 'price_data' => [
                     'currency' => 'usd',
                     'product_data' => [
@@ -111,13 +122,83 @@ class CheckoutController extends Controller
 
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
         $session = \Stripe\Checkout\Session::create([
-            'line_items' => $lineItems,
+            'line_items' => $this->lineItems,
             'mode' => 'payment',
             'success_url' => route('success', parameters: ['order' => $order]),
             'cancel_url' => route('checkout'),
         ]);
 
         return redirect()->away($session->url);
+    }
+
+    private function tap(Order $order)
+    {
+        $subtotal = 0;
+
+        $description = 'Order Items: ';
+        foreach ($order->orderLines as $orderLine) {
+            $description .= "{$orderLine->quantity}x {$orderLine->product->name}, ";
+        }
+        $description = rtrim($description, ', ');
+
+        foreach ($order->orderLines as $orderLine) {
+            $this->lineItems[] = [
+                'product' => $orderLine->product->name,
+                'unit_amount' => $orderLine->price * 100,
+                'quantity' => $orderLine->quantity,
+            ];
+
+            $subtotal += $orderLine->price * $orderLine->quantity;
+        }
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . env('TAP_SK'),
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ])->post('https://api.tap.company/v2/charges/', [
+                    'amount' => $subtotal,
+                    'currency' => 'USD',
+                    'customer_initiated' => true,
+                    'threeDSecure' => true,
+                    'save_card' => false,
+                    'description' => $description,
+                    'metadata' => $this->lineItems,
+                    'receipt' => [
+                        'email' => false,
+                        'sms' => false,
+                    ],
+                    'reference' => [
+                        'transaction' => 'txn_' . $order->code,
+                        'order' => 'ord_' . $order->code,
+                    ],
+                    'customer' => [
+                        'first_name' => 'Mamoun',
+                        'middle_name' => 'test',
+                        'last_name' => 'test',
+                        'email' => 'test@test.test',
+                        'phone' => [
+                            'country_code' => 20,
+                            'number' => 654681321,
+                        ],
+                    ],
+                    'merchant' => [
+                        'id' => '1234',
+                    ],
+                    'source' => [
+                        'id' => 'src_all',
+                    ],
+                    'redirect' => [
+                        'url' => route('success', ['order' => $order]),
+                    ],
+                ]);
+
+
+        if ($response->successful()) {
+            $url = $response->json()['transaction']['url'];
+            return redirect()->away($url);
+        } else {
+            dd('Errors');
+        }
     }
 
     public function success(Order $order)
@@ -128,7 +209,7 @@ class CheckoutController extends Controller
         ]);
 
         LaraCart::destroyCart();
-        
+
         notifyUser('success', 'Your order has been sent successfully.');
 
         return redirect('/');
