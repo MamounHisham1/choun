@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <x-loader />
+    {{-- <x-loader /> --}}
     <x-header />
     <main class="main">
 

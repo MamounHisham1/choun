@@ -39,14 +39,12 @@
                                 <a class="text-16-medium"
                                     href="{{ route('shop.show', App\Models\Product::find( collect($cartItems)->first()->id)->first()->slug) }}">{{ $item->name }}</a>
                                 <div class="box-info-size-color-product">
+                                    @foreach ($item->options[0] as $key => $value)
                                     <p class="box-color">
-                                        <span class="body-p2 neutral-medium-dark">Color:</span>
-                                        <span class="body-p2 neutral-dark">Navy</span>
+                                        <span class="body-p2 neutral-medium-dark">{{ ucfirst($key) }}:</span>
+                                        <span class="body-p2 neutral-dark">{{ $value }}</span>
                                     </p>
-                                    <p class="box-size">
-                                        <span class="body-p2 neutral-medium-dark">Size:</span>
-                                        <span class="body-p2 neutral-dark">S</span>
-                                    </p>
+                                    @endforeach
                                 </div>
                                 <p class="body-p2 d-block d-sm-none mb-8">{{ Number::currency($item->price, 'USD') }}</p>
                                 <div class="box-form-cart">

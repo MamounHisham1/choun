@@ -15,6 +15,15 @@ class ShopController extends Controller
 {
     public function index()
     {
+        // $items = LaraCart::getItems();
+        // foreach($items as $item) {
+        //     foreach($item->options[0] as $key => $value) {
+        //         $attributeValue = AttributeValue::find($value);
+        //         dump($item->options[0][$key] = $attributeValue->name);
+        //     }
+        // }
+        $cartItems = LaraCart::getItems();
+        dd($cartItems);
         $brands = Brand::all()->splice(1);
         $products = Product::where('is_published', true)->paginate(9);
         $categories = Category::has('products', '>', 0)->get();
