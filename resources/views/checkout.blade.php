@@ -147,22 +147,20 @@
                                     <div class="list-items-cart">
                                         @foreach ($cartItems as $item)
                                             <div class="item-cart">
-                                                {{-- <div class="item-cart-image">
-                                                    <img src="{{ $item->imageUrl() }}" alt="choun" />
-                                                </div> --}}
+                                                <div class="item-cart-image">
+                                                    {{-- <img src="{{ App\Models\Product::find($item->id)->imageUrl() }}" alt="choun" /> --}}
+                                                </div>
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
                                                         <a class="text-17-medium"
                                                             href="/shop/{{ $item->slug }}">{{ $item->name }}
                                                             - x{{ $item->qty }}</a>
+                                                        @foreach ($item->options[0] as $key => $value)
                                                         <p class="box-color">
-                                                            <span class="body-p2 neutral-medium-dark">Color:
-                                                            </span><span class="body-p2 neutral-dark">Navy </span>
+                                                            <span class="body-p2 neutral-medium-dark">{{ ucfirst($key) }}:
+                                                            </span><span class="body-p2 neutral-dark">{{ $value }}</span>
                                                         </p>
-                                                        <p class="box-size">
-                                                            <span class="body-p2 neutral-medium-dark">Size:
-                                                            </span><span class="body-p2 neutral-dark">S </span>
-                                                        </p>
+                                                        @endforeach
                                                     </div>
                                                     <div class="item-cart-info-2">
                                                         <p class="body-p2">

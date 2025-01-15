@@ -30,11 +30,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('*', function (View $view) {
-            $cartItems = LaraCart::getItems();
             $wishlistItems = once(fn() => Wishlist::getItems(auth()->id()));
 
             $view->with([
-                'cartItems' => $cartItems,
                 'wishlistItems' => $wishlistItems,
             ]);
         });

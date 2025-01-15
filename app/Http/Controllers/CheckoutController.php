@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AttributeValue;
 use App\Models\Cart;
 use App\Models\Coupon;
 use App\Models\OrderLine;
@@ -23,13 +24,23 @@ class CheckoutController extends Controller
 
     public function index()
     {
-        if (empty(LaraCart::getItems())) {
+        $cartItems = LaraCart::getItems();
+
+        if (empty($cartItems)) {
             return redirect('/shop');
+        }
+
+        foreach($cartItems as $item) {
+            foreach($item->options[0] as $key => $value) {
+                $attributeValue = AttributeValue::find($value);
+                $item->options[0][$key] = $attributeValue?->name ?? $value;
+            }
         }
 
         return view('checkout', [
             'subtotal' => LaraCart::total(),
             'shippingAddress' => auth()?->user()?->shippingAddresses?->last(),
+            'cartItems' => $cartItems,
         ]);
     }
 
