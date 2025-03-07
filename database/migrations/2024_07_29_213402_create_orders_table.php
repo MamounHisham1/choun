@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('status');
             $table->float('total');
-            $table->string('payment_method');
+            $table->string('payment_method')->default('cash');
             $table->foreignId('coupon_id')->nullable();
             $table->string('payment_status')->default(PaymentStatus::Pending);
             $table->foreignId('user_id')->nullable()->constrained();
