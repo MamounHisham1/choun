@@ -74,5 +74,5 @@
             </div>
         </div>
     </div>
-    {{ $categories->render('vendor.pagination.bootstrap-5') }}
+    {{ $categories->render('vendor.pagination.mypagination') }}
 </div>

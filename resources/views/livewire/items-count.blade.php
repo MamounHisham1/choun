@@ -1,6 +1,7 @@
 <a class="account-icon cart" href="#">
-    @if (count($cartItems) > 0)
-    <span id="cart-tag" class="number-tag">{{ count($cartItems) }}</span>
+
+    @if ($totalItems > 0)
+    <span id="cart-tag" class="number-tag">{{ $totalItems }}</span>
     @else
     <span id="cart-tag"></span>
     @endif

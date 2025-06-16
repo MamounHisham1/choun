@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 Route::get('/', HomeController::class)->name('home');
+Route::view('/about', 'about')->name('about');
 
 Route::get('/shop', [ShopController::class, 'index']);
-Route::get('/shop/{product:slug}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/shop/filter', [ShopController::class, 'filter']);
+Route::get('/shop/{product:slug}', [ShopController::class, 'show'])->name('shop.show');
 
 Route::get('/shop/categories/{category:slug}', CategoryProductsController::class);
 

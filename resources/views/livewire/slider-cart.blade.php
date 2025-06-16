@@ -1,4 +1,11 @@
-<div class="box-popup-cart">
+<div class="box-popup-cart" x-data="{ 
+    showToast: function(type, message) {
+        if (typeof showToast === 'function') {
+            showToast(type, message);
+        }
+    }
+}" x-on:item-deleted-from-cart.window="showToast('success', $event.detail[0].message)"
+   x-on:item-added-to-cart.window="showToast('success', $event.detail[0].message)">
     <div class="box-cart-overlay"></div>
     <div class="box-cart-wrapper">
         <a class="btn-close-popup" href="#">
@@ -8,7 +15,7 @@
                 </path>
             </svg>
         </a>
-        <h5 class="mb-15">{{ count($cartItems) }} items</h5>
+        <h5 class="mb-15">{{ collect($cartItems)->sum('qty') }} items</h5>
         <h5 class="mb-15">Subtotal: {{ Number::currency($subtotal, 'USD') }}</h5>
         <p class="body-p2">
             <span class="text-17-medium">Free Shipping</span>
@@ -21,7 +28,7 @@
             </div>
         </div>
         <div class="box-products-cart">
-            <div class="box-empty-cart d-none">
+            <div class="box-empty-cart {{ count($cartItems) > 0 ? 'd-none' : '' }}">
                 <div class="icon-empty-cart">
                     <img src="assets/imgs/template/icons/empty-cart.svg" alt="choun">
                 </div>
@@ -30,33 +37,44 @@
                     <a class="link-underline" href="#">Add from Wishlist</a>
                 </div>
             </div>
-            <div class="list-items-cart">
+            <div class="list-items-cart {{ count($cartItems) === 0 ? 'd-none' : '' }}">
                 @foreach ($cartItems as $item)
-                    <div class="item-cart">
-                        <div class="item-cart-image"><img src="{{ '' }}" alt="choun"></div>
+                    @php
+                        $product = App\Models\Product::find($item->id);
+                        $itemHash = $item->getHash();
+                    @endphp
+                    <div class="item-cart" wire:key="cart-item-{{ $itemHash }}">
+                        <div class="item-cart-image">
+                            <img src="{{ $product?->image ? asset('storage/' . $product->image) : asset('assets/imgs/template/no-image.png') }}" alt="choun">
+                        </div>
                         <div class="item-cart-info">
                             <div class="item-cart-info-1">
                                 <a class="text-16-medium"
-                                    href="{{ route('shop.show', App\Models\Product::find( collect($cartItems)->first()->id)->first()->slug) }}">{{ $item->name }}</a>
+                                    href="{{ $product ? route('shop.show', $product->slug) : '#' }}">{{ $item->name }}</a>
                                 <div class="box-info-size-color-product">
-                                    @foreach ($item->options[0] as $key => $value)
-                                    <p class="box-color">
-                                        <span class="body-p2 neutral-medium-dark">{{ ucfirst($key) }}:</span>
-                                        <span class="body-p2 neutral-dark">{{ $value }}</span>
-                                    </p>
-                                    @endforeach
+                                    @if(isset($item->options[0]) && is_array($item->options[0]))
+                                        @foreach ($item->options[0] as $key => $value)
+                                        <p class="box-color">
+                                            <span class="body-p2 neutral-medium-dark">{{ ucfirst($key) }}:</span>
+                                            <span class="body-p2 neutral-dark">{{ $value }}</span>
+                                        </p>
+                                        @endforeach
+                                    @endif
                                 </div>
                                 <p class="body-p2 d-block d-sm-none mb-8">{{ Number::currency($item->price, 'USD') }}</p>
                                 <div class="box-form-cart">
-                                    <div class="form-cart detail-qty"><span class="minus"></span>
-                                        <input class="qty-val form-control" type="text" name="quantity"
-                                            value="{{ $item->qty }}" min="1"><span class="plus"></span>
+                                    <div class="form-cart detail-qty">
+                                        <span class="minus" wire:click="updateQuantity('{{ $item->id }}', {{ max(1, $item->qty - 1) }})"></span>
+                                        <input class="qty-val form-control" type="text" value="{{ $item->qty }}" min="1" 
+                                               wire:change="updateQuantity('{{ $item->id }}', $event.target.value)"
+                                               wire:key="qty-{{ $itemHash }}">
+                                        <span class="plus" wire:click="updateQuantity('{{ $item->id }}', {{ $item->qty + 1 }})"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="item-cart-info-2">
                                 <p class="body-p2 d-none d-sm-block">{{ Number::currency($item->price * $item->qty) }}</p>
-                                <a class="btn-remove-cart" href="#" wire:click.prevent="removeItem({{ $item->id }})" x-on:click="$wire.on('item-deleted-from-cart', (event) => showToast('success', event[0].message))"></a>
+                                <a class="btn-remove-cart" href="#" wire:click.prevent="removeItem({{ $item->id }})"></a>
                             </div>
                         </div>
                     </div>

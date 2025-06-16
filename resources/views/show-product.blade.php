@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="{{ $product->name }}">
     <div class="section block-breadcrumb">
         <div class="container">
             <div class="breadcrumbs">

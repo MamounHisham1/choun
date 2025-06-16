@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Shop">
     @push('css')
         <style>
             .color-label {
@@ -114,7 +114,7 @@
                         </div>
                         <div class="number-product">
                             <p class="body-p2 neutral-medium-dark">
-                                Showing 9 of 18 products
+                                Showing {{ $products->count() }} of {{ $products->total() }} products
                             </p>
                         </div>
                         <div class="box-sort">

@@ -14,7 +14,7 @@ class CreateCustomer extends CreateRecord
     public function mutateFormDataBeforeCreate(array $data): array
     {
         // dd('am i here?');
-        $data['password'] = Str::random(8);
+        $data['password'] = Str::password(16, symbols: false);
         return $data;
     }
 }

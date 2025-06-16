@@ -146,21 +146,26 @@
                                 <div class="box-info-checkout-inner">
                                     <div class="list-items-cart">
                                         @foreach ($cartItems as $item)
+                                            @php
+                                                $product = App\Models\Product::find($item->id);
+                                            @endphp
                                             <div class="item-cart">
                                                 <div class="item-cart-image">
-                                                    {{-- <img src="{{ App\Models\Product::find($item->id)->imageUrl() }}" alt="choun" /> --}}
+                                                    <img src="{{ $product?->image ? asset('storage/' . $product->image) : asset('assets/imgs/template/no-image.png') }}" alt="choun" />
                                                 </div>
                                                 <div class="item-cart-info">
                                                     <div class="item-cart-info-1">
                                                         <a class="text-17-medium"
-                                                            href="/shop/{{ $item->slug }}">{{ $item->name }}
+                                                            href="{{ $product ? route('shop.show', $product->slug) : '#' }}">{{ $item->name }}
                                                             - x{{ $item->qty }}</a>
-                                                        @foreach ($item->options[0] as $key => $value)
-                                                        <p class="box-color">
-                                                            <span class="body-p2 neutral-medium-dark">{{ ucfirst($key) }}:
-                                                            </span><span class="body-p2 neutral-dark">{{ $value }}</span>
-                                                        </p>
-                                                        @endforeach
+                                                        @if(isset($item->options[0]) && is_array($item->options[0]))
+                                                            @foreach ($item->options[0] as $key => $value)
+                                                            <p class="box-color">
+                                                                <span class="body-p2 neutral-medium-dark">{{ ucfirst($key) }}:
+                                                                </span><span class="body-p2 neutral-dark">{{ $value }}</span>
+                                                            </p>
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                     <div class="item-cart-info-2">
                                                         <p class="body-p2">
@@ -288,7 +293,7 @@
                     data: {
                         'coupon': code,
                         "_token": "{{ csrf_token() }}",
-                    }
+                    },
                     success: function(data) {
                         $('#discounted').html(
                             `$${data['price'].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`);

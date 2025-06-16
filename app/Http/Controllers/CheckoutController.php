@@ -13,9 +13,9 @@ use App\Models\User;
 use App\OrderStatus;
 use App\PaymentStatus;
 use App\Rules\ValidCoupon;
-use Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use LukePOLO\LaraCart\Facades\LaraCart;
 
 class CheckoutController extends Controller
@@ -26,14 +26,16 @@ class CheckoutController extends Controller
     {
         $cartItems = LaraCart::getItems();
 
-        if (empty($cartItems)) {
+        if (!$cartItems || count($cartItems) === 0) {
             return redirect('/shop');
         }
 
         foreach($cartItems as $item) {
-            foreach($item->options[0] as $key => $value) {
-                $attributeValue = AttributeValue::find($value);
-                $item->options[0][$key] = $attributeValue?->name ?? $value;
+            if (isset($item->options[0]) && is_array($item->options[0])) {
+                foreach($item->options[0] as $key => $value) {
+                    $attributeValue = AttributeValue::find($value);
+                    $item->options[0][$key] = $attributeValue?->name ?? $value;
+                }
             }
         }
 

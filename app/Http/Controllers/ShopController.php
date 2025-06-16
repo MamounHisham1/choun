@@ -15,19 +15,11 @@ class ShopController extends Controller
 {
     public function index()
     {
-        // $items = LaraCart::getItems();
-        // foreach($items as $item) {
-        //     foreach($item->options[0] as $key => $value) {
-        //         $attributeValue = AttributeValue::find($value);
-        //         dump($item->options[0][$key] = $attributeValue->name);
-        //     }
-        // }
-        $cartItems = LaraCart::getItems();
-        dd($cartItems);
         $brands = Brand::all()->splice(1);
         $products = Product::where('is_published', true)->paginate(9);
         $categories = Category::has('products', '>', 0)->get();
         $shopPrices = HomeSetting::where('key', 'shop_price_filter')->first()->json_value ?? [];
+        $prices = [];
         foreach ($shopPrices as $price) {
             $prices[] = array_reverse($price);
         }
@@ -41,7 +33,9 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
-        $products = $product->category->products->where('id', '!==', $product->id);
+        $products = $product->category->products->where('id', '!=', $product->id)->take(4);
+        $products = $products->merge($product->brand->products->where('id', '!=', $product->id)->take(4))->shuffle();
+
 
         return view('show-product', [
             'product' => $product,
@@ -54,6 +48,7 @@ class ShopController extends Controller
         $brands = Brand::all()->skip(1);
         $categories = Category::has('products', '>', 0)->withCount('products')->get();
         $shopPrices = HomeSetting::where('key', 'shop_price_filter')->first()->json_value ?? [];
+        $prices = [];
         foreach ($shopPrices as $price) {
             $prices[] = array_reverse($price);
         }

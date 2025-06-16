@@ -41,9 +41,8 @@ class HomeController extends Controller
 
         $homeSecondBanner = HomeSetting::where('key', 'home_second_banner')->first()->json_value ?? [];
         if (collect($homeSecondBanner)->has('category')) {
-            Category::find($homeSecondBanner['category']);
+            $homeSecondBanner['category'] = Category::find($homeSecondBanner['category']);
         }
-        $homeSecondBanner['category'] = Category::find($homeSecondBanner['category']);
 
         return view('index', [
             'bestProducts' => $bestProducts,

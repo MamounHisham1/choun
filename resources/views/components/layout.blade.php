@@ -70,7 +70,7 @@
         }
     </style>
     @stack('css')
-    <title>Home 16 - Electronic - Multipurpose Startup SaaS HTML Template</title>
+    <title>{{ env('APP_NAME') }} - {{ $title ?? 'Home' }}</title>
 </head>
 
 <body>
