@@ -93,7 +93,18 @@
     </main>
     <x-footer />
     <x-popup-preview />
-    <x-popup-search />
+    <div class="box-popup-search ele-popup-search" id="searchPopup">
+        <div class="box-search-overlay"></div>
+<div class="box-search-wrapper"><a class="btn-close-popup" href="#">
+        <svg class="icon-16 d-inline-flex align-items-center justify-content-center" fill="#111111" stroke="#111111"
+            width="24" height="24" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+            </path>
+        </svg></a>
+    <h5 class="mb-15">Search products</h5>
+        <livewire:search />
+        </div>
+    </div>
     <x-popup-account />
     <livewire:slider-cart />
     <x-popup-wishlist />

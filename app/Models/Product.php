@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Scout\Searchable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Sluggable\HasSlug;
@@ -15,10 +16,20 @@ use Spatie\Sluggable\SlugOptions;
 
 class Product extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia, HasSlug;
+    use HasFactory, InteractsWithMedia, HasSlug, Searchable;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
     protected $with = ['media'];
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'name' => $this->name,
+            'brand' => $this->brand->name,
+            'category' => $this->category->name,
+            'category_id' => $this->category->id,
+        ];
+    }
 
     public function category(): BelongsTo
     {
