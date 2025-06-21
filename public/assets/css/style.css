@@ -2455,7 +2455,7 @@ button:focus:not(:focus-visible) {
 .cardProduct .cardImage {
   position: relative;
   margin-bottom: 20px;
-  background-color: #f7f7f7;
+  background-color: white;
   height: 350px;
   text-align: center;
   line-height: 350px;
@@ -2549,7 +2549,7 @@ button:focus:not(:focus-visible) {
 .cardProductStyle4 .cardImage {
   position: relative;
   margin-bottom: 20px;
-  background-color: #f7f7f7;
+  background-color: white;
   text-align: center;
   overflow: hidden;
 }
@@ -2619,7 +2619,7 @@ button:focus:not(:focus-visible) {
 .cardProductStyle2 .cardImage {
   position: relative;
   margin-bottom: 20px;
-  background-color: #F8F4EE;
+  background-color: white;
   height: 286px;
   text-align: center;
   line-height: 286px;
@@ -2662,7 +2662,7 @@ button:focus:not(:focus-visible) {
 .cardProductSmall .cardImage {
   position: relative;
   margin-bottom: 20px;
-  background-color: #F8F4EE;
+  background-color: white;
   height: 370px;
   text-align: center;
   line-height: 370px;
@@ -2703,7 +2703,7 @@ button:focus:not(:focus-visible) {
 .cardProductStyle3 .cardImage, .cardProductStyle2 .cardImage, .cardProduct .cardImage, .cardProductSmall .cardImage {
   position: relative;
   margin-bottom: 20px;
-  background-color: #F7FAFA;
+  background-color: white;
   overflow: hidden;
 }
 .cardProductStyle3 .cardImage img, .cardProductStyle2 .cardImage img, .cardProduct .cardImage img, .cardProductSmall .cardImage img {

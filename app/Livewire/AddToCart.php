@@ -21,8 +21,20 @@ class AddToCart extends Component
         $attributes = $this->product->attributes;
         foreach ($attributes as $attribute) {
             $attribute->pivot->attribute = Attribute::find($attribute->pivot->attribute_id);
-            $attribute->pivot->values = AttributeValue::find(json_decode($attribute->pivot->values));
-            $this->data['attributes'][$attribute->pivot->attribute->slug] = $attribute->pivot->values[0]->id;
+            $valueIds = json_decode($attribute->pivot->values, true);
+            
+            // Ensure we have a flat array of integers
+            if (is_array($valueIds)) {
+                $valueIds = collect($valueIds)->flatten()->map(fn($id) => (int) $id)->filter()->toArray();
+                if (!empty($valueIds)) {
+                    $attribute->pivot->values = AttributeValue::whereIn('id', $valueIds)->get();
+                    $this->data['attributes'][$attribute->pivot->attribute->slug] = $valueIds[0];
+                } else {
+                    $attribute->pivot->values = collect();
+                }
+            } else {
+                $attribute->pivot->values = collect();
+            }
         }
     }
 
@@ -31,7 +43,19 @@ class AddToCart extends Component
         $attributes = $this->product->attributes;
         $attributes->map(function ($attribute) {
             $attribute->pivot->attribute = Attribute::find($attribute->pivot->attribute_id);
-            $attribute->pivot->values = AttributeValue::find(json_decode($attribute->pivot->values));
+            $valueIds = json_decode($attribute->pivot->values, true);
+            
+            // Ensure we have a flat array of integers
+            if (is_array($valueIds)) {
+                $valueIds = collect($valueIds)->flatten()->map(fn($id) => (int) $id)->filter()->toArray();
+                if (!empty($valueIds)) {
+                    $attribute->pivot->values = AttributeValue::whereIn('id', $valueIds)->get();
+                } else {
+                    $attribute->pivot->values = collect();
+                }
+            } else {
+                $attribute->pivot->values = collect();
+            }
         });
         return view('livewire.add-to-cart', [
             'attributes' => $attributes,

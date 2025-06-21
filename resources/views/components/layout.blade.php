@@ -26,36 +26,55 @@
     <style>
         .radio-badge {
             display: inline-block;
-            padding: `;
-            border-radius: 50px;
-            border: 2px solid transparent;
+            margin: 2px;
+            border-radius: 25px;
+            border: 2px solid #e0e0e0;
             transition: all 0.3s ease;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background-color: #fff;
+        }
+
+        .radio-badge:hover {
+            border-color: #007bff;
+            background-color: #f8f9fa;
         }
 
         .radio-badge input[type="radio"] {
             display: none;
         }
 
-        .radio-badge input[type="radio"]:checked+.badge-content {
-            background-color: #b0b0b0;
+        .radio-badge input[type="radio"]:checked + .badge-content {
+            background-color: #007bff;
             color: #fff;
-            border-color: #8a8a8a;
+            border-color: #007bff;
         }
 
         .badge-content {
             display: inline-block;
-            padding: 3px 10px;
-            border-radius: 50px;
-            border: 2px solid #6c757d;
+            padding: 8px 16px;
+            border-radius: 25px;
+            border: 2px solid transparent;
             transition: all 0.3s ease;
+            color: #333;
+            background-color: inherit;
         }
 
         .badge-icon {
             margin-right: 8px;
             vertical-align: middle;
+        }
+
+        .block-color {
+            margin-bottom: 15px;
+        }
+
+        .block-color span:first-child {
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 8px;
+            display: inline-block;
         }
 
         .sticky-toast {
@@ -67,6 +86,29 @@
 
         .toast-icon {
             margin-right: 10px;
+        }
+
+        .attributes-section {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fafafa;
+        }
+
+        .attribute-label {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .attribute-values {
+            margin-bottom: 15px;
+        }
+
+        .attribute-values:last-child {
+            margin-bottom: 0;
         }
     </style>
     @stack('css')

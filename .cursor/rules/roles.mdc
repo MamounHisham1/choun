@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Never add useless comments. When you wanna create a new file, first check if laravel can create that type of file for you (eg.., make:controller, make:seeder). Do what i exatly said and do not edit so much files if the thing i mentiond has nothing to do with them.

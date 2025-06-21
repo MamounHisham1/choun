@@ -13,9 +13,9 @@ class Tag extends Model
 
     protected $fillable = ['name'];
 
-    public function products(): HasMany
+    public function products(): BelongsToMany
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 
     public function blogs(): HasMany

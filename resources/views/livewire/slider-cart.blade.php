@@ -45,7 +45,7 @@
                     @endphp
                     <div class="item-cart" wire:key="cart-item-{{ $itemHash }}">
                         <div class="item-cart-image">
-                            <img src="{{ $product?->image ? asset('storage/' . $product->image) : asset('assets/imgs/template/no-image.png') }}" alt="choun">
+                            <img src="{{ $product ? $product->image_url : asset('assets/imgs/template/no-image.png') }}" alt="choun">
                         </div>
                         <div class="item-cart-info">
                             <div class="item-cart-info-1">

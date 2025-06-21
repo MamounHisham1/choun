@@ -50,7 +50,8 @@ class ProductResource extends Resource
                             ->options(Category::pluck('name', 'id'))
                             ->live()
                             ->searchable()
-                            ->required(),
+                            ->required()
+                            ->afterStateUpdated(fn(Forms\Set $set) => $set('attributes', [])),
                         Select::make('brand_id')
                             ->label('Brand')
                             ->options(Brand::pluck('name', 'id'))
@@ -100,16 +101,19 @@ class ProductResource extends Resource
                                     ->live()
                                     ->searchable()
                                     ->distinct()
-                                    ->required(),
+                                    ->required()
+                                    ->afterStateUpdated(fn(Forms\Set $set) => $set('values', [])),
                                 Select::make('values')
                                     ->options(fn(Forms\Get $get) => AttributeValue::where('attribute_id', $get('attribute_id'))->pluck('name', 'id'))
-                                    ->disabled(fn(Forms\Get $get): bool => !filled($get('../../category_id')))
+                                    ->disabled(fn(Forms\Get $get): bool => !filled($get('attribute_id')))
                                     ->multiple()
                                     ->searchable()
                                     ->required(),
                             ])
                             ->columns(2)
-                            ->distinct()
+                            ->reorderable(false)
+                            ->collapsible()
+                            ->itemLabel(fn (array $state): ?string => Attribute::find($state['attribute_id'])?->name ?? null),
                     ]),
                 Section::make('images')
                     ->schema([
@@ -146,6 +150,10 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('images')
+                    ->collection('product-images')
+                    ->size(50)
+                    ->circular(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
@@ -157,7 +165,8 @@ class ProductResource extends Resource
                 Tables\Columns\ToggleColumn::make('is_featured'),
                 Tables\Columns\ToggleColumn::make('is_published'),
                 Tables\Columns\TextColumn::make('category.name')
-                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('brand.name')
                     ->sortable(),
             ])
             ->filters([

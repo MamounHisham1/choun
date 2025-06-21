@@ -8,19 +8,23 @@
 }" x-on:item-added-to-cart.window="showToast('success', $event.detail[0].message)">
     <form method="POST" wire:submit="addToCart">
         @csrf
-        @foreach ($attributes as $attribute)
-            <div class="block-color d-flex gap-2">
-                <span>{{ $attribute->pivot->attribute->name }}:</span>
-                @foreach ($attribute->pivot->values as $value)
-                    <div class="d-flex gap-1">
-                        <x-forms.radio wire:model="data.attributes.{{ $attribute->pivot->attribute->slug }}"
-                            value="{{ $value->id }}" checked>
-                            {{ $value->name }}
-                        </x-forms.radio>
+        @if($attributes->isNotEmpty())
+            <div class="attributes-section mb-4">
+                @foreach ($attributes as $attribute)
+                    <div class="block-color">
+                        <span class="attribute-label">{{ $attribute->pivot->attribute->name }}:</span>
+                        <div class="attribute-values d-flex flex-wrap gap-2 mt-2">
+                            @foreach ($attribute->pivot->values as $value)
+                                <x-forms.radio wire:model="data.attributes.{{ $attribute->pivot->attribute->slug }}"
+                                    value="{{ $value->id }}" checked>
+                                    {{ $value->name }}
+                                </x-forms.radio>
+                            @endforeach
+                        </div>
                     </div>
                 @endforeach
             </div>
-        @endforeach
+        @endif
         <div class="block-quantity">
             <div class="text-17 neutral-medium-dark mb-10">
                 Quantity
