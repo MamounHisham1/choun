@@ -34,75 +34,101 @@
     <section class="section banner-homepage2 banner-homepage16">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="box-swiper button-slide-square">
-                        <div class="swiper-container swiper-banner pb-0">
-                            <div class="swiper-wrapper">
-                                @foreach ($homeFirstBanner as $banner)
-                                    <div class="swiper-slide">
-                                        <div class="banner-home-16">
-                                            <div class="banner-home-16-inner">
-                                                <h3 class="mb-10">{{ $banner['message'] }}</h3>
-                                                <div class="body-p1 mb-25">{!! $banner['description'] !!}</div>
-                                                <a class="btn btn-border" href="#">Shop now</a>
+                @if(isset($homeFirstBanner) && !empty($homeFirstBanner))
+                    <div class="col-lg-8">
+                        <div class="box-swiper button-slide-square">
+                            <div class="swiper-container swiper-banner pb-0">
+                                <div class="swiper-wrapper">
+                                    @foreach ($homeFirstBanner as $banner)
+                                        <div class="swiper-slide">
+                                            <div class="banner-home-16">
+                                                <div class="banner-home-16-inner">
+                                                    <h3 class="mb-10">{{ $banner['message'] }}</h3>
+                                                    <div class="body-p1 mb-25">{!! $banner['description'] !!}</div>
+                                                    <a class="btn btn-border" href="#">Shop now</a>
+                                                </div>
                                             </div>
                                         </div>
+                                    @endforeach
+                                </div>
+                                <div class="box-pagination-button">
+                                    <div
+                                        class="swiper-pagination swiper-pagination-banner swiper-pagination-banner-style-2">
                                     </div>
-                                @endforeach
-                            </div>
-                            <div class="box-pagination-button">
-                                <div
-                                    class="swiper-pagination swiper-pagination-banner swiper-pagination-banner-style-2">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row">
-                        @foreach ($homeOffers as $offer)
-                            <div class="home-offer-card d-flex align-items-center">
-                                <div class="offer-content">
-                                    <p class="offer-message">{{ $offer['message'] }}</p>
-                                    <h2 class="offer-title">{{ $offer['product']->name }}</h2>
-                                    <a href="/shop/{{ $offer['product']->slug }}" class="offer-btn">Learn more</a>
+                @endif
+                @if (isset($homeOffers) && !empty($homeOffers) && (isset($homeOffers['one']) || isset($homeOffers['two'])))
+                    <div class="col-lg-4">
+                        <div class="row">
+                            @if(isset($homeOffers['one']) && isset($homeOffers['one']['product']))
+                                @php $offer = $homeOffers['one']; @endphp
+                                <div class="home-offer-card d-flex align-items-center">
+                                    <div class="offer-content">
+                                        <p class="offer-message">{{ $offer['message'] ?? '' }}</p>
+                                        <h2 class="offer-title">{{ $offer['product']?->name }}</h2>
+                                        <a href="/shop/{{ $offer['product']?->slug }}" class="offer-btn">Learn more</a>
+                                    </div>
+                                    <div class="offer-image">
+                                        <img src="{{ $offer['product']?->image_url }}" alt="{{ $offer['product']?->name }}">
+                                    </div>
                                 </div>
-                                <div class="offer-image">
-                                    <img src="{{ $offer['product']->image_url }}" alt="{{ $offer['product']->name }}">
+                            @endif
+                            @if(isset($homeOffers['two']) && isset($homeOffers['two']['product']))
+                                @php $offer = $homeOffers['two']; @endphp
+                                <div class="home-offer-card d-flex align-items-center">
+                                    <div class="offer-content">
+                                        <p class="offer-message">{{ $offer['message'] ?? '' }}</p>
+                                        <h2 class="offer-title">{{ $offer['product']?->name }}</h2>
+                                        <a href="/shop/{{ $offer['product']?->slug }}" class="offer-btn">Learn more</a>
+                                    </div>
+                                    <div class="offer-image">
+                                        <img src="{{ $offer['product']?->image_url }}" alt="{{ $offer['product']?->name }}">
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endif
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
+    @if(($bestProducts && count($bestProducts) > 0) || ($latestProducts && count($latestProducts) > 0) || ($featuredProducts && count($featuredProducts) > 0))
     <section class="section block-shop-1">
         <div class="container">
             <div class="text-center">
                 <div class="box-tabs wow fadeInRight">
                     <ul class="nav nav-tabs nav-tabs-style-2 nav-tabs-style-4" role="tablist">
+                        @if($bestProducts && count($bestProducts) > 0)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="bestsellers-tab" data-bs-toggle="tab"
                                 data-bs-target="#bestsellers" type="button" role="tab" aria-controls="bestsellers"
                                 aria-selected="true" data-index="1" data-items="1">Best Sellers</button>
                         </li>
+                        @endif
+                        @if($latestProducts && count($latestProducts) > 0)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="newproducts-tab" data-bs-toggle="tab"
+                            <button class="nav-link @if(!$bestProducts || count($bestProducts) == 0) active @endif" id="newproducts-tab" data-bs-toggle="tab"
                                 data-bs-target="#newproducts" type="button" role="tab" aria-controls="newproducts"
-                                aria-selected="false" data-index="2" data-items="1">New
+                                aria-selected="@if(!$bestProducts || count($bestProducts) == 0) true @else false @endif" data-index="2" data-items="1">New
                                 Products</button>
                         </li>
+                        @endif
+                        @if($featuredProducts && count($featuredProducts) > 0)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="featureproducts-tab" data-bs-toggle="tab"
+                            <button class="nav-link @if((!$bestProducts || count($bestProducts) == 0) && (!$latestProducts || count($latestProducts) == 0)) active @endif" id="featureproducts-tab" data-bs-toggle="tab"
                                 data-bs-target="#featureproducts" type="button" role="tab"
-                                aria-controls="featureproducts" aria-selected="false" data-index="3"
+                                aria-controls="featureproducts" aria-selected="@if((!$bestProducts || count($bestProducts) == 0) && (!$latestProducts || count($latestProducts) == 0)) true @else false @endif" data-index="3"
                                 data-items="1">Feature Products</button>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </div>
             <div class="tab-content">
+                @if($bestProducts && count($bestProducts) > 0)
                 <x-tab id="bestsellers" class="show active">
                     @foreach ($bestProducts->chunk(8) as $productsChunk)
                         <x-tab-wrapper>
@@ -152,7 +178,9 @@
                         </x-tab-wrapper>
                     @endforeach
                 </x-tab>
-                <x-tab id="newproducts" tab="2">
+                @endif
+                @if($latestProducts && count($latestProducts) > 0)
+                <x-tab id="newproducts" tab="2" :class="!$bestProducts || count($bestProducts) == 0 ? 'show active' : ''">
                     @foreach ($latestProducts->chunk(8) as $productsChunk)
                         <x-tab-wrapper>
                             @foreach ($productsChunk as $product)
@@ -202,6 +230,8 @@
                         </x-tab-wrapper>
                     @endforeach
                 </x-tab>
+                @endif
+                @if($featuredProducts && count($featuredProducts) > 0)
                 <x-tab id="featureproducts" tab="3">
                     @foreach ($featuredProducts->chunk(8) as $productsChunk)
                         <x-tab-wrapper>
@@ -252,22 +282,24 @@
                         </x-tab-wrapper>
                     @endforeach
                 </x-tab>
+                @endif
             </div>
         </div>
     </section>
-    @if ($homeSecondBanner)
+    @endif
+    @if ($homeSecondBanner && isset($homeSecondBanner['category']) && isset($homeSecondBanner['message']))
         <section class="section banner-2-homepage16">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="color-white mb-10">{{ $homeSecondBanner['category']->name }}</h2>
+                    <h2 class="color-white mb-10">{{ $homeSecondBanner['category']?->name }}</h2>
                     <div class="body-p1 color-white mb-30">{!! $homeSecondBanner['message'] !!}</div>
                     <a class="btn btn-border-white"
-                        href="/shop/categories/{{ $homeSecondBanner['category']->slug }}">Shop now</a>
+                        href="/shop/categories/{{ $homeSecondBanner['category']?->slug }}">Shop now</a>
                 </div>
             </div>
         </section>
     @endif
-    @if ($categories)
+    @if ($categories && count($categories) > 0)
         <section class="section category-homepage16">
             <div class="container">
                 <h3 class="mb-40">Shop by Category</h3>

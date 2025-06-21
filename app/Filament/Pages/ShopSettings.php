@@ -45,42 +45,32 @@ class ShopSettings extends Page
             ->schema([
                 Section::make('offers')
                     ->schema([
-                        TextInput::make('one.message')
-                            ->required(),
+                        TextInput::make('one.message'),
                         Select::make('one.product')
                             ->options(Product::get()->pluck('name', 'id'))
-                            ->searchable()
-                            ->required(),
+                            ->searchable(),
                         ColorPicker::make('one.color')
-                            ->label('Background color')
-                            ->required(),
-                        TextInput::make('two.message')
-                            ->required(),
+                            ->label('Background color'),
+                        TextInput::make('two.message'),
                         Select::make('two.product')
                             ->options(Product::get()->pluck('name', 'id'))
-                            ->searchable()
-                            ->required(),
+                            ->searchable(),
                         ColorPicker::make('two.color')
                             ->label('Background color')
-                            ->required(),
                     ])
                     ->statePath('offers')
                     ->columns(3),
 
                 Repeater::make('banner_one')
                     ->schema([
-                        TextInput::make('message')
-                            ->required(),
+                        TextInput::make('message'),
                         Select::make('product')
                             ->options(Product::get()->pluck('name', 'id'))
-                            ->searchable()
-                            ->required(),
+                            ->searchable(),
                         ColorPicker::make('color')
-                            ->label('Background color')
-                            ->required(),
+                            ->label('Background color'),
                         RichEditor::make('description')
                             ->columnSpanFull()
-                            ->required(),
                     ])
                     ->defaultItems(2)
                     ->columns(3)
@@ -91,14 +81,11 @@ class ShopSettings extends Page
                     ->schema([
                         Select::make('category')
                             ->options(Category::get()->pluck('name', 'id'))
-                            ->searchable()
-                            ->required(),
+                            ->searchable(),
                         ColorPicker::make('color')
-                            ->label('Background color')
-                            ->required(),
+                            ->label('Background color'),
                         RichEditor::make('message')
                             ->columnSpanFull()
-                            ->required(),
                     ])
                     ->statePath('second_banner')
                     ->columns(2),
@@ -109,7 +96,6 @@ class ShopSettings extends Page
                             ->multiple()
                             ->options(Category::get()->pluck('name', 'id'))
                             ->searchable()
-                            ->minItems(1)
                             ->maxItems(6),
                     ]),
 

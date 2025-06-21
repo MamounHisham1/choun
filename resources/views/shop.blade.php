@@ -195,9 +195,9 @@
                                         <a href="/shop/{{ $product->slug }}">
                                             <h6 class="text-17-medium mb-10">{{ $product->name }}</h6>
                                         </a>
-                                        <p class="body-p2 cardDesc"><span
-                                                class="price-line">${{ $product->price }}</span>
-                                            {{-- <span class="price-main">${{ $product->price }}</span> --}}
+                                        <p class="body-p2 cardDesc">
+                                            {{-- <span class="price-line">${{ $product->price }}</span> --}}
+                                            <span class="price-main">${{ $product->price }}</span>
                                         </p>
                                     </div>
                                 </div>
