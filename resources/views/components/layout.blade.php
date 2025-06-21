@@ -23,22 +23,43 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/imgs/.template/favicon.svg">
     <link href="/assets/css/style.css?v=1.0.0" rel="stylesheet">
+    <link href="/assets/css/modern.css?v=1.0.0" rel="stylesheet">
     <style>
         .radio-badge {
             display: inline-block;
-            margin: 2px;
-            border-radius: 25px;
-            border: 2px solid #e0e0e0;
-            transition: all 0.3s ease;
+            margin: 0;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            background-color: #fff;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .radio-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
         }
 
         .radio-badge:hover {
-            border-color: #007bff;
-            background-color: #f8f9fa;
+            border-color: #4f46e5;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .radio-badge:hover::before {
+            left: 100%;
         }
 
         .radio-badge input[type="radio"] {
@@ -46,19 +67,33 @@
         }
 
         .radio-badge input[type="radio"]:checked + .badge-content {
-            background-color: #007bff;
-            color: #fff;
-            border-color: #007bff;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: #ffffff;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        .radio-badge input[type="radio"]:checked + .badge-content::after {
+            content: '✓';
+            position: absolute;
+            top: -2px;
+            right: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #ffffff;
         }
 
         .badge-content {
             display: inline-block;
-            padding: 8px 16px;
-            border-radius: 25px;
+            padding: 12px 20px;
+            border-radius: 10px;
             border: 2px solid transparent;
-            transition: all 0.3s ease;
-            color: #333;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #374151;
             background-color: inherit;
+            position: relative;
+            min-width: 60px;
+            text-align: center;
         }
 
         .badge-icon {
@@ -67,14 +102,37 @@
         }
 
         .block-color {
-            margin-bottom: 15px;
+            margin-bottom: 24px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+
+        .block-color:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
         }
 
         .block-color span:first-child {
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1f2937;
             margin-right: 10px;
-            margin-bottom: 8px;
-            display: inline-block;
+            margin-bottom: 12px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .block-color span:first-child::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            border-radius: 1px;
         }
 
         .sticky-toast {
@@ -89,26 +147,130 @@
         }
 
         .attributes-section {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
-            background-color: #fafafa;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+            border: 1px solid rgba(79, 70, 229, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .attributes-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+            border-radius: 16px 16px 0 0;
         }
 
         .attribute-label {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #333;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1f2937;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .attribute-label::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            border-radius: 1px;
         }
 
         .attribute-values {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .attribute-values:last-child {
             margin-bottom: 0;
+        }
+
+        /* Responsive design for attributes */
+        @media (max-width: 768px) {
+            .attributes-section {
+                padding: 20px 16px;
+                margin-bottom: 20px;
+            }
+            
+            .attribute-label {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .badge-content {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+                min-width: 50px;
+            }
+            
+            .attribute-values {
+                gap: 6px;
+            }
+        }
+
+        /* Animation for attributes section */
+        .attributes-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced focus states for accessibility */
+        .radio-badge input[type="radio"]:focus + .badge-content {
+            outline: 2px solid #4f46e5;
+            outline-offset: 2px;
+        }
+
+        /* Special styling for color attributes */
+        .attribute-values.color-values .radio-badge {
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            margin: 4px;
+        }
+
+        .attribute-values.color-values .badge-content {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0;
+        }
+
+        .attribute-values.color-values .radio-badge input[type="radio"]:checked + .badge-content::after {
+            content: '✓';
+            font-size: 1rem;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
     </style>
     @stack('css')

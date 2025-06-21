@@ -1269,3 +1269,202 @@
         }
     }
 }
+.cardProductModern {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+    overflow: hidden;
+    
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .cardImage {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px 16px 0 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+            transition: all 0.4s ease;
+        }
+        
+        .imageMain {
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.4s ease;
+        }
+        
+        .imageHover {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+        }
+        
+        .button-select {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px 0 15px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+            
+            a {
+                background: #ffffff;
+                color: #1a1a1a;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 25px;
+                font-weight: 600;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: all 0.3s ease;
+                display: inline-block;
+                margin: 0 15px;
+                text-decoration: none;
+                
+                &:hover {
+                    background: #1a1a1a;
+                    color: #ffffff;
+                    transform: translateY(-2px);
+                }
+            }
+        }
+        
+        .box-quick-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+            
+            .btn {
+                width: 42px;
+                height: 42px;
+                background: rgba(255, 255, 255, 0.95);
+                border: none;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                
+                &:hover {
+                    background: #1a1a1a;
+                    transform: scale(1.1);
+                    
+                    svg path {
+                        fill: #ffffff;
+                    }
+                }
+                
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    
+                    path {
+                        fill: #1a1a1a;
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+        }
+        
+        &:hover {
+            .imageMain {
+                opacity: 0;
+                visibility: hidden;
+                transform: scale(1.05);
+            }
+            
+            .imageHover {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .button-select {
+                transform: translateY(0);
+            }
+            
+            .box-quick-button {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    }
+    
+    .cardInfo {
+        padding: 20px;
+        text-align: left;
+        
+        h6 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+            
+            &:hover {
+                color: #007bff;
+            }
+        }
+        
+        .cardDesc {
+            margin: 0;
+            
+            .price-line {
+                color: #6c757d;
+                text-decoration: line-through;
+                font-size: 14px;
+                margin-right: 8px;
+            }
+            
+            .price-main {
+                color: #1a1a1a;
+                font-weight: 700;
+                font-size: 18px;
+            }
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+}

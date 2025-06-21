@@ -27,8 +27,14 @@ class AddToCart extends Component
             if (is_array($valueIds)) {
                 $valueIds = collect($valueIds)->flatten()->map(fn($id) => (int) $id)->filter()->toArray();
                 if (!empty($valueIds)) {
-                    $attribute->pivot->values = AttributeValue::whereIn('id', $valueIds)->get();
-                    $this->data['attributes'][$attribute->pivot->attribute->slug] = $valueIds[0];
+                    // Only get values that belong to this specific attribute
+                    $attribute->pivot->values = AttributeValue::whereIn('id', $valueIds)
+                        ->where('attribute_id', $attribute->pivot->attribute_id)
+                        ->get();
+                    
+                    if ($attribute->pivot->values->isNotEmpty()) {
+                        $this->data['attributes'][$attribute->pivot->attribute->slug] = $attribute->pivot->values->first()->id;
+                    }
                 } else {
                     $attribute->pivot->values = collect();
                 }
@@ -49,7 +55,10 @@ class AddToCart extends Component
             if (is_array($valueIds)) {
                 $valueIds = collect($valueIds)->flatten()->map(fn($id) => (int) $id)->filter()->toArray();
                 if (!empty($valueIds)) {
-                    $attribute->pivot->values = AttributeValue::whereIn('id', $valueIds)->get();
+                    // Only get values that belong to this specific attribute
+                    $attribute->pivot->values = AttributeValue::whereIn('id', $valueIds)
+                        ->where('attribute_id', $attribute->pivot->attribute_id)
+                        ->get();
                 } else {
                     $attribute->pivot->values = collect();
                 }

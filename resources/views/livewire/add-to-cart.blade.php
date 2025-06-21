@@ -10,13 +10,17 @@
         @csrf
         @if($attributes->isNotEmpty())
             <div class="attributes-section mb-4">
+                <h5 class="attributes-title mb-3" style="font-weight: 700; color: #1f2937; font-size: 1.2rem; margin-bottom: 20px;">
+                    <i class="bi bi-sliders" style="margin-right: 8px; color: #4f46e5;"></i>
+                    Product Options
+                </h5>
                 @foreach ($attributes as $attribute)
                     <div class="block-color">
                         <span class="attribute-label">{{ $attribute->pivot->attribute->name }}:</span>
                         <div class="attribute-values d-flex flex-wrap gap-2 mt-2">
                             @foreach ($attribute->pivot->values as $value)
                                 <x-forms.radio wire:model="data.attributes.{{ $attribute->pivot->attribute->slug }}"
-                                    value="{{ $value->id }}" checked>
+                                    value="{{ $value->id }}" name="attribute_{{ $attribute->pivot->attribute->slug }}">
                                     {{ $value->name }}
                                 </x-forms.radio>
                             @endforeach

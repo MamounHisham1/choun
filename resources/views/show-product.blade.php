@@ -388,7 +388,7 @@
             <div class="row">
                 @foreach ($products as $product)
                     <div class="col-lg-3 col-md-6">
-                        <div class="cardProduct wow fadeInUp">
+                        <div class="cardProductModern wow fadeInUp">
                             <div class="cardImage">
                                 <a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                         src="{{ $product->image_url }}" alt="choun" /><img class="imageHover"

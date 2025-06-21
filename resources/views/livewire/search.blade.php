@@ -20,7 +20,7 @@
         <div class="box-list-product-search">
             @foreach($products as $product)
             <div class="item-product-search">
-                <div class="cardProductStyle3 cardProductType03 cardProductType02 wow fadeInUp">
+                <div class="cardProductModern wow fadeInUp">
                     <div class="cardImage"><a href="#"><img class="imageMain"
                                 src="{{ $product->image_url }}" alt="{{ $product->name }}"><img class="imageHover"
                                 src="{{ $product->image_hover_url }}" alt="{{ $product->name }}"></a>

@@ -160,7 +160,7 @@
                     <div class="box-list-products">
                         @foreach ($products as $product)
                             <div class="product-item">
-                                <div class="cardProduct wow fadeInUp">
+                                <div class="cardProductModern wow fadeInUp">
                                     <div class="cardImage" style="!important; background-color: white;"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                                 style="object-fit: contain;"
                                                 src="{{ $product->image_url }}" alt="choun"><img class="imageHover"

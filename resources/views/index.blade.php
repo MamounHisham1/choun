@@ -61,21 +61,15 @@
                 <div class="col-lg-4">
                     <div class="row">
                         @foreach ($homeOffers as $offer)
-                            <div class="d-flex align-items-start p-4"
-                                style="background-color: {{ $offer['color'] }};
-                                padding: 24px 24px 55px 24px;
-                                margin-bottom: 30px;
-                                height: 265px;">
-                                <div class="me-3" style="flex: 1;">
-                                    <p class="text-muted fw-semibold mb-1">{{ $offer['message'] }}</p>
-                                    <h2 class="fw-bold mb-1" style="font-size: 1.75rem;">{{ $offer['product']->name }}
-                                    </h2>
-                                    <a href="/shop/{{ $offer['product']->slug }}"
-                                        class="btn btn-outline-dark text-end"
-                                        style="padding: 0.5rem 1rem; font-weight: 500;">Learn more</a>
+                            <div class="home-offer-card d-flex align-items-center">
+                                <div class="offer-content">
+                                    <p class="offer-message">{{ $offer['message'] }}</p>
+                                    <h2 class="offer-title">{{ $offer['product']->name }}</h2>
+                                    <a href="/shop/{{ $offer['product']->slug }}" class="offer-btn">Learn more</a>
                                 </div>
-                                <img src="{{ $offer['product']->image_url }}" alt="MacBook Air" class="img-fluid"
-                                    style="max-width: 55%; height: auto; border-radius: 0.25rem;">
+                                <div class="offer-image">
+                                    <img src="{{ $offer['product']->image_url }}" alt="{{ $offer['product']->name }}">
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -114,7 +108,7 @@
                         <x-tab-wrapper>
                             @foreach ($productsChunk as $product)
                                 <x-tab-card>
-                                    <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
+                                    <div class="cardProductModern wow fadeInUp">
                                         <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="choun"><img
                                                     class="imageHover" src="{{ $product->images->last()?->getUrl() }}"
@@ -163,7 +157,7 @@
                         <x-tab-wrapper>
                             @foreach ($productsChunk as $product)
                                 <x-tab-card>
-                                    <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
+                                    <div class="cardProductModern wow fadeInUp">
                                         <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="choun"><img
                                                     class="imageHover"
@@ -213,7 +207,7 @@
                         <x-tab-wrapper>
                             @foreach ($productsChunk as $product)
                                 <x-tab-card>
-                                    <div class="cardProductStyle3 cardProductStyle5 wow fadeInUp">
+                                    <div class="cardProductModern wow fadeInUp">
                                         <div class="cardImage"><a href="/shop/{{ $product->slug }}"><img class="imageMain"
                                                     src="{{ $product->image_url }}" alt="choun"><img
                                                     class="imageHover"
