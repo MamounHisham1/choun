@@ -10,8 +10,8 @@
         @csrf
         @if($attributes->isNotEmpty())
             <div class="attributes-section mb-4">
-                <h5 class="attributes-title mb-3" style="font-weight: 700; color: #1f2937; font-size: 1.2rem; margin-bottom: 20px;">
-                    <i class="bi bi-sliders" style="margin-right: 8px; color: #4f46e5;"></i>
+                <h5 class="attributes-title mb-3" style="font-weight: 600; color: #1f2937; font-size: 1rem; margin-bottom: 16px;">
+                    <i class="bi bi-sliders" style="margin-right: 6px; color: #4f46e5; font-size: 0.9rem;"></i>
                     Product Options
                 </h5>
                 @foreach ($attributes as $attribute)

@@ -36,10 +36,20 @@ $subtotal += $item->price * $item->quantity;
                     <div class="item-cart-info">
                         <div class="item-cart-info-1"><a class="text-16-medium" href="#">{{ $item->name }}</a>
                             <div class="box-info-size-color-product">
-                                <p class="box-color"><span class="body-p2 neutral-medium-dark">Color:</span><span
-                                        class="body-p2 neutral-dark">Navy</span></p>
-                                <p class="box-size"><span class="body-p2 neutral-medium-dark">Size:</span><span
-                                        class="body-p2 neutral-dark">S</span></p>
+                                @if(isset($item->options[0]) && is_array($item->options[0]))
+                                    @foreach ($item->options[0] as $attributeSlug => $valueId)
+                                        @php
+                                            $attribute = App\Models\Attribute::where('slug', $attributeSlug)->first();
+                                            $value = App\Models\AttributeValue::find($valueId);
+                                        @endphp
+                                        @if($attribute && $value)
+                                            <p class="box-color">
+                                                <span class="body-p2 neutral-medium-dark">{{ $attribute->name }}:</span>
+                                                <span class="body-p2 neutral-dark">{{ $value->name }}</span>
+                                            </p>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                             <p class="body-p2 d-block d-sm-none mb-8">{{ $item->price }}</p>
                             <div class="box-form-cart">
@@ -59,7 +69,7 @@ $subtotal += $item->price * $item->quantity;
             </div>
         </div>
         <div class="box-fire">
-            <div class="icon-fire body-p2">Checkout now 09:14 before they’re<span class="text-17-medium">GONE!</span>
+            <div class="icon-fire body-p2">Checkout now 09:14 before they're<span class="text-17-medium">GONE!</span>
             </div>
         </div>
         <div class="d-flex align-items-center justify-content-between mt-25 mb-15">

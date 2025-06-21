@@ -28,14 +28,14 @@
         .radio-badge {
             display: inline-block;
             margin: 0;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 2px solid #e5e7eb;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 600;
             background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
             position: relative;
             overflow: hidden;
         }
@@ -54,8 +54,8 @@
         .radio-badge:hover {
             border-color: #4f46e5;
             background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
-            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.15);
-            transform: translateY(-2px);
+            box-shadow: 0 3px 12px rgba(79, 70, 229, 0.12);
+            transform: translateY(-1px);
         }
 
         .radio-badge:hover::before {
@@ -85,14 +85,14 @@
 
         .badge-content {
             display: inline-block;
-            padding: 12px 20px;
-            border-radius: 10px;
+            padding: 8px 14px;
+            border-radius: 8px;
             border: 2px solid transparent;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             color: #374151;
             background-color: inherit;
             position: relative;
-            min-width: 60px;
+            min-width: 50px;
             text-align: center;
         }
 
@@ -102,8 +102,8 @@
         }
 
         .block-color {
-            margin-bottom: 24px;
-            padding: 16px 0;
+            margin-bottom: 18px;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(229, 231, 235, 0.5);
         }
 
@@ -113,24 +113,24 @@
         }
 
         .block-color span:first-child {
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             color: #1f2937;
             margin-right: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             display: block;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             position: relative;
         }
 
         .block-color span:first-child::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -3px;
             left: 0;
-            width: 30px;
-            height: 2px;
+            width: 24px;
+            height: 1.5px;
             background: linear-gradient(90deg, #4f46e5, #7c3aed);
             border-radius: 1px;
         }
@@ -149,10 +149,10 @@
         .attributes-section {
             background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
             border: 1px solid rgba(79, 70, 229, 0.1);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.08);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(79, 70, 229, 0.06);
             position: relative;
             overflow: hidden;
         }
@@ -163,38 +163,38 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 2px;
             background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
-            border-radius: 16px 16px 0 0;
+            border-radius: 12px 12px 0 0;
         }
 
         .attribute-label {
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             color: #1f2937;
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             position: relative;
         }
 
         .attribute-label::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -3px;
             left: 0;
-            width: 30px;
-            height: 2px;
+            width: 24px;
+            height: 1.5px;
             background: linear-gradient(90deg, #4f46e5, #7c3aed);
             border-radius: 1px;
         }
 
         .attribute-values {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .attribute-values:last-child {
@@ -204,23 +204,29 @@
         /* Responsive design for attributes */
         @media (max-width: 768px) {
             .attributes-section {
-                padding: 20px 16px;
-                margin-bottom: 20px;
+                padding: 14px 12px;
+                margin-bottom: 16px;
             }
             
             .attribute-label {
-                font-size: 1rem;
-                margin-bottom: 10px;
+                font-size: 0.85rem;
+                margin-bottom: 6px;
             }
             
             .badge-content {
-                padding: 10px 16px;
-                font-size: 0.8rem;
-                min-width: 50px;
+                padding: 6px 12px;
+                font-size: 0.75rem;
+                min-width: 40px;
             }
             
             .attribute-values {
-                gap: 6px;
+                gap: 4px;
+                margin-bottom: 12px;
+            }
+            
+            .block-color {
+                margin-bottom: 14px;
+                padding: 8px 0;
             }
         }
 

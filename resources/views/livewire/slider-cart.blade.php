@@ -50,14 +50,20 @@
                         <div class="item-cart-info">
                             <div class="item-cart-info-1">
                                 <a class="text-16-medium"
-                                    href="{{ $product ? route('shop.show', $product->slug) : '#' }}">{{ $item->name }}</a>
+                                    href="{{ route('shop.show', $product) }}">{{ $item->name }}</a>
                                 <div class="box-info-size-color-product">
                                     @if(isset($item->options[0]) && is_array($item->options[0]))
-                                        @foreach ($item->options[0] as $key => $value)
-                                        <p class="box-color">
-                                            <span class="body-p2 neutral-medium-dark">{{ ucfirst($key) }}:</span>
-                                            <span class="body-p2 neutral-dark">{{ $value }}</span>
-                                        </p>
+                                        @foreach ($item->options[0] as $attributeSlug => $valueId)
+                                            @php
+                                                $attribute = App\Models\Attribute::where('slug', $attributeSlug)->first();
+                                                $value = App\Models\AttributeValue::find($valueId);
+                                            @endphp
+                                            @if($attribute && $value)
+                                                <p class="box-color">
+                                                    <span class="body-p2 neutral-dark">{{ $attribute->name }}: </span>
+                                                    <span class="body-p2 neutral-dark">{{ $value->name }}</span>
+                                                </p>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </div>

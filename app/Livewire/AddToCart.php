@@ -103,7 +103,7 @@ class AddToCart extends Component
                 $this->product->name,
                 $this->data['quantity'],
                 $this->product->price,
-                $this->data['attributes'] ?? []
+                [$this->data['attributes'] ?? []]
             );
         }
         

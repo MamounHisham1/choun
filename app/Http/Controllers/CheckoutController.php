@@ -30,18 +30,9 @@ class CheckoutController extends Controller
             return redirect('/shop');
         }
 
-        foreach($cartItems as $item) {
-            if (isset($item->options[0]) && is_array($item->options[0])) {
-                foreach($item->options[0] as $key => $value) {
-                    $attributeValue = AttributeValue::find($value);
-                    $item->options[0][$key] = $attributeValue?->name ?? $value;
-                }
-            }
-        }
-
         return view('checkout', [
             'subtotal' => LaraCart::total(),
-            'shippingAddress' => auth()?->user()?->shippingAddresses?->last(),
+            'shippingAddress' => Auth::user()?->shippingAddresses?->last(),
             'cartItems' => $cartItems,
         ]);
     }
