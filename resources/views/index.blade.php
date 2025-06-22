@@ -294,7 +294,7 @@
                     <h2 class="color-white mb-10">{{ $homeSecondBanner['category']?->name }}</h2>
                     <div class="body-p1 color-white mb-30">{!! $homeSecondBanner['message'] !!}</div>
                     <a class="btn btn-border-white"
-                        href="/shop/categories/{{ $homeSecondBanner['category']?->slug }}">Shop now</a>
+                        href="/shop/categories/{{ $homeSecondBanner['category']->id }}">Shop now</a>
                 </div>
             </div>
         </section>

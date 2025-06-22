@@ -382,7 +382,7 @@
 .home-offer-card .offer-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 /* Enhanced Swiper Pagination */
 .swiper-pagination-banner .swiper-pagination-bullet {

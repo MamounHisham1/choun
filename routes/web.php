@@ -23,7 +23,7 @@ Route::get('/shop', [ShopController::class, 'index']);
 Route::get('/shop/filter', [ShopController::class, 'filter']);
 Route::get('/shop/{product:slug}', [ShopController::class, 'show'])->name('shop.show');
 
-Route::get('/shop/categories/{category:slug}', CategoryProductsController::class);
+Route::get('/shop/categories/{category}', CategoryProductsController::class);
 
 Route::post('/add-to-cart/{product}', [CartController::class, 'store']);
 Route::post('/add-to-wishlist/{product}', WishlistController::class);
