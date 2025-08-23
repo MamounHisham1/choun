@@ -30,6 +30,13 @@ class OrderApplied extends Notification
         return ['database'];
     }
 
+    public function toDatabase(object $notifiable): array
+    {
+        return [
+            "message" => "New order applied"
+        ];
+    }
+
     /**
      * Get the mail representation of the notification.
      */
