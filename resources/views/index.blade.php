@@ -307,7 +307,7 @@
                     @foreach ($categories as $category)
                         <div class="col-lg-2 col-md-4 col-sm-6">
                             <div class="cardCategoryCircle">
-                                <div class="cardImage"><a href="/shop/categories/{{ $category->slug }}"><img
+                                <div class="cardImage"><a href="/shop/categories/{{ $category->id }}"><img
                                             src="{{ $category->image_url }}" alt="choun"></a></div>
                                 <div class="cardInfo">
                                     <p class="text-17-medium">{{ $category->name }}</p>
